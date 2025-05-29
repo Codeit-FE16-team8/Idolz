@@ -1,0 +1,2 @@
+# Idolz
+APP for idol
