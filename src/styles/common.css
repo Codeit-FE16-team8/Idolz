@@ -1,0 +1,156 @@
+/* 공통 전역 스타일 */
+
+:root {  
+  /* 색상 */
+  --color-black-02000E: #02000E;
+  --color-black-181D26: #181D26;
+  --color-gray-67666E: #67666E;
+  --color-gray-828282: #828282;
+  --color-gray-8C92AB: #8C92AB;
+  --color-gray-A3A5A8: #A3A5A8;
+  --color-white-F7F7F8: #F7F7F8;
+  --color-orange-F96D69: #F96D69;
+  --color-pink-FE5493: #FE5493;
+
+  /* 폰트 사이즈, 1rem = 10px */
+  font-size: 62.5%;
+  --font-size-xxs: 1.2rem;
+  --font-size-xs: 1.3rem;
+  --font-size-base: 1.4rem;
+  --font-size-sm: 1.5rem;
+  --font-size-md: 1.6rem;
+  --font-size-lg: 1.8rem;
+  --font-size-xl: 2.0rem;
+  --font-size-xxl: 2.6rem;
+
+  /* 폰트 굵기 */
+  --font-weight-500: 500;
+  --font-weight-600: 600;
+  --font-weight-700: 700;
+
+  /* 폰트 행간 */
+  --line-height-26: 26px;
+
+  /* 폰트 자간 */
+  --letter-spacing-wide: 5px;
+  --letter-spacing-wide-md: 2px;
+  --letter-spacing-wide-sm: 0.17px;
+
+  /* 테두리 둥굴기 */
+  --border-radius-xs: 3px;
+  --border-radius-sm: 8px;
+  --border-radius-md: 12px;
+  --border-radius-lg: 24px;
+  --border-radius-round: 999px;
+}
+
+body {
+  font-family: 'Pretendard';
+  font-size: 1.6rem;
+}
+
+input.input__credit {
+  width: 100%;
+  padding: 16px 48px 16px 16px;
+  background-color: #272F3D;
+  background-image: url(../assets/images/credit.png);
+  background-repeat: no-repeat;
+  background-position: 95% center;
+  color: white;
+  font-weight: var(--font-weight-700);
+  border: solid 1px white;
+  border-radius: var(--border-radius-sm	);
+}
+
+input.input__credit::placeholder {
+  color: var(--color-gray-67666E);
+  font-weight: var(--font-weight-700);
+}
+
+/* 버튼 */
+.btn {
+  cursor: pointer;
+  display: inline-block;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.btn--color {
+  color: white;
+  background-image: linear-gradient(to right, #F86F65, #FE5493);
+}
+
+.btn--large {
+  height: 40px;
+  width: 100%;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-700);
+  border-radius: var(--border-radius-xs);
+}
+
+.btn--medium {
+  height: 32px;
+  width: 100%;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-700);
+  border-radius: var(--border-radius-xs);
+}
+button:disabled {
+  background: var(--color-gray-828282);
+  cursor: auto;
+}
+
+.btn--large.btn--img {
+  line-height: 41px;
+}
+
+.btn--medium.btn--img {
+  line-height: 33px;
+}
+
+button img {
+  transform: translateY(-1px);
+  display: inline-block;
+  vertical-align: middle;
+  padding-right: 4px;
+}
+
+/* 라디오 */
+.radio {
+  display: flex;
+}
+
+input[type="radio"] {
+  display:none;
+}
+
+.label__inner {
+  display: flex;
+  align-items: center;
+}
+
+.radio-icon {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background: url(../assets/images/Checked_False.png) no-repeat;
+  cursor: pointer;
+}
+
+input[type="radio"]:checked + .label__inner .radio-icon {
+  background: url(../assets/images/Checked_True.png) no-repeat;
+}
+
+table, th, td {
+  font-size: var(--font-size-base);
+  border: 1px solid #aaa;
+}
+table {
+  border-collapse: collapse;
+}
+th, td {
+  padding: 2px 8px;
+}
+th {
+  background-color: #eee;
+}
