@@ -1,7 +1,12 @@
 import './App.css';
+import CardDonation from './components/CardDonation';
 
 function App() {
-  return;
+  return (
+    <div>
+      <CardDonation />
+    </div>
+  );
 }
 
 export default App;

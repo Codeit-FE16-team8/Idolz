@@ -1,0 +1,25 @@
+.donationContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.itemCard {
+  display: flex;
+  flex-direction: column;
+}
+
+.idolProfileImage {
+  width: 282px;
+  height: 293px;
+  border-radius: 1px solid #dfdfdf;
+}
+button {
+  width: 234px;
+  height: 40px;
+}
+p {
+  font-size: 16px;
+}
+h2 {
+  font-size: 18px;
+}
