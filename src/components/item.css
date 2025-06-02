@@ -1,3 +1,11 @@
+.funding {
+  padding: 50px;
+}
+
+.favorite {
+  padding: 50px;
+}
+
 .donationContainer {
   display: flex;
   justify-content: center;
@@ -22,4 +30,26 @@ p {
 }
 h2 {
   font-size: 18px;
+}
+
+.monthlyChartContainer {
+  gap: 10px;
+}
+.idolChart {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.idolProfile {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.idolProfile .idolProfileImage {
+  width: 98px;
+  height: 98px;
+  object-fit: cover;
+  border-radius: 50%;
 }

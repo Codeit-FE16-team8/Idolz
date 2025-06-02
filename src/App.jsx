@@ -1,10 +1,10 @@
 import './App.css';
-import CardDonation from './components/CardDonation';
+import ListPage from './components/ListPage';
 
 function App() {
   return (
     <div>
-      <CardDonation />
+      <ListPage />
     </div>
   );
 }

@@ -18,7 +18,7 @@ function Item({ item }) {
         <h2>{item.title} </h2>
       </div>
       <div className="donationStatus">
-        <p>{item.receivedDonation}</p>
+        <p>{item.receivedDonations}</p>
         <p>{getRemainingDays(item.deadline)}일 남음</p>
       </div>
     </div>

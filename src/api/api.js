@@ -36,47 +36,47 @@ export async function getAllDonations(groupList) {
 }
 
 // 아이돌 등록 (POST)
-export async function createIdol(group, idolData) {
-  const url = buildGroupUrl(group, 'idols');
-  try {
-    const response = await fetch(url, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(idolData),
-    });
-    if (!response.ok) {
-      throw new Error('아이돌 등록 실패');
-    }
-    const result = await response.json();
-    console.log('아이돌 등록 성공:', result);
-    return result;
-  } catch (error) {
-    console.error('아이돌 등록 에러:', error);
-    return null;
-  }
-}
+// export async function createIdol(group, idolData) {
+//   const url = buildGroupUrl(group, 'idols');
+//   try {
+//     const response = await fetch(url, {
+//       method: 'POST',
+//       headers: {
+//         'Content-Type': 'application/json',
+//       },
+//       body: JSON.stringify(idolData),
+//     });
+//     if (!response.ok) {
+//       throw new Error('아이돌 등록 실패');
+//     }
+//     const result = await response.json();
+//     console.log('아이돌 등록 성공:', result);
+//     return result;
+//   } catch (error) {
+//     console.error('아이돌 등록 에러:', error);
+//     return null;
+//   }
+// }
 
 // 후원 등록 (POST)
-export async function createDonation(group, donationData) {
-  const url = buildGroupUrl(group, 'donations');
-  try {
-    const response = await fetch(url, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(donationData),
-    });
-    if (!response.ok) {
-      throw new Error('후원 등록 실패');
-    }
-    const result = await response.json();
-    console.log('후원 등록 성공:', result);
-    return result;
-  } catch (error) {
-    console.error('후원 등록 에러:', error);
-    return null;
-  }
-}
+// export async function createDonation(group, donationData) {
+//   const url = buildGroupUrl(group, 'donations');
+//   try {
+//     const response = await fetch(url, {
+//       method: 'POST',
+//       headers: {
+//         'Content-Type': 'application/json',
+//       },
+//       body: JSON.stringify(donationData),
+//     });
+//     if (!response.ok) {
+//       throw new Error('후원 등록 실패');
+//     }
+//     const result = await response.json();
+//     console.log('후원 등록 성공:', result);
+//     return result;
+//   } catch (error) {
+//     console.error('후원 등록 에러:', error);
+//     return null;
+//   }
+// }
