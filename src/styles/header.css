@@ -1,0 +1,81 @@
+.header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  padding: 0 25px;
+  background-color: var(--color-black-02000E);
+}
+
+.logo {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.profile {
+  margin-left: auto;
+  z-index: 999;
+  cursor: pointer;
+}
+
+.profile:hover > .profile__nav {
+  display: block;
+}
+
+.profile__img {
+  width: 32px;
+  height: 32px;
+  overflow: hidden;
+  border-radius: var(--border-radius-round);
+  background-color: var(--color-white-F7F7F8);
+}
+
+.profile__nav {
+  position: absolute;
+  right: 25px;
+  margin-top: 8px;
+  background-color: var(--color-white-F7F7F8);
+  border-radius: var(--border-radius-sm);
+  padding: 5px 10px;
+}
+
+.profile__nav::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  right: 11px;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0px 5px 8px 5px;
+  border-color: transparent transparent var(--color-white-F7F7F8) transparent;
+}
+
+.profile__nav li {
+  padding: 8px;
+  font-size: var(--font-size-xs);
+  border-bottom: 1px solid #ccc;
+  cursor: pointer;
+}
+
+.profile__nav li:hover {
+  text-decoration: underline;
+}
+
+.profile__nav li:last-child {
+  border-bottom: none
+}
+
+.profile__upload {
+  display: none;
+}
+
+/*** 반응형 ***/
+/* 타블렛 (768px~) */
+@media (min-width: 768px) {
+  .header {
+    height: 80px;
+  }
+}
