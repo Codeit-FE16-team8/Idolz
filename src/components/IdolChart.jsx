@@ -1,13 +1,13 @@
 import './item.css';
 
-function IdolChart({ item }) {
-  const idol = item.idol;
+function IdolChart({ item, rank }) {
+  const idol = item;
 
   return (
     <div className="idolChart">
       <div className="idolProfile">
         <img src={idol.profilePicture} alt={idol.name} className="idolProfileImage" />
-        <p>number</p>
+        <p>{rank}</p>
         <p>
           {idol.group} {idol.name}
         </p>

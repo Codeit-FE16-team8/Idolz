@@ -1,4 +1,3 @@
-import './App.css';
 import ListPage from './components/ListPage';
 
 function App() {

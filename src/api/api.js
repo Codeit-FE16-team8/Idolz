@@ -1,4 +1,4 @@
-const BASE_URL = 'https://fandom-k-api.vercel.app';
+const BASE_URL = import.meta.env.VITE_BASE_URL;
 
 function buildGroupUrl(group, endpoint) {
   const encodedGroup = encodeURIComponent(group);
@@ -36,47 +36,48 @@ export async function getAllDonations(groupList) {
 }
 
 // 아이돌 등록 (POST)
-// export async function createIdol(group, idolData) {
-//   const url = buildGroupUrl(group, 'idols');
-//   try {
-//     const response = await fetch(url, {
-//       method: 'POST',
-//       headers: {
-//         'Content-Type': 'application/json',
-//       },
-//       body: JSON.stringify(idolData),
-//     });
-//     if (!response.ok) {
-//       throw new Error('아이돌 등록 실패');
-//     }
-//     const result = await response.json();
-//     console.log('아이돌 등록 성공:', result);
-//     return result;
-//   } catch (error) {
-//     console.error('아이돌 등록 에러:', error);
-//     return null;
-//   }
-// }
+export async function createIdol(group, idolData) {
+  const url = buildGroupUrl(group, 'idols');
+  try {
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ ...idolData, group }),
+    });
+    if (!response.ok) {
+      const errorText = await response.text();
+      throw new Error(`아이돌 등록 실패: ${response.status} ${errorText}`);
+    }
+    const result = await response.json();
+    console.log('아이돌 등록 성공:', result);
+    return result;
+  } catch (error) {
+    console.error('아이돌 등록 에러:', error);
+    return null;
+  }
+}
 
 // 후원 등록 (POST)
-// export async function createDonation(group, donationData) {
-//   const url = buildGroupUrl(group, 'donations');
-//   try {
-//     const response = await fetch(url, {
-//       method: 'POST',
-//       headers: {
-//         'Content-Type': 'application/json',
-//       },
-//       body: JSON.stringify(donationData),
-//     });
-//     if (!response.ok) {
-//       throw new Error('후원 등록 실패');
-//     }
-//     const result = await response.json();
-//     console.log('후원 등록 성공:', result);
-//     return result;
-//   } catch (error) {
-//     console.error('후원 등록 에러:', error);
-//     return null;
-//   }
-// }
+export async function createDonation(group, donationData) {
+  const url = buildGroupUrl(group, 'donations');
+  try {
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(donationData),
+    });
+    if (!response.ok) {
+      throw new Error('후원 등록 실패');
+    }
+    const result = await response.json();
+    console.log('후원 등록 성공:', result);
+    return result;
+  } catch (error) {
+    console.error('후원 등록 에러:', error);
+    return null;
+  }
+}

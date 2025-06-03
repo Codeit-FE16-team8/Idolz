@@ -1,4 +1,5 @@
 import './item.css';
+import '../styles/common.css';
 
 function Item({ item }) {
   const idol = item.idol;
@@ -10,9 +11,9 @@ function Item({ item }) {
   }
 
   return (
-    <div className="itemCard">
+    <div className="idolCard">
       <img src={idol.profilePicture} alt={idol.name} className="idolProfileImage" />
-      <button>후원하기</button>
+      <button className="btn--large">후원하기</button>
       <div className="donationScript">
         <p>{item.subtitle}</p>
         <h2>{item.title} </h2>
