@@ -1,20 +1,31 @@
 .funding {
   padding: 50px;
 }
-
-.favorite {
-  padding: 50px;
-  gap: 10px;
+.sliderWrapper {
+  overflow-x: auto;
+  white-space: nowrap;
+  padding-bottom: 1rem;
+  scrollbar-width: none;
+}
+.sliderWrapper::-webkit-scrollbar {
+  display: none;
 }
 
 .donationContainer {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  gap: 16px;
+}
+.favorite {
+  padding: 50px;
+  gap: 10px;
 }
 .idolCard {
-  display: flex;
-  flex-direction: column;
+  min-width: 240px; /* 카드 하나의 너비 */
+  max-width: 240px;
+  flex-shrink: 0; /* 축소되지 않게 고정 */
+  border-radius: 12px;
+  padding: 16px;
+  box-sizing: border-box;
 }
 
 .idolProfileImage {
@@ -26,6 +37,12 @@
   display: flex;
   padding: 0 10px;
   justify-content: space-between;
+}
+
+.monthlyChartContainer {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
 }
 
 .idol p {
