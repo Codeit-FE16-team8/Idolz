@@ -1,9 +1,10 @@
 import './item.css';
 import '../styles/common.css';
 
-function Item({ item }) {
+function Item({ item, onDonateClick }) {
   const idol = item.idol;
 
+  //마감일 숫자로 변환
   function getRemainingDays(dateStr) {
     const now = new Date();
     const deadline = new Date(dateStr);
@@ -13,7 +14,9 @@ function Item({ item }) {
   return (
     <div className="idolCard">
       <img src={idol.profilePicture} alt={idol.name} className="idolProfileImage" />
-      <button className="btn--large">후원하기</button>
+      <button className="btn--large" onClick={onDonateClick}>
+        후원하기
+      </button>
       <div className="donationScript">
         <p>{item.subtitle}</p>
         <h2>{item.title} </h2>

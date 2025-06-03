@@ -1,4 +1,4 @@
-import { getAllIdols, getAllDonations } from '../api/api';
+import { getAllIdols, getAllDonations, contributeDonation } from '../api/api';
 import Item from './Item';
 import { useEffect, useState } from 'react';
 import './item.css';
@@ -8,8 +8,17 @@ function ListPage() {
   const [donationList, setDonationList] = useState([]);
   const [idolList, setIdolList] = useState([]);
   const [loading, setLoading] = useState(true);
+
+  //성별 선택 버튼
   const [selectGender, setSelectGender] = useState('female');
+
+  //이달의 차트 더보기 버튼
   const [visibleCount, setVisibleCount] = useState(10);
+
+  //후원하기 버튼 활성화 테스트를 위한 임시 모달창 구현
+  const [selectedDonation, setSelectedDonation] = useState(null); // 선택된 후원
+  const [showModal, setShowModal] = useState(false); // 모달 열림/닫힘
+  const [donationAmount, setDonationAmount] = useState('');
 
   useEffect(() => {
     async function fetchData() {
@@ -51,31 +60,41 @@ function ListPage() {
         <div className="sliderWrapper">
           <div className="donationContainer">
             {sortedDonations.map((item) => (
-              <Item item={item} key={item.id} />
+              <Item
+                item={item}
+                key={item.id}
+                // 후원하기 모달창 임시 구현
+                onDonateClick={() => {
+                  setSelectedDonation(item);
+                  setShowModal(true);
+                }}
+              />
             ))}
           </div>
         </div>
       </div>
       <div className="favorite">
         <h1>인기차트</h1>
-        <button
-          className="btn"
-          onClick={() => {
-            setSelectGender('female');
-            setVisibleCount(10);
-          }}
-        >
-          이달의 여자 아이돌
-        </button>
-        <button
-          className="btn"
-          onClick={() => {
-            setSelectGender('male');
-            setVisibleCount(10);
-          }}
-        >
-          이달의 남자 아이돌
-        </button>
+        <div className="buttonContainer">
+          <button
+            className="btn"
+            onClick={() => {
+              setSelectGender('female');
+              setVisibleCount(10);
+            }}
+          >
+            이달의 여자아이돌
+          </button>
+          <button
+            className="btn"
+            onClick={() => {
+              setSelectGender('male');
+              setVisibleCount(10);
+            }}
+          >
+            이달의 남자아이돌
+          </button>
+        </div>
         <div className="monthlyChartContainer">
           {filteredIdolList?.map((item, index) => (
             <IdolChart item={item} key={item.id} rank={index + 1} />
@@ -87,6 +106,47 @@ function ListPage() {
           </button>
         )}
       </div>
+      {/* 💡 여기에 모달을 조건부로 렌더링 */}
+      {showModal && (
+        <div className="modalOverlay">
+          <div className="modalContent">
+            <h2>{selectedDonation?.title} 후원하기</h2>
+            <input
+              type="number"
+              value={donationAmount}
+              onChange={(e) => setDonationAmount(e.target.value)}
+              placeholder="후원 금액 입력"
+            />
+            <button
+              className="btn"
+              onClick={async () => {
+                if (!donationAmount) {
+                  alert('금액을 입력하세요!');
+                  return;
+                }
+
+                const result = await contributeDonation(selectedDonation.id, parseInt(donationAmount, 10));
+
+                if (result) {
+                  alert('후원 기여가 완료되었습니다!');
+                  setShowModal(false);
+                  setDonationAmount('');
+                  // 후원 데이터 새로고침
+                  const updatedDonations = await getAllDonations();
+                  setDonationList(updatedDonations);
+                } else {
+                  alert('후원 기여에 실패했습니다.');
+                }
+              }}
+            >
+              기여하기
+            </button>
+            <button className="btn" onClick={() => setShowModal(false)}>
+              취소
+            </button>
+          </div>
+        </div>
+      )}
     </>
   );
 }

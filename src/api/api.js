@@ -28,32 +28,10 @@ export async function getAllDonations() {
   return await fetchData('donations', { pageSize: 100 });
 }
 
-// // 아이돌 등록 (POST)
-// export async function createIdol(idolData) {
-//   const url = buildUrl('idols');
-//   try {
-//     const response = await fetch(url, {
-//       method: 'POST',
-//       headers: { 'Content-Type': 'application/json' },
-//       body: JSON.stringify(idolData),
-//     });
-//     if (!response.ok) {
-//       const errorText = await response.text();
-//       throw new Error(`아이돌 등록 실패: ${response.status} ${errorText}`);
-//     }
-//     const result = await response.json();
-//     console.log('아이돌 등록 성공:', result);
-//     return result;
-//   } catch (error) {
-//     console.error('아이돌 등록 에러:', error);
-//     return null;
-//   }
-// }
-
-// 후원 등록 (POST)
+// 후원 등록 (POST) // 시간이 가능할 경우 구현해 볼
 export async function createDonation(donationData) {
   try {
-    const response = await fetch('donations', {
+    const response = await fetch(`${BASE_URL}/donations`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(donationData),
@@ -66,6 +44,28 @@ export async function createDonation(donationData) {
     return result;
   } catch (error) {
     console.error('후원 등록 에러:', error);
+    return null;
+  }
+}
+
+// 후원 기여 (PUT) *한 번 값이 추가되면 삭제되지않고 쌓여갑니다.*
+export async function contributeDonation(donationId, amount) {
+  try {
+    const response = await fetch(`${BASE_URL}/donations/${donationId}/contribute`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ amount }), // 예: { amount: 20000 }
+    });
+
+    if (!response.ok) {
+      throw new Error('후원 기여 실패');
+    }
+
+    const result = await response.json();
+    console.log('후원 기여 성공:', result);
+    return result;
+  } catch (error) {
+    console.error('후원 기여 중 에러 발생:', error);
     return null;
   }
 }
