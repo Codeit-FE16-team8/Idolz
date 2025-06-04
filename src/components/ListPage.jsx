@@ -3,6 +3,8 @@ import Item from './Item';
 import { useEffect, useState } from 'react';
 import './item.css';
 import IdolChart from './IdolChart';
+import icon from '../assets/images/Chart.png';
+import Button from './Button';
 
 function ListPage() {
   // ==================================
@@ -133,11 +135,13 @@ function ListPage() {
     <>
       {/* 후원을 기다리는 조공 영역 */}
       <div className="funding">
-        <h1>펀딩목록 </h1>
-        <button className="btn btn--color btn--large" onClick={() => setShowCreateModal(true)}>
-          새로운 조공 만들기
-        </button>
-        {/* 조공 슬라이더 영역 */}
+        <div className="funding-header">
+          <h1>후원을 기다리는 조공 </h1>
+          <button className="btn btn--color btn--medium" onClick={() => setShowCreateModal(true)}>
+            새로운 조공 만들기
+          </button>
+        </div>
+        {/* 후원을 기다리는 조공 슬라이더 영역 */}
         <div className="sliderWrapper">
           <div className="donationContainer">
             {sortedDonations.map((item) => (
@@ -157,12 +161,21 @@ function ListPage() {
 
       {/* 이달의 차트 영역 */}
       <div className="favorite">
-        <h1>인기차트</h1>
+        <div className="favorite-header">
+          <h1>이달의 차트</h1>
 
-        {/* 투표 버튼 */}
-        <button className="btn btn--color btn--medium" onClick={() => setShowVoteModal(true)}>
-          투표하기
-        </button>
+          {/* 투표 버튼 */}
+          <Button
+            height="medium"
+            width="auto"
+            icon={icon}
+            alt="Chart"
+            ariaLabel="차트 투표하기"
+            onClick={() => setShowVoteModal(true)}
+          >
+            차트 투표하기
+          </Button>
+        </div>
 
         {/* 성별 필터 버튼 */}
         <div className="buttonContainer">
