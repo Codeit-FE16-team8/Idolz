@@ -2,15 +2,23 @@
   padding: 30px;
 }
 
-.funding .btn--large {
-  width: 200px;
+.funding-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
 }
+
+.funding .btn--medium {
+  width: 150px;
+}
+
 .sliderWrapper {
   overflow-x: auto;
   white-space: nowrap;
   padding-bottom: 1rem;
   scrollbar-width: none;
 }
+
 .sliderWrapper::-webkit-scrollbar {
   display: none;
 }
@@ -19,81 +27,33 @@
   display: flex;
   gap: 16px;
 }
+
 .favorite {
-  margin: 20px 10px;
+  padding: 30px;
 }
+
+.favorite-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.favorite .btn--medium {
+  width: 150px;
+  width: auto;
+  border-radius: var(--border-radius-xs);
+}
+
 .buttonContainer {
   margin: 20px 0;
   display: flex;
   gap: 10px;
-}
-.idolCard {
-  min-width: 240px; /* 카드 하나의 너비 */
-  max-width: 240px;
-  flex-shrink: 0; /* 축소되지 않게 고정 */
-  border-radius: 12px;
-  padding: 16px;
-  box-sizing: border-box;
-}
-
-.idolProfileImage {
-  width: 230px;
-  height: 280px;
-  border-radius: 1px solid #dfdfdf;
-}
-
-.donationStatus {
-  display: flex;
-  padding: 0 10px;
-  justify-content: space-between;
 }
 
 .monthlyChartContainer {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 20px;
-}
-
-.idol p {
-  font-size: var(--font-size-md);
-}
-.idol h2 {
-  font-size: var(--font-size-lg);
-}
-
-.idolChart {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.idolProfile {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-
-.idolProfile .idolProfileImage {
-  width: 98px;
-  height: 98px;
-  object-fit: cover;
-  border-radius: 50%;
-}
-
-.progressBar {
-  width: 100%;
-  height: 6px;
-  background-color: #eee;
-  border-radius: 3px;
-  overflow: hidden;
-  margin-top: 8px;
-}
-
-.progressBar__fill {
-  height: 100%;
-  background: #ff5f6d;
-  width: 0;
-  transition: width 0.4s ease;
 }
 
 /*모달창 테스트 css*/

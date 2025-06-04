@@ -1,7 +1,6 @@
 // 후원을 기다리는 조공의 조공 카드 구현
-import './item.css';
+import Button from './Button';
 import '../styles/common.css';
-
 /**
  *
  * @param {object} item - 조공 데이터
@@ -25,31 +24,32 @@ function Item({ item, onDonateClick }) {
   const progressPercent = Math.min((item.receivedDonations / item.targetDonation) * 100, 100);
 
   return (
-    <div className="idolCard">
-      {/* 아이돌 프로필 이미지 */}
-      <img src={idol.profilePicture} alt={idol.name} className="idolProfileImage" />
-
-      {/* 후원하기 버튼 */}
-      <button className="btn--large" onClick={onDonateClick}>
-        후원하기
-      </button>
+    <div className="idol__sponsor">
+      <div className="sponsor__imgBtn">
+        {/* 아이돌 프로필 이미지 */}
+        <div className="sponsor__img">
+          <img src={idol.profilePicture} alt={idol.name} />
+        </div>
+        {/* 후원하기 버튼 */}
+        <Button width="90%" ariaLabel="후원하기" onClick={onDonateClick}>
+          후원하기
+        </Button>
+      </div>
 
       {/* 조공 설명 */}
-      <div className="donationScript">
-        <p>{item.subtitle}</p>
-        <h2>{item.title} </h2>
+      <div className="sponsor__Info">
+        <p className="sponsor__subTitle">{item.subtitle}</p>
+        <h2 className="sponsor__title">{item.title} </h2>
       </div>
 
       {/* 후원 현황 */}
-      <div className="donationStatus">
-        <p>{item.receivedDonations}</p>
-        <p>{getRemainingDays(item.deadline)}일 남음</p>
+      <div className="sponsor__status">
+        <span className="sponsor__credit">{item.receivedDonations}</span>
+        <span className="sponsor__days">{getRemainingDays(item.deadline)}일 남음</span>
       </div>
 
       {/* 후원 진행 바 */}
-      <div className="progressBar">
-        <div className="progressBar__fill" style={{ width: `${progressPercent}%` }} />
-      </div>
+      <div className="sponsor__bar" style={{ '--barPer': `${progressPercent}%` }}></div>
     </div>
   );
 }

@@ -299,10 +299,12 @@ input[type="radio"]:checked + label .radio-icon {
 /* 후원 조공 */
 .idol__sponsor {
   width: 185px;
+  min-width: 185px;
   font-size: var(--font-size-base);
 }
 .sponsor__imgBtn {
   position: relative;
+  height: 205px;
 }
 
 .sponsor__img {
@@ -315,11 +317,13 @@ input[type="radio"]:checked + label .radio-icon {
   position: absolute;
   height: inherit;
   inset: 0;
-  background: linear-gradient(to top, var(--color-black-02000E), transparent 40% 90%);
+  background: linear-gradient(to top, var(--color-black-02000E), transparent 50% 90%);
 }
 
 .sponsor__img img {
   width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .sponsor__imgBtn button {
@@ -341,6 +345,7 @@ input[type="radio"]:checked + label .radio-icon {
 }
 
 .sponsor__title {
+  font-size: var(--font-size-base);
   font-weight: var(--font-weight-500);
 }
 
