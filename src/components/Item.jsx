@@ -1,3 +1,4 @@
+// 후원을 기다리는 조공의 조공 카드 구현
 import './item.css';
 import '../styles/common.css';
 
@@ -20,6 +21,9 @@ function Item({ item, onDonateClick }) {
     return Math.max(Math.ceil((deadline - now) / (1000 * 60 * 60 * 24)), 0); //일 수 계산 (음수 방지)
   }
 
+  // 목표 금액 대비 후원 진행률 (최대 100%)
+  const progressPercent = Math.min((item.receivedDonations / item.targetDonation) * 100, 100);
+
   return (
     <div className="idolCard">
       {/* 아이돌 프로필 이미지 */}
@@ -40,6 +44,11 @@ function Item({ item, onDonateClick }) {
       <div className="donationStatus">
         <p>{item.receivedDonations}</p>
         <p>{getRemainingDays(item.deadline)}일 남음</p>
+      </div>
+
+      {/* 후원 진행 바 */}
+      <div className="progressBar">
+        <div className="progressBar__fill" style={{ width: `${progressPercent}%` }} />
       </div>
     </div>
   );

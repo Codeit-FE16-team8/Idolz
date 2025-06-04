@@ -80,6 +80,22 @@
   border-radius: 50%;
 }
 
+.progressBar {
+  width: 100%;
+  height: 6px;
+  background-color: #eee;
+  border-radius: 3px;
+  overflow: hidden;
+  margin-top: 8px;
+}
+
+.progressBar__fill {
+  height: 100%;
+  background: #ff5f6d;
+  width: 0;
+  transition: width 0.4s ease;
+}
+
 /*모달창 테스트 css*/
 .modalOverlay {
   position: fixed;
