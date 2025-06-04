@@ -1,12 +1,20 @@
 // 마이 페이지 컴포넌트
-import React, { useState } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { getAllIdols } from '../api/api';
 import Header from '../components/Header';
-import IdolCard from '../components/TestIdolCard';
-import dummyIdols from '../components/DummyIdolList';
-import BtnPagination from '../components/btn_Pagination';
 
 function MyPage() {
+  // const [idols, setIdols] = useState([]);
+
+  useEffect(() => {
+    async function loadIdols() {
+      const data = await getAllIdols();
+      // setIdols(data);
+    }
+
+    loadIdols();
+  }, []);
+
   return (
     <div>
       <Header />
