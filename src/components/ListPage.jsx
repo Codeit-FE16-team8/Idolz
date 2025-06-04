@@ -1,4 +1,4 @@
-import { getAllIdols, getAllDonations, contributeDonation, createDonation, createVotes } from '../api/api';
+import { getAllIdols, getAllDonations, contributeDonation, createDonation, createVote } from '../api/api';
 import Item from './Item';
 import { useEffect, useState } from 'react';
 import './item.css';
@@ -80,11 +80,16 @@ function ListPage() {
     .slice() // 원본 배열 보호
     .sort((a, b) => new Date(a.deadline) - new Date(b.deadline));
 
+  // ==================================
+  // 새로운 조공 입력 값 핸들링 함수
+  // ==================================
   const handleNewDonationChange = (field, value) => {
     setNewDonation((prev) => ({ ...prev, [field]: value }));
   };
 
+  // 새로운 조공 등록 함수
   const handleCreateDonation = async () => {
+    // 입력한 아이돌 이름과 일치하는 아이돌을 데이터에서 찾아 id 확인하는 용도
     const matchedIdol = idolList.find((idol) => idol.name === newDonation.idolName);
 
     if (!matchedIdol) {
@@ -92,6 +97,7 @@ function ListPage() {
       return;
     }
 
+    // API에 POST할 데이터 구성
     const donationData = {
       title: newDonation.title,
       subtitle: newDonation.subtitle,
@@ -104,9 +110,10 @@ function ListPage() {
 
     if (result) {
       alert('조공이 등록되었습니다!');
-      setShowCreateModal(false);
+      setShowCreateModal(false); //모달 닫기
       setNewDonation({ title: '', subtitle: '', deadline: '', targetDonation: '', idolName: '' });
 
+      // 조공 리스트 새로고침(등록한 조공 반영)
       const updatedDonations = await getAllDonations();
       setDonationList(updatedDonations);
     } else {
@@ -115,8 +122,10 @@ function ListPage() {
   };
 
   // ==================================
-  // 로딩 및 빈 상태 처리 (수정 후 없어질 예정 : 화면에 안보이는게 나을 것 같다고 판단)
+  // 렌더링 (UI 영역)
   // ==================================
+
+  // 로딩 또는 데이터 없을 경우 표시 (개발 중 임시용)
   if (loading) return <p>로딩 중...</p>;
   if (donationList.length === 0) return <p>후원 데이터가 없습니다.</p>;
 
@@ -128,6 +137,7 @@ function ListPage() {
         <button className="btn btn--color btn--large" onClick={() => setShowCreateModal(true)}>
           새로운 조공 만들기
         </button>
+        {/* 조공 슬라이더 영역 */}
         <div className="sliderWrapper">
           <div className="donationContainer">
             {sortedDonations.map((item) => (
@@ -148,10 +158,13 @@ function ListPage() {
       {/* 이달의 차트 영역 */}
       <div className="favorite">
         <h1>인기차트</h1>
-        {/* 성별 필터 버튼 */}
+
+        {/* 투표 버튼 */}
         <button className="btn btn--color btn--medium" onClick={() => setShowVoteModal(true)}>
           투표하기
         </button>
+
+        {/* 성별 필터 버튼 */}
         <div className="buttonContainer">
           <button
             className="btn btn--color btn--medium"
@@ -311,7 +324,7 @@ function ListPage() {
                   return;
                 }
 
-                const result = await createVotes(selectVoteIdol);
+                const result = await createVote(selectVoteIdol);
                 if (result) {
                   alert('투표 성공!');
                   setShowVoteModal(false);

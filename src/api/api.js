@@ -106,7 +106,7 @@ export async function contributeDonation(donationId, amount) {
  * @param {number} idolId - 아이돌 ID (예: 777)
  * @returns {Promise<object|null>} - 등록된 투표 정보 또는 null
  */
-export async function createVotes(idolId) {
+export async function createVote(idolId) {
   try {
     const response = await fetch(`${BASE_URL}/votes`, {
       method: 'POST',
