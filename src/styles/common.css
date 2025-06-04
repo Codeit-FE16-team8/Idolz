@@ -41,12 +41,14 @@
   --border-radius-sm: 8px;
   --border-radius-md: 12px;
   --border-radius-lg: 24px;
-  --border-radius-round: 999px;
+  --border-radius-round: 99999px;
 }
 
 body {
   font-family: 'Pretendard';
   font-size: 1.6rem;
+  background-color: var(--color-black-02000E	);
+  color: white;
 }
 
 input.input__credit {
@@ -73,6 +75,7 @@ input.input__credit::placeholder {
   display: inline-block;
   text-align: center;
   white-space: nowrap;
+  padding: 0 14px;
 }
 
 .btn--color {
@@ -82,6 +85,7 @@ input.input__credit::placeholder {
 
 .btn--large {
   height: 40px;
+  line-height: 41px;
   width: 100%;
   font-size: var(--font-size-xs);
   font-weight: var(--font-weight-700);
@@ -90,6 +94,7 @@ input.input__credit::placeholder {
 
 .btn--medium {
   height: 32px;
+  line-height: 34px;
   width: 100%;
   font-size: var(--font-size-xs);
   font-weight: var(--font-weight-700);
@@ -112,21 +117,16 @@ button img {
   transform: translateY(-1px);
   display: inline-block;
   vertical-align: middle;
-  padding-right: 4px;
 }
 
 /* 라디오 */
 .radio {
+  width: 100%;
   display: flex;
 }
 
 input[type="radio"] {
   display:none;
-}
-
-.label__inner {
-  display: flex;
-  align-items: center;
 }
 
 .radio-icon {
@@ -137,9 +137,248 @@ input[type="radio"] {
   cursor: pointer;
 }
 
-input[type="radio"]:checked + .label__inner .radio-icon {
+input[type="radio"]:checked + label .radio-icon {
   background: url(../assets/images/Checked_True.png) no-repeat;
 }
+
+/* .radio__idol {
+  border-bottom: 1px solid rgb(255, 255, 255, 0.1);
+} */
+
+.radio__idol .radio-icon{
+  margin-left: auto;
+}
+
+.radio__idol label {
+  padding: 8px 0;
+  font-size: var(--font-size-base);
+}
+
+.radio__idol--img {
+  position: relative;
+}
+
+.radio__idol .idol--name {
+  padding-bottom: 4px;
+}
+
+.idol--order {
+  color: var(--color-orange-F96D69);
+}
+
+.idol--name {
+  font-weight: var(--font-weight-500);
+}
+
+.idol--vote {
+  opacity: 0.6;
+}
+
+/* 크레딧 라디오 버튼 */
+.radio__credit {
+  margin-bottom: 8px;
+  color: var(--color-gray-828282);
+  background-color: var(--color-black-02000E);
+  font-size: var(--font-size-xl	);
+  font-weight: var(--font-weight-700);
+  border: 1px solid var(--color-white-F7F7F8);
+  border-radius: var(--border-radius-sm);
+}
+
+.radio__credit label{
+  width: inherit;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 20px 18px 15px;
+}
+
+.radio__credit--value {
+  padding-left: 24px;
+  background-image: url(../assets/images/credit.png);
+  background-repeat: no-repeat;
+  background-position: left;
+}
+
+.radio__credit input[type="radio"]:checked + label .radio__credit--value {
+  color: white;
+}
+
+/* 기본 아이돌 프로필 */
+.idol__img {
+  position: relative;
+  background-color: transparent;
+  border: 1px solid var(--color-orange-F96D69);
+  border-radius: var(--border-radius-round);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.idol__img img {
+  padding: 4px;
+  width: inherit;
+  height: inherit;
+  border-radius: var(--border-radius-round);
+  object-fit: cover;
+}
+
+.idol__img--select::after,
+.radio__idol input[type="radio"]:checked + label .radio__idol--img::after {
+  content: "";
+  position: absolute;
+  width: calc(100% - 8px);
+  height: calc(100% - 8px);
+  background-color: rgba(254, 84, 147, 0.4);
+  background-image: url(../assets//images/ic_check.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: var(--border-radius-round);
+}
+
+.idol__profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+}
+
+.idol__profile .idol--name {
+  padding: 10px 0 5px;
+  font-size: var(--font-size-md	);
+  font-weight: var(--font-weight-700);
+}
+
+.idol__profile .idol--group {
+  font-size: var(--font-size-base);
+  opacity: 0.6;
+} 
+
+.idol__profile--delete{
+  position: relative;
+}
+
+.idol__profile--delete::after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  right: -6px;
+  width: 30px;
+  height: 30px;
+  background-image: url(../assets//images/ic_delete.png);
+  background-repeat: no-repeat;
+}
+
+
+
+/* 아이돌 차트 리스트 */
+.idol__chartItems,
+.radio__idol {
+  font-size: var(--font-size-base	);
+  border-bottom: 1px solid rgb(255, 255, 255, 0.15);
+}
+
+.idol__chartItem {
+  padding: 8px 0;
+}
+
+.idol__chartItem--flex,
+.radio__idol--flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  width: inherit;
+}
+
+.idol__chartItems .idol--vote {
+  margin-left: auto;
+}
+
+/* 후원 조공 */
+.idol__sponsor {
+  width: 185px;
+  font-size: var(--font-size-base);
+}
+.sponsor__imgBtn {
+  position: relative;
+}
+
+.sponsor__img {
+  height: inherit;
+  overflow: hidden;
+}
+
+.sponsor__img::before {
+  content: '';
+  position: absolute;
+  height: inherit;
+  inset: 0;
+  background: linear-gradient(to top, var(--color-black-02000E), transparent 40% 90%);
+}
+
+.sponsor__img img {
+  width: 100%;
+}
+
+.sponsor__imgBtn button {
+  max-width: 230px;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%,0);
+  bottom: 20px;
+}
+
+.sponsor__Info {
+  margin: 10px 0 20px;
+}
+
+.sponsor__subTitle {
+  margin-bottom: 6px;
+  font-size: var(--font-size-xxs);
+  opacity: 0.4;
+}
+
+.sponsor__title {
+  font-weight: var(--font-weight-500);
+}
+
+.sponsor__status {
+  display: flex;
+  justify-content: space-between;
+  font-size: var(--font-size-xxs);
+  margin-bottom: 8px;
+}
+
+.sponsor__credit {
+  color: var(--color-orange-F96D69);
+  padding-left: 16px;
+  background-image: url(../assets/images/credit.png);
+  background-repeat: no-repeat;
+  background-position: -6px center;
+}
+
+.sponsor__bar {
+  position: relative;
+  width: 100%;
+  height: 1px;
+  background-color: white;
+}
+
+.sponsor__bar::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: var(--barPer);
+  background: linear-gradient(to right, #ff5f9a, #ff668a);
+  /* transition: width 0.3s ease; */
+}
+
+
+
 
 table, th, td {
   font-size: var(--font-size-base);
@@ -153,4 +392,5 @@ th, td {
 }
 th {
   background-color: #eee;
+  color: black;
 }
