@@ -25,7 +25,12 @@ function WaitingDonation() {
     if (!container) return;
 
     const scrollAmount = direction === 'left' ? -boxWidth : boxWidth;
+
     container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+
+    console.log('scrollLeft:', container.scrollLeft); //전체 가로
+    console.log('clientWidth:', container.clientWidth); //화면상 가로
+    console.log('scrollWidth:', container.scrollWidth); //현재 스크롤 된 거리
   };
 
   useEffect(() => {
