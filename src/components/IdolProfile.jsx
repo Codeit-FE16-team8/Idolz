@@ -8,8 +8,6 @@ function IdolProfile({ size = '70px', profileImg, alt, idolName, idolGroup, isSe
     setCheck(!isCheck);
   };
 
-  // cosnt
-
   return (
     <div
       onClick={handleToggle}
