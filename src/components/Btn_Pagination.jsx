@@ -1,4 +1,4 @@
-// 좌우 넘기기 컴포넌트
+// 마이 페이지 좌우 넘기기 컴포넌트
 import LeftIcon from './assets/images/btn_Pagination_arrow_left.svg';
 import RightIcon from './assets/images/btn_Pagination_arrow_right.svg';
 
