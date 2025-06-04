@@ -1,8 +1,6 @@
+import IdolSponsor from './IdolSponsor';
+
 function Donation() {
-  return (
-    <div>
-      <button>후원하기</button>
-    </div>
-  );
+  return <div>{/* <IdolSponsor /> */}</div>;
 }
 export default Donation;

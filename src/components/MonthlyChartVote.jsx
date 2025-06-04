@@ -1,10 +1,12 @@
-function alertbtn() {
-  alert('버튼');
-}
+import Button from './Button';
+import icon from '../assets/images/Chart.png';
+
 function MonthlyChartVote() {
   return (
     <div>
-      <button onClick={alertbtn}>투표하기</button>
+      <Button height="medium" width="auto" icon={icon} alt="Chart" ariaLabel="차트 투표하기">
+        차트 투표하기
+      </Button>
     </div>
   );
 }

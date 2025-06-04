@@ -1,12 +1,12 @@
 import MonthlyChartIdol from './MonthlyChartIdol';
 import MonthlyChartVote from './MonthlyChartVote';
 
-function MonthlyChart() {
+function MonthlyChart({ idols }) {
   return (
     <div>
       <h2>이달의 차트</h2>
       <MonthlyChartVote />
-      <MonthlyChartIdol />
+      <MonthlyChartIdol idols={idols} />
     </div>
   );
 }
