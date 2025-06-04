@@ -7,6 +7,7 @@ function Button({
   alt = 'icon',
   iconGap = '4px',
   ariaLabel = '버튼',
+  onClick,
   children,
 }) {
   const btnHeight = typeof height !== 'string' || height.trim() === '' ? 'large' : height;
@@ -19,6 +20,7 @@ function Button({
       style={{ width, borderRadius: borderRadiusVar }}
       disabled={isDisabled}
       aria-label={ariaLabel}
+      onClick={onClick}
     >
       {icon ? (
         <>
