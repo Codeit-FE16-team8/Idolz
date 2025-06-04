@@ -1,7 +1,11 @@
-import React from 'react';
+import ListPage from './components/ListPage';
 
 function App() {
-  return;
+  return (
+    <div>
+      <ListPage />
+    </div>
+  );
 }
 
 export default App;
