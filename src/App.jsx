@@ -1,12 +1,22 @@
 import { Link } from 'react-router-dom';
-import ListPage from './components/ListPage';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import List from './components/List';
+import Header from './components/Header.jsx';
+import Common from './Common.jsx';
 
 function App() {
   return (
-    <div>
-      <h1>리스트가는 링크</h1>
-      <Link to="/list">리스트</Link>
-    </div>
+    <BrowserRouter>
+      <Header />
+      <div className="container">
+        <Routes>
+          {/*<Route index element={<LandingPage />} /> */}
+          <Route index element={<List />} />
+          <Route path="common" element={<Common />} />
+          {/*<Route path="my" element={<MyPage />} /> */}
+        </Routes>
+      </div>
+    </BrowserRouter>
   );
 }
 
