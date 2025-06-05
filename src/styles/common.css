@@ -1,16 +1,16 @@
 /* 공통 전역 스타일 */
 
-:root {  
+:root {
   /* 색상 */
-  --color-black-02000E: #02000E;
-  --color-black-181D26: #181D26;
-  --color-gray-67666E: #67666E;
+  --color-black-02000E: #02000e;
+  --color-black-181D26: #181d26;
+  --color-gray-67666E: #67666e;
   --color-gray-828282: #828282;
-  --color-gray-8C92AB: #8C92AB;
-  --color-gray-A3A5A8: #A3A5A8;
-  --color-white-F7F7F8: #F7F7F8;
-  --color-orange-F96D69: #F96D69;
-  --color-pink-FE5493: #FE5493;
+  --color-gray-8C92AB: #8c92ab;
+  --color-gray-A3A5A8: #a3a5a8;
+  --color-white-F7F7F8: #f7f7f8;
+  --color-orange-F96D69: #f96d69;
+  --color-pink-FE5493: #fe5493;
 
   /* 폰트 사이즈, 1rem = 10px */
   font-size: 62.5%;
@@ -20,7 +20,7 @@
   --font-size-sm: 1.5rem;
   --font-size-md: 1.6rem;
   --font-size-lg: 1.8rem;
-  --font-size-xl: 2.0rem;
+  --font-size-xl: 2rem;
   --font-size-xxl: 2.6rem;
 
   /* 폰트 굵기 */
@@ -47,21 +47,21 @@
 body {
   font-family: 'Pretendard';
   font-size: 1.6rem;
-  background-color: var(--color-black-02000E	);
+  background-color: var(--color-black-02000E);
   color: white;
 }
 
 input.input__credit {
   width: 100%;
   padding: 16px 48px 16px 16px;
-  background-color: #272F3D;
+  background-color: #272f3d;
   background-image: url(../assets/images/credit.png);
   background-repeat: no-repeat;
   background-position: 95% center;
   color: white;
   font-weight: var(--font-weight-700);
   border: solid 1px white;
-  border-radius: var(--border-radius-sm	);
+  border-radius: var(--border-radius-sm);
 }
 
 input.input__credit::placeholder {
@@ -80,7 +80,7 @@ input.input__credit::placeholder {
 
 .btn--color {
   color: white;
-  background-image: linear-gradient(to right, #F86F65, #FE5493);
+  background-image: linear-gradient(to right, #f86f65, #fe5493);
 }
 
 .btn--large {
@@ -125,8 +125,8 @@ button img {
   display: flex;
 }
 
-input[type="radio"] {
-  display:none;
+input[type='radio'] {
+  display: none;
 }
 
 .radio-icon {
@@ -137,11 +137,11 @@ input[type="radio"] {
   cursor: pointer;
 }
 
-input[type="radio"]:checked + label .radio-icon {
+input[type='radio']:checked + label .radio-icon {
   background: url(../assets/images/Checked_True.png) no-repeat;
 }
 
-.radio__idol .radio-icon{
+.radio__idol .radio-icon {
   margin-left: auto;
 }
 
@@ -175,13 +175,13 @@ input[type="radio"]:checked + label .radio-icon {
   margin-bottom: 8px;
   color: var(--color-gray-828282);
   background-color: var(--color-black-02000E);
-  font-size: var(--font-size-xl	);
+  font-size: var(--font-size-xl);
   font-weight: var(--font-weight-700);
   border: 1px solid var(--color-white-F7F7F8);
   border-radius: var(--border-radius-sm);
 }
 
-.radio__credit label{
+.radio__credit label {
   width: inherit;
   display: flex;
   justify-content: space-between;
@@ -196,7 +196,7 @@ input[type="radio"]:checked + label .radio-icon {
   background-position: left;
 }
 
-.radio__credit input[type="radio"]:checked + label .radio__credit--value {
+.radio__credit input[type='radio']:checked + label .radio__credit--value {
   color: white;
 }
 
@@ -223,8 +223,8 @@ input[type="radio"]:checked + label .radio-icon {
 }
 
 .idol__img--select::after,
-.radio__idol input[type="radio"]:checked + label .radio__idol--img::after {
-  content: "";
+.radio__idol input[type='radio']:checked + label .radio__idol--img::after {
+  content: '';
   position: absolute;
   width: calc(100% - 8px);
   height: calc(100% - 8px);
@@ -245,21 +245,35 @@ input[type="radio"]:checked + label .radio-icon {
 
 .idol__profile .idol--name {
   padding: 10px 0 5px;
-  font-size: var(--font-size-md	);
+  font-size: var(--font-size-md);
   font-weight: var(--font-weight-700);
 }
 
 .idol__profile .idol--group {
   font-size: var(--font-size-base);
   opacity: 0.6;
-} 
+}
 
-.idol__profile--delete{
+.idol__profile--delete {
   position: relative;
 }
 
+/* 관심있는 아이돌 삭제 버튼 기능 구현을 위한 추가 css */
+.idol__delete-button {
+  position: absolute;
+  top: 0;
+  right: -8px;
+  width: 30px;
+  height: 30px;
+  background: url(../assets/images/ic_delete.png) no-repeat center;
+  background-size: contain;
+  border: none;
+  cursor: pointer;
+  z-index: 10;
+}
+
 .idol__profile--delete::after {
-  content: "";
+  content: '';
   position: absolute;
   top: 0px;
   right: -8px;
@@ -269,12 +283,10 @@ input[type="radio"]:checked + label .radio-icon {
   background-repeat: no-repeat;
 }
 
-
-
 /* 아이돌 차트 리스트 */
 .idol__chartItems,
 .radio__idol {
-  font-size: var(--font-size-base	);
+  font-size: var(--font-size-base);
   border-bottom: 1px solid rgb(255, 255, 255, 0.15);
 }
 
@@ -329,7 +341,7 @@ input[type="radio"]:checked + label .radio-icon {
   max-width: 230px;
   position: absolute;
   left: 50%;
-  transform: translate(-50%,0);
+  transform: translate(-50%, 0);
   bottom: 20px;
 }
 
@@ -371,7 +383,7 @@ input[type="radio"]:checked + label .radio-icon {
 }
 
 .sponsor__bar::before {
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
   left: 0;
@@ -381,14 +393,17 @@ input[type="radio"]:checked + label .radio-icon {
   /* transition: width 0.3s ease; */
 }
 
-table, th, td {
+table,
+th,
+td {
   font-size: var(--font-size-base);
   border: 1px solid #aaa;
 }
 table {
   border-collapse: collapse;
 }
-th, td {
+th,
+td {
   padding: 2px 8px;
 }
 th {
@@ -399,7 +414,6 @@ th {
 /*** 반응형 ***/
 /* 타블렛 (768px~) */
 @media (min-width: 768px) {
-
   /* 후원 조공 */
   .idol__sponsor {
     width: 282px;
@@ -411,7 +425,7 @@ th {
   }
 
   .sponsor__subTitle {
-    font-size: var(--font-size-md	);
+    font-size: var(--font-size-md);
   }
 
   .sponsor__title {
@@ -442,5 +456,5 @@ th {
 @media (min-width: 1200px) {
   .idol__chartItems {
     font-size: var(--font-size-md);
-  } 
+  }
 }

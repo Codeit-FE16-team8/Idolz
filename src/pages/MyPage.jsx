@@ -22,6 +22,24 @@ function MyPage() {
   const totalPages = Math.ceil(idols.length / itemsPerPage);
   const startIdx = (currentPage - 1) * itemsPerPage;
   const currentItems = idols.slice(startIdx, startIdx + itemsPerPage);
+  // 관심 아이돌 체크 관리
+  const toggleSelectIdol = (id) => {
+    setSelectedIds((prev) => (prev.includes(id) ? prev.filter((v) => v !== id) : [...prev, id]));
+  };
+  //관심 있는 아이돌 추가하기 버튼 클릭 핸들러 함수
+  const handleAddInterested = () => {
+    const newSelections = idols.filter((idol) => selectedIds.includes(idol.id));
+    const merged = [...interestedIdols];
+
+    newSelections.forEach((idol) => {
+      if (!merged.find((i) => i.id === idol.id)) {
+        merged.push(idol);
+      }
+    });
+    setInterestedIdols(merged);
+    localStorage.setItem('interestedIdols', JSON.stringify(merged));
+    setSelectedIds([]); // 체크 상태 초기화
+  };
 
   useEffect(() => {
     async function loadIdols() {
@@ -98,6 +116,8 @@ function MyPage() {
               alt={idol.name}
               idolName={idol.name}
               idolGroup={idol.group}
+              isSelect={selectedIds.includes(idol.id)}
+              onClick={() => toggleSelectIdol(idol.id)}
             />
           ))}
         </div>
@@ -112,6 +132,7 @@ function MyPage() {
 
       {/* 추가하기 버튼 */}
       <button
+        onClick={handleAddInterested}
         style={{
           background: 'linear-gradient(to right, #ff5e9c, #ffa35e)',
           color: 'white',
