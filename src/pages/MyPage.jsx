@@ -7,10 +7,18 @@ import IdolProfile from '../components/IdolProfile';
 import '../styles/common.css';
 
 function MyPage() {
-  const [idols, setIdols] = useState([]);
+  const [idols, setIdols] = useState([]); //전체 아이돌
+  const [selectedIds, setSelectedIds] = useState([]); // 선택한 아이돌 id 목록
+
+  const [interestedIdols, setInterestedIdols] = useState(() => {
+    // localStorage 초기값 로딩
+    const saved = localStorage.getItem('interestedIdols');
+    return saved ? JSON.parse(saved) : [];
+  });
+
+  // 페이지네이션 상태 관리
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 16;
-
   const totalPages = Math.ceil(idols.length / itemsPerPage);
   const startIdx = (currentPage - 1) * itemsPerPage;
   const currentItems = idols.slice(startIdx, startIdx + itemsPerPage);
@@ -27,12 +35,36 @@ function MyPage() {
   return (
     <div>
       <Header />
-      <h2>내가 관심있는 아이돌</h2>
-      {/* 내가 관심 등록한 아이돌 렌더링 추후에 추가 */}
+      <h2
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}
+      >
+        내가 관심있는 아이돌
+      </h2>
 
-      <h2>관심있는 아이돌을 추가해보세요.</h2>
-
-      {/* 좌우 버튼 + 프로필 그리드 */}
+      <h2
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}
+      >
+        관심있는 아이돌을 추가해보세요.
+      </h2>
+      <div>
+        {interestedIdols.map((idol) => (
+          <IdolProfile
+            key={idol.id}
+            profileImg={idol.profilePicture}
+            alt={idol.name}
+            idolName={idol.name}
+            idolGroup={idol.group}
+          />
+        ))}
+      </div>
       <div
         style={{
           display: 'flex',
@@ -76,6 +108,24 @@ function MyPage() {
           disabled={currentPage === totalPages}
         />
       </div>
+
+      {/* 추가하기 버튼 */}
+      <button
+        style={{
+          background: 'linear-gradient(to right, #ff5e9c, #ffa35e)',
+          color: 'white',
+          border: 'none',
+          borderRadius: '20px',
+          padding: '12px 24px',
+          fontWeight: 'bold',
+          fontSize: '1rem',
+          marginTop: '24px',
+          cursor: 'pointer',
+        }}
+      >
+        {' '}
+        + 추가하기
+      </button>
     </div>
   );
 }
