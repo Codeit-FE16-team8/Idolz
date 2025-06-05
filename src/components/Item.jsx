@@ -1,6 +1,5 @@
 // 후원을 기다리는 조공의 조공 카드 구현
 import Button from './Button';
-import '../styles/common.css';
 /**
  *
  * @param {object} item - 조공 데이터

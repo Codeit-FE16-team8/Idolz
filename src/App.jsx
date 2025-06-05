@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import List from './components/List';
 import Header from './components/Header.jsx';
+import Footer from './components/Footer.jsx';
 import Common from './Common.jsx';
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
           {/*<Route path="my" element={<MyPage />} /> */}
         </Routes>
       </div>
+      <Footer />
     </BrowserRouter>
   );
 }
