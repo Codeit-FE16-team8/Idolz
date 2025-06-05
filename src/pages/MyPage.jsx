@@ -52,7 +52,6 @@ function MyPage() {
 
   return (
     <div>
-      <Header />
       <h2
         style={{
           display: 'flex',
