@@ -141,10 +141,6 @@ input[type="radio"]:checked + label .radio-icon {
   background: url(../assets/images/Checked_True.png) no-repeat;
 }
 
-/* .radio__idol {
-  border-bottom: 1px solid rgb(255, 255, 255, 0.1);
-} */
-
 .radio__idol .radio-icon{
   margin-left: auto;
 }
@@ -206,6 +202,8 @@ input[type="radio"]:checked + label .radio-icon {
 
 /* 기본 아이돌 프로필 */
 .idol__img {
+  width: var(--profile-size);
+  height: var(--profile-size);
   position: relative;
   background-color: transparent;
   border: 1px solid var(--color-orange-F96D69);
@@ -238,6 +236,7 @@ input[type="radio"]:checked + label .radio-icon {
 }
 
 .idol__profile {
+  width: var(--profile-size);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -262,8 +261,8 @@ input[type="radio"]:checked + label .radio-icon {
 .idol__profile--delete::after {
   content: "";
   position: absolute;
-  top: 2px;
-  right: -6px;
+  top: 0px;
+  right: -8px;
   width: 30px;
   height: 30px;
   background-image: url(../assets//images/ic_delete.png);
@@ -382,9 +381,6 @@ input[type="radio"]:checked + label .radio-icon {
   /* transition: width 0.3s ease; */
 }
 
-
-
-
 table, th, td {
   font-size: var(--font-size-base);
   border: 1px solid #aaa;
@@ -398,4 +394,53 @@ th, td {
 th {
   background-color: #eee;
   color: black;
+}
+
+/*** 반응형 ***/
+/* 타블렛 (768px~) */
+@media (min-width: 768px) {
+
+  /* 후원 조공 */
+  .idol__sponsor {
+    width: 282px;
+    min-width: 282px;
+  }
+
+  .sponsor__imgBtn {
+    height: 293px;
+  }
+
+  .sponsor__subTitle {
+    font-size: var(--font-size-md	);
+  }
+
+  .sponsor__title {
+    font-size: var(--font-size-lg);
+  }
+
+  /* 아이돌 프로필 */
+  .idol__profile {
+    width: 128px;
+  }
+
+  .idol__profile .idol__img {
+    width: 128px;
+    height: 128px;
+  }
+
+  .idol__profile--delete .idol__img {
+    width: 100px;
+    height: 100px;
+  }
+  .idol__profile--delete::after {
+    top: 2px;
+    right: 14px;
+  }
+}
+
+/* 테스크탑 (1200px~) */
+@media (min-width: 1200px) {
+  .idol__chartItems {
+    font-size: var(--font-size-md);
+  } 
 }

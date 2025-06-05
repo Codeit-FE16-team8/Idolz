@@ -12,9 +12,8 @@ function IdolProfile({ size = '70px', profileImg, alt, idolName, idolGroup, isSe
     <div
       onClick={handleToggle}
       className={`${isDelete ? 'idol__profile--delete' : false} idol__profile`}
-      style={{ width: size }}
+      style={{ '--profile-size': size }}
     >
-      {/* <IdolProfileImage size={size} img={profileImg} alt={alt} isSelect={isDelete ? '' : isCheck} /> */}
       <IdolProfileImage size={size} img={profileImg} alt={alt} {...(!isDelete && { isSelect: isCheck })} />
       <div className="idol--name">{idolName}</div>
       <div className="idol--group">{idolGroup}</div>
