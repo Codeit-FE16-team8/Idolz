@@ -72,6 +72,7 @@ function MyPage() {
           justifyContent: 'center',
           gap: '12px',
           marginTop: '24px',
+          height: '260px',
         }}
       >
         {/* 왼쪽 이동 버튼 */}

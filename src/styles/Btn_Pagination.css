@@ -1,0 +1,33 @@
+btn-pagination {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-pagination.disabled {
+  cursor: not-allowed;
+  opacity: 0.3;
+}
+
+.btn-pagination__icon {
+  width: 70px;
+  height: 74px;
+}
+
+/* 반응형 처리 */
+@media (max-width: 768px) {
+  .btn-pagination__icon {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .btn-pagination__icon {
+    width: 20px;
+    height: 20px;
+  }
+}
