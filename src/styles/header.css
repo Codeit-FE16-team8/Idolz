@@ -36,6 +36,7 @@
   position: absolute;
   right: 25px;
   margin-top: 8px;
+  color: var(--color-black-181D26	);
   background-color: var(--color-white-F7F7F8);
   border-radius: var(--border-radius-sm);
   padding: 5px 10px;
