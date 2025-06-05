@@ -10,8 +10,8 @@ function List() {
 
   useEffect(() => {
     async function IdolsData() {
-      const data = await getAllIdols();
-      setIdols(data);
+      const idolData = await getAllIdols();
+      setIdols(idolData);
       setLoading(false);
     }
 
@@ -23,7 +23,7 @@ function List() {
   return (
     <div>
       <MyCredit />
-      <WaitingDonation />
+      <WaitingDonation idols={idols} />
       <MonthlyChart idols={idols} />
     </div>
   );

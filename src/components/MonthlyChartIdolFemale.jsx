@@ -5,7 +5,7 @@ function MonthlyChartIdolFemale({ femaleIdols }) {
   return (
     <div style={{ display: 'flex', flexWrap: 'wrap' }}>
       {femaleIdols.map((idol, index) => (
-        <div style={{ width: '50%' }}>
+        <div key={idol.id} style={{ width: '50%' }}>
           <IdolVoteChart
             key={idol.id}
             profileImg={idol.profilePicture}
