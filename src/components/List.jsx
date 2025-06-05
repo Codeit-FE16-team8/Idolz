@@ -6,13 +6,8 @@ import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 const Container = styled.div`
-  display: flex;
-  flex-direction: column; // 세로 정렬
-  align-items: center; // 가로 중앙 정렬
-  justify-content: center; // 세로 중앙 정렬 (필요하면)
-  min-height: 100vh; // 화면 전체 높이 맞춤 (필요하면)
-  padding: 20px;
-  box-sizing: border-box;
+  width: 1200px;
+  margin: 0 auto;
 `;
 
 function List() {
@@ -33,9 +28,11 @@ function List() {
 
   return (
     <div>
-      <MyCredit />
-      <WaitingDonation idols={idols} />
-      <MonthlyChart idols={idols} />
+      <Container>
+        <MyCredit />
+        <WaitingDonation idols={idols} />
+        <MonthlyChart idols={idols} />
+      </Container>
     </div>
   );
 }
