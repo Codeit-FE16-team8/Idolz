@@ -551,7 +551,7 @@ function Common() {
               isDelete={false}
             />
             <IdolProfile
-              size="98px"
+              size="70px"
               profileImg={IdolImg}
               alt="이미지1"
               idolName="이름"
