@@ -1,9 +1,24 @@
 import IdolVoteChart from './IdolVoteChart';
+import styled from 'styled-components';
+
+const IdolContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2%;
+`;
+const IdolItem = styled.div`
+  width: 49%;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    margin-right: 0;
+  }
+`;
 function MonthlyChartIdolMale({ maleIdols }) {
   return (
-    <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+    <IdolContainer>
       {maleIdols.map((idol, index) => (
-        <div key={idol.id} style={{ width: '50%' }}>
+        <IdolItem key={idol.id}>
           <IdolVoteChart
             key={idol.id}
             profileImg={idol.profilePicture}
@@ -12,9 +27,9 @@ function MonthlyChartIdolMale({ maleIdols }) {
             name={idol.name}
             vote={idol.totalVotes}
           />
-        </div>
+        </IdolItem>
       ))}
-    </div>
+    </IdolContainer>
   );
 }
 

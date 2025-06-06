@@ -10,6 +10,16 @@ const Container = styled.div`
   width: 100%;
   height: 131px;
   padding: 0 78px;
+  border-radius: var(--border-radius-sm);
+  margin-bottom: 50px;
+
+  @media (max-width: 768px) {
+    padding: 0 64px;
+  }
+
+  @media (max-width: 480px) {
+    padding: 0 24px;
+  }
 `;
 const LeftSide = styled.div`
   display: flex;

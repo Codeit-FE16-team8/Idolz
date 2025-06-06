@@ -8,6 +8,10 @@ import './item.css';
 
 import styled from 'styled-components';
 
+const Funding = styled.div`
+  padding: 30px;
+`;
+
 const WaitingDonationTitle = styled.h1`
   font-size: 24px;
 `;
@@ -21,6 +25,10 @@ const ScrollButton = styled.button`
   img {
     width: 100%;
     height: auto;
+  }
+
+  @media (max-width: 768px) {
+    display: none;
   }
 `;
 

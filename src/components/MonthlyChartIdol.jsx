@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import MonthlyChartIdolFemale from './MonthlyChartIdolFemale';
 import MonthlyChartIdolMale from './MonthlyChartIdolMale';
 
@@ -35,10 +35,29 @@ const MoreIdolsButton = styled.div`
 
 function MonthlyChartIdol({ idols }) {
   const [ClickIdolGender, setClickIdolGender] = useState('female');
-  const [moreIdols, setMoreIdols] = useState(10); //더보기 초기에 10개
+  const [moreIdols, setMoreIdols] = useState(10);
+  const [stepSize, setStepSize] = useState(10); // 더보기 시 늘어나는 수
+
+  // 화면 크기에 따라 초기 보여줄 갯수, 증가 수 설정
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth <= 768) {
+        setMoreIdols(5);
+        setStepSize(5);
+      } else {
+        setMoreIdols(10);
+        setStepSize(10);
+      }
+    };
+
+    handleResize();
+    window.addEventListener('resize', handleResize); // 창 크기 변화 감지
+
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const handleLoadMore = () => {
-    setMoreIdols((prev) => prev + 10); //10개추가
+    setMoreIdols((prev) => prev + stepSize);
   };
 
   const maleIdols = idols.filter((idol) => idol.gender === 'male');
@@ -46,6 +65,10 @@ function MonthlyChartIdol({ idols }) {
 
   const visibleFemaleIdols = femaleIdols.slice(0, moreIdols);
   const visibleMaleIdols = maleIdols.slice(0, moreIdols);
+
+  // 현재 선택된 성별에 따라 전체 아이돌 수 가져오기
+  const totalCurrentGenderIdols = ClickIdolGender === 'female' ? femaleIdols.length : maleIdols.length;
+
   return (
     <div>
       <SelectGenderButtonWrapper>
@@ -61,8 +84,8 @@ function MonthlyChartIdol({ idols }) {
         {ClickIdolGender === 'female' && <MonthlyChartIdolFemale femaleIdols={visibleFemaleIdols} />}
         {ClickIdolGender === 'male' && <MonthlyChartIdolMale maleIdols={visibleMaleIdols} />}
       </div>
-      {/* 아이돌 남을시 버튼 표시 */}
-      {moreIdols < femaleIdols.length && (
+
+      {moreIdols < totalCurrentGenderIdols && (
         <MoreIdolsButton>
           <button onClick={handleLoadMore}>더보기</button>
         </MoreIdolsButton>
