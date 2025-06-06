@@ -6,11 +6,29 @@ import Item from './Item';
 import { contributeDonation, getAllDonations, createDonation } from '../api/api';
 import './item.css';
 
+import styled from 'styled-components';
+
+const WaitingDonationTitle = styled.h1`
+  font-size: 24px;
+`;
+
+const ScrollButton = styled.button`
+  width: 100px;
+  height: 70px;
+
+  gap: 24px;
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+`;
+
 function WaitingDonation({ idols }) {
   const idolList = idols;
 
   const scrollRef = useRef(null);
-  const boxWidth = 160; //현재 박스가 150 마진 10
+  const boxWidth = 298; //현재 박스가 150 마진 10
 
   const [scrollStart, setScrollStart] = useState(true);
   const [scrollEnd, setScrollEnd] = useState(false);
@@ -117,44 +135,50 @@ function WaitingDonation({ idols }) {
   };
 
   return (
-    <div>
-      <h2>후원을 기다리는 조공</h2>
-      <div style={{ display: 'flex', alignItems: 'center' }}>
-        {!scrollStart && (
-          <button onClick={() => scroll('left')}>
-            <img src={leftImg} alt="leftImg" />
+    <>
+      <div className="funding">
+        <div className="funding-header">
+          <WaitingDonationTitle>후원을 기다리는 조공 </WaitingDonationTitle>
+          <button className="btn btn--color btn--medium" onClick={() => setShowCreateModal(true)}>
+            새로운 조공 만들기
           </button>
-        )}
-        <div
-          ref={scrollRef}
-          onScroll={ScrollPosition}
-          style={{
-            display: 'flex',
-            overflowX: 'auto',
-            width: `${boxWidth * 4}px`,
-            padding: '10px',
-            scrollbarWidth: 'none',
-          }}
-        >
-          {sortedDonations.map((item) => (
-            <Item
-              item={item}
-              key={item.id}
-              // 후원하기 모달창 임시 구현
-              onDonateClick={() => {
-                setSelectedDonation(item);
-                setShowModal(true);
-              }}
-            />
-          ))}
         </div>
-        {!scrollEnd && (
-          <button onClick={() => scroll('right')}>
-            <img src={rightImg} alt="rightImg" />
-          </button>
-        )}
+        <div style={{ display: 'flex', alignItems: 'center' }}>
+          {!scrollStart && (
+            <ScrollButton onClick={() => scroll('left')}>
+              <img src={leftImg} alt="leftImg" />
+            </ScrollButton>
+          )}
+          <div className="sliderWrapper">
+            <div
+              className="donationContainer"
+              ref={scrollRef}
+              onScroll={ScrollPosition}
+              style={{
+                overflowX: 'auto',
+                scrollbarWidth: 'none',
+              }}
+            >
+              {sortedDonations.map((item) => (
+                <Item
+                  item={item}
+                  key={item.id}
+                  // 후원하기 모달창 임시 구현
+                  onDonateClick={() => {
+                    setSelectedDonation(item);
+                    setShowModal(true);
+                  }}
+                />
+              ))}
+            </div>
+          </div>
+          {!scrollEnd && (
+            <ScrollButton onClick={() => scroll('right')}>
+              <img src={rightImg} alt="rightImg" />
+            </ScrollButton>
+          )}
+        </div>
       </div>
-
       {showModal && (
         <div className="modalOverlay">
           <div className="modalContent">
@@ -240,7 +264,7 @@ function WaitingDonation({ idols }) {
           </div>
         </div>
       )}
-    </div>
+    </>
   );
 }
 

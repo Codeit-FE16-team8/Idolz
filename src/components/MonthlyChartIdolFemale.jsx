@@ -5,7 +5,8 @@ function MonthlyChartIdolFemale({ femaleIdols }) {
   return (
     <div style={{ display: 'flex', flexWrap: 'wrap' }}>
       {femaleIdols.map((idol, index) => (
-        <div key={idol.id} style={{ width: '50%' }}>
+        // 짝수 index에만 적용
+        <div key={idol.id} style={{ width: '49%', marginRight: index % 2 === 0 ? '2%' : '0' }}>
           <IdolVoteChart
             key={idol.id}
             profileImg={idol.profilePicture}

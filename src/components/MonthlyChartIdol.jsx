@@ -2,6 +2,37 @@ import { useState } from 'react';
 import MonthlyChartIdolFemale from './MonthlyChartIdolFemale';
 import MonthlyChartIdolMale from './MonthlyChartIdolMale';
 
+import styled from 'styled-components';
+
+const SelectGenderButtonWrapper = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+`;
+
+const GenderButton = styled.button`
+  font-size: var(--font-size-base);
+  flex: 1;
+  height: 42px;
+  background-color: ${(props) => (props.active ? 'var(--color-black-181D26)' : 'none')};
+  color: ${(props) => (props.active ? 'var(--color-white-F7F7F8)' : 'var(--color-gray-828282)')};
+  border-bottom: ${(props) => (props.active ? '1px solid var(--color-white-F7F7F8)' : 'none')};
+`;
+
+const MoreIdolsButton = styled.div`
+  text-align: center;
+  margin-top: 50px;
+
+  button {
+    padding: 8px 143px;
+    background-color: var(--color-black-181D26);
+    border: 1px solid var(--color-gray-67666E);
+    border-radius: var(--border-radius-xs);
+  }
+`;
+
 function MonthlyChartIdol({ idols }) {
   const [ClickIdolGender, setClickIdolGender] = useState('female');
   const [moreIdols, setMoreIdols] = useState(10); //더보기 초기에 10개
@@ -17,22 +48,14 @@ function MonthlyChartIdol({ idols }) {
   const visibleMaleIdols = maleIdols.slice(0, moreIdols);
   return (
     <div>
-      <button
-        onClick={() => setClickIdolGender('female')}
-        style={{
-          border: ClickIdolGender === 'female' ? '1px solid red' : '1px solid white',
-        }}
-      >
-        이달의 여자 아이돌
-      </button>
-      <button
-        onClick={() => setClickIdolGender('male')}
-        style={{
-          border: ClickIdolGender === 'male' ? '1px solid red' : '1px solid white',
-        }}
-      >
-        이달의 남자 아이돌
-      </button>
+      <SelectGenderButtonWrapper>
+        <GenderButton active={ClickIdolGender === 'female'} onClick={() => setClickIdolGender('female')}>
+          이달의 여자 아이돌
+        </GenderButton>
+        <GenderButton active={ClickIdolGender === 'male'} onClick={() => setClickIdolGender('male')}>
+          이달의 남자 아이돌
+        </GenderButton>
+      </SelectGenderButtonWrapper>
 
       <div>
         {ClickIdolGender === 'female' && <MonthlyChartIdolFemale femaleIdols={visibleFemaleIdols} />}
@@ -40,9 +63,9 @@ function MonthlyChartIdol({ idols }) {
       </div>
       {/* 아이돌 남을시 버튼 표시 */}
       {moreIdols < femaleIdols.length && (
-        <div style={{ textAlign: 'center', marginTop: '1rem' }}>
+        <MoreIdolsButton>
           <button onClick={handleLoadMore}>더보기</button>
-        </div>
+        </MoreIdolsButton>
       )}
     </div>
   );
