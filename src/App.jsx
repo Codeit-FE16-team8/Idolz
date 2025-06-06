@@ -4,6 +4,7 @@ import ListPage from './components/ListPage';
 import Header from './components/Header.jsx';
 import Footer from './components/Footer.jsx';
 import Common from './Common.jsx';
+import MyPage from './pages/MyPage.jsx';
 
 function App() {
   return (
@@ -14,7 +15,7 @@ function App() {
           {/*<Route index element={<LandingPage />} /> */}
           <Route index element={<ListPage />} />
           <Route path="common" element={<Common />} />
-          {/*<Route path="my" element={<MyPage />} /> */}
+          <Route path="my" element={<MyPage />} />
         </Routes>
       </div>
       <Footer />
