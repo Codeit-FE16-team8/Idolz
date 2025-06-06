@@ -69,7 +69,14 @@ function MyPage() {
       >
         내가 관심있는 아이돌
       </h2>
-      <div>
+      <div
+        style={{
+          display: 'flex',
+          flexWrap: 'wrap',
+          gap: '12px',
+          marginBottom: '24px',
+        }}
+      >
         {interestedIdols.map((idol) => (
           <IdolProfile
             key={idol.id}
