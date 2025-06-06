@@ -40,6 +40,11 @@ function MyPage() {
     localStorage.setItem('interestedIdols', JSON.stringify(merged));
     setSelectedIds([]); // 체크 상태 초기화
   };
+  const handleRemoveInterested = (id) => {
+    const updated = interestedIdols.filter((idol) => idol.id !== id);
+    setInterestedIdols(updated);
+    localStorage.setItem('interestedIdols', JSON.stringify(updated));
+  }; // 관심 아이돌 삭제 핸들러 함수
 
   useEffect(() => {
     async function loadIdols() {
@@ -55,21 +60,14 @@ function MyPage() {
       <h2
         style={{
           display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
+          flexWrap: 'wrap',
+          gap: '12px',
+          minHeight: '250px',
+          marginBottom: '24px',
+          alignItems: 'left',
         }}
       >
         내가 관심있는 아이돌
-      </h2>
-
-      <h2
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-        }}
-      >
-        관심있는 아이돌을 추가해보세요.
       </h2>
       <div>
         {interestedIdols.map((idol) => (
@@ -79,9 +77,19 @@ function MyPage() {
             alt={idol.name}
             idolName={idol.name}
             idolGroup={idol.group}
+            isDelete={true}
+            onDelete={() => handleRemoveInterested(idol.id)}
           />
         ))}
       </div>
+      <h2
+        style={{
+          display: 'flex',
+          alignItems: 'left',
+        }}
+      >
+        관심있는 아이돌을 추가해보세요.
+      </h2>
       <div
         style={{
           display: 'flex',
@@ -130,23 +138,25 @@ function MyPage() {
       </div>
 
       {/* 추가하기 버튼 */}
-      <button
-        onClick={handleAddInterested}
-        style={{
-          background: 'linear-gradient(to right, #ff5e9c, #ffa35e)',
-          color: 'white',
-          border: 'none',
-          borderRadius: '20px',
-          padding: '12px 24px',
-          fontWeight: 'bold',
-          fontSize: '1rem',
-          marginTop: '24px',
-          cursor: 'pointer',
-        }}
-      >
-        {' '}
-        + 추가하기
-      </button>
+      <div style={{ textAlign: 'center', marginTop: '24px' }}>
+        <button
+          onClick={handleAddInterested}
+          style={{
+            background: 'linear-gradient(to right, #ff5e9c, #ffa35e)',
+            color: 'white',
+            border: 'none',
+            borderRadius: '20px',
+            padding: '12px 24px',
+            fontWeight: 'bold',
+            fontSize: '1rem',
+            marginTop: '24px',
+            cursor: 'pointer',
+          }}
+        >
+          {' '}
+          + 추가하기
+        </button>
+      </div>
     </div>
   );
 }
