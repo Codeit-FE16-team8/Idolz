@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import List from './components/List';
+import ListPage from './components/ListPage.jsx';
 import Header from './components/Header.jsx';
 import Footer from './components/Footer.jsx';
 import Common from './Common.jsx';
