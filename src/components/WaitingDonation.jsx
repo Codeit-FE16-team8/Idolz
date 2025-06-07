@@ -11,7 +11,6 @@ import styled from 'styled-components';
 const Funding = styled.div`
   padding: 30px;
 `;
-
 const WaitingDonationTitle = styled.h1`
   font-size: 24px;
 `;
