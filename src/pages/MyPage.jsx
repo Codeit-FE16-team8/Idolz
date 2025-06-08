@@ -4,6 +4,7 @@ import { getAllIdols } from '../api/api';
 import BtnPagination from '../components/Btn_Pagination';
 import IdolProfile from '../components/IdolProfile';
 import '../styles/common.css';
+import '../styles/myPage.css';
 
 function MyPage() {
   const [idols, setIdols] = useState([]); //전체 아이돌
@@ -58,24 +59,18 @@ function MyPage() {
     <div>
       <h2
         style={{
-          display: 'flex',
-          flexWrap: 'wrap',
-          gap: '12px',
-          minHeight: '250px',
-          marginBottom: '24px',
-          alignItems: 'left',
+          fontSize: '1.5rem',
+          fontWeight: 'bold',
+          marginBottom: '12px',
+          minHeight: 'auto',
+          paddingTop: '12px',
+          textAlign: 'left',
         }}
       >
         내가 관심있는 아이돌
       </h2>
-      <div
-        style={{
-          display: 'flex',
-          flexWrap: 'wrap',
-          gap: '12px',
-          marginBottom: '24px',
-        }}
-      >
+
+      <div className="interested-scroll-wrapper">
         {interestedIdols.map((idol) => (
           <IdolProfile
             key={idol.id}
@@ -88,10 +83,12 @@ function MyPage() {
           />
         ))}
       </div>
+      {/* 추가할 아이돌 목록 */}
       <h2
         style={{
           display: 'flex',
-          alignItems: 'left',
+          alignItems: 'center',
+          gap: '12px',
         }}
       >
         관심있는 아이돌을 추가해보세요.
@@ -103,7 +100,8 @@ function MyPage() {
           justifyContent: 'center',
           gap: '12px',
           marginTop: '24px',
-          height: '260px',
+          flexWrap: 'nowrap',
+          height: 'auto',
         }}
       >
         {/* 왼쪽 이동 버튼 */}
@@ -113,13 +111,14 @@ function MyPage() {
           disabled={currentPage === 1}
         />
 
-        {/* 프로필 그리드 */}
+        {/* 아이돌 프로필 카드들 */}
         <div
           style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(8, 1fr)',
             gap: '10px',
-            maxHeight: 'calc(2 * 120px)',
+            minHeight: '240px',
+            justifyContent: 'center',
           }}
         >
           {currentItems.map((idol) => (
@@ -144,24 +143,8 @@ function MyPage() {
       </div>
 
       {/* 추가하기 버튼 */}
-      <div style={{ textAlign: 'center', marginTop: '24px' }}>
-        <button
-          onClick={handleAddInterested}
-          style={{
-            background: 'linear-gradient(to right, #ff5e9c, #ffa35e)',
-            color: 'white',
-            border: 'none',
-            borderRadius: '20px',
-            padding: '12px 24px',
-            fontWeight: 'bold',
-            fontSize: '1rem',
-            marginTop: '24px',
-            cursor: 'pointer',
-          }}
-        >
-          {' '}
-          + 추가하기
-        </button>
+      <div className="my-add-button-wrapper">
+        <button onClick={handleAddInterested}> + 추가하기</button>
       </div>
     </div>
   );
