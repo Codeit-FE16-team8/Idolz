@@ -1,0 +1,38 @@
+/* 마이페이지 추가용 css */
+.interested-scroll-wrapper {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  width: 100%;
+  white-space: nowrap;
+  padding: 12px 0;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE & Edge */
+}
+
+.interested-scroll-wrapper::-webkit-scrollbar {
+  height: 6px;
+}
+
+.interested-scroll-wrapper::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 4px;
+}
+
+.my-add-button-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 32px;
+  padding-bottom: 48px;
+}
+.my-add-button-wrapper button {
+  background: linear-gradient(to right, #ff5e9c, #ffa35e);
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 12px 24px;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+}
