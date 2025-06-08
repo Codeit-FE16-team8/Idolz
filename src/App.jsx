@@ -1,9 +1,11 @@
 import { Link } from 'react-router-dom';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import List from './components/List';
+import ListPage from './components/ListPage.jsx';
 import Header from './components/Header.jsx';
 import Footer from './components/Footer.jsx';
 import Common from './Common.jsx';
+import LandingPage from './pages/LandingPage.jsx';
 import MyPage from './pages/MyPage.jsx';
 
 function App() {
@@ -12,8 +14,8 @@ function App() {
       <Header />
       <div className="container">
         <Routes>
-          {/*<Route index element={<LandingPage />} /> */}
-          <Route index element={<List />} />
+          <Route path="landing" element={<LandingPage />} />
+          <Route index element={<ListPage />} />
           <Route path="common" element={<Common />} />
           <Route path="my" element={<MyPage />} />
         </Routes>
