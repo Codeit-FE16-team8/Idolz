@@ -4,7 +4,7 @@ import { getAllIdols } from '../api/api';
 import BtnPagination from '../components/Btn_Pagination';
 import IdolProfile from '../components/IdolProfile';
 import '../styles/common.css';
-import '../styles/myPage.css';
+import '../styles/MyPage.css';
 
 function MyPage() {
   const [idols, setIdols] = useState([]); //전체 아이돌
