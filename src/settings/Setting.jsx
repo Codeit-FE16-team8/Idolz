@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/setting.css';
+import ProfileImageUploader from '../components/ProfileImageUploader';
+import gear from '../assets/images/gear.png';
 
 function Setting() {
   const [nickname, setNickname] = useState('홍길동');
@@ -9,8 +11,17 @@ function Setting() {
   return (
     <div className="setting">
       {/* 프로필 이미지 변경 */}
-      <div className="setting__profile">
-        <p>프로필 이미지 컴포넌트</p>
+      <div className="setting__personal">
+        <ProfileImageUploader>
+          {({ profileImg, onClickFileInput }) => (
+            <div className="setting__profile">
+              <img className="setting__profile-img" src={profileImg} alt="프로필" />
+              <button className="setting__profile-edit" onClick={onClickFileInput} aria-label="프로필 이미지 변경">
+                <img src={gear} alt="설정" />
+              </button>
+            </div>
+          )}
+        </ProfileImageUploader>
       </div>
 
       {/* 닉네임, 상태메시지 */}
