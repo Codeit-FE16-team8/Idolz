@@ -5,6 +5,8 @@ import Footer from './components/Footer.jsx';
 import Common from './Common.jsx';
 import MyPage from './pages/MyPage.jsx';
 
+import Setting from './components/Setting.jsx';
+
 import CustomerCenter from './policies/CustomerCenter.jsx';
 import UsePolicy from './policies/UsePolicy.jsx';
 import PaidPolicy from './policies/PaidPolicy.jsx';
@@ -23,6 +25,9 @@ function App() {
           <Route index element={<List />} />
           <Route path="common" element={<Common />} />
           <Route path="my" element={<MyPage />} />
+
+          {/* 설정 페이지 */}
+          <Route path="settings" element={<Setting />} />
 
           {/* footer 연결 페이지 */}
           <Route path="customer_center" element={<CustomerCenter />} />
