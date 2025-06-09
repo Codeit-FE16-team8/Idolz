@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import '../styles/setting.css';
 import ProfileImageUploader from '../components/ProfileImageUploader';
 import gear from '../assets/images/gear.png';
@@ -7,6 +7,22 @@ import gear from '../assets/images/gear.png';
 function Setting() {
   const [nickname, setNickname] = useState('홍길동');
   const [statusMessage, setStatusMessage] = useState('상태 메세지를 입력하세요');
+
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    // 로그아웃 처리 로직 (예: 토큰 제거 등)
+    // localStorage.removeItem('token'); 또는 setUser(null) 같은 처리 가능
+
+    alert('로그아웃 되었습니다.'); // 🔸 팝업 표시
+    navigate('/login'); // 🔸 회원가입 페이지로 이동
+  };
+
+  const handleDeleteAccount = () => {
+    // 계정 삭제 관련 처리
+    alert('계정이 삭제되었습니다.');
+    navigate('/logup');
+  };
 
   return (
     <div className="setting">
@@ -72,7 +88,4 @@ function Setting() {
   );
 }
 
-function handleLogout() {}
-
-function handleDeleteAccount() {}
 export default Setting;
