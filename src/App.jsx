@@ -5,10 +5,15 @@ import Footer from './components/Footer.jsx';
 import Common from './Common.jsx';
 import LandingPage from './pages/LandingPage.jsx';
 import MyPage from './pages/MyPage.jsx';
+
 import Login from './pages/LoginPage.jsx';
 import LogUp from './pages/LogUpPage.jsx';
 
-import Setting from './components/Setting.jsx';
+import Setting from './settings/Setting.jsx';
+import Account from './settings/Account.jsx';
+import Notifications from './settings/Notifications.jsx';
+import Theme from './settings/Theme.jsx';
+import Cursor from './settings/Cursor.jsx';
 
 import CustomerCenter from './policies/CustomerCenter.jsx';
 import UsePolicy from './policies/UsePolicy.jsx';
@@ -34,6 +39,10 @@ function App() {
 
           {/* 설정 페이지 */}
           <Route path="settings" element={<Setting />} />
+          <Route path="account" element={<Account />} />
+          <Route path="notifications" element={<Notifications />} />
+          <Route path="theme" element={<Theme />} />
+          <Route path="cursor" element={<Cursor />} />
 
           {/* footer 연결 페이지 */}
           <Route path="customer_center" element={<CustomerCenter />} />

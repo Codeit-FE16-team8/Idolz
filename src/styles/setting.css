@@ -1,0 +1,92 @@
+.setting {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 24px;
+  font-family: 'Segoe UI', sans-serif;
+  color: #fff;
+}
+
+.setting__profile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 16px;
+  height: 100px;
+  background-color: #f0f0f0;
+  border-radius: 50%;
+  text-align: center;
+  color: #444;
+}
+
+.setting__user {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.setting__name,
+.setting__message {
+  width: auto;
+  padding: 4px 8px;
+  margin: 4px 0;
+  font-size: 14px;
+  font-weight: 600;
+  border: none;
+  background: transparent;
+  text-align: center;
+  color: #ddd;
+}
+
+.setting__name:focus,
+.setting__message:focus {
+  outline: none;
+}
+
+.setting__user {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.setting__menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.setting__menu li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 14px;
+  border-bottom: 1px solid #444;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.setting__menu li:hover {
+  background-color: #f9f9f9;
+}
+
+.setting__menu a,
+.setting__menu button {
+  all: unset;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.setting__menu li::after {
+  content: '›';
+  font-size: 14px;
+  color: #bbb;
+}
+
+@media (min-width: 768px) {
+  .setting {
+    max-width: 900px;
+  }
+}
