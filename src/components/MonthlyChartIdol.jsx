@@ -31,6 +31,13 @@ const MoreIdolsButton = styled.div`
     border: 1px solid var(--color-gray-67666E);
     border-radius: var(--border-radius-xs);
   }
+  @media (max-width: 468px) {
+    button {
+      padding: 0;
+      width: 100%;
+      height: 42px;
+    }
+  }
 `;
 
 function MonthlyChartIdol({ idols }) {
@@ -52,8 +59,6 @@ function MonthlyChartIdol({ idols }) {
 
     handleResize();
     window.addEventListener('resize', handleResize); // 창 크기 변화 감지
-
-    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   const handleLoadMore = () => {
@@ -66,7 +71,7 @@ function MonthlyChartIdol({ idols }) {
   const visibleFemaleIdols = femaleIdols.slice(0, moreIdols);
   const visibleMaleIdols = maleIdols.slice(0, moreIdols);
 
-  // 현재 선택된 성별에 따라 전체 아이돌 수 가져오기
+  // 성별별전체 아이돌 수 가져오기
   const totalCurrentGenderIdols = ClickIdolGender === 'female' ? femaleIdols.length : maleIdols.length;
 
   return (

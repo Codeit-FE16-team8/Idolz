@@ -1,6 +1,7 @@
 import WaitingDonation from './WaitingDonation';
 import MonthlyChart from './MonthlyChart';
 import MyCredit from './MyCredit';
+import ChangeCursor from './ChangeCursor';
 import { getAllIdols } from '../api/api';
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
@@ -8,7 +9,7 @@ import styled from 'styled-components';
 const Container = styled.div`
   max-width: 1200px;
   width: 100%;
-  margin: 0 auto;
+  margin: 100px auto;
 
   @media (max-width: 768px) {
     padding: 0 24px;
@@ -37,6 +38,7 @@ function List() {
         <MyCredit />
         <WaitingDonation idols={idols} />
         <MonthlyChart idols={idols} />
+        <ChangeCursor />
       </Container>
     </div>
   );

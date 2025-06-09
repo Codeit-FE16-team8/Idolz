@@ -17,7 +17,7 @@ function App() {
       <div className="container">
         <Routes>
           <Route path="landing" element={<LandingPage />} />
-          <Route index element={<ListPage />} />
+          <Route index element={<List />} />
           <Route path="common" element={<Common />} />
           <Route path="my" element={<MyPage />} />
           <Route path="login" element={<Login />} />
