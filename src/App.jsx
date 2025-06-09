@@ -5,6 +5,8 @@ import Footer from './components/Footer.jsx';
 import Common from './Common.jsx';
 import LandingPage from './pages/LandingPage.jsx';
 import MyPage from './pages/MyPage.jsx';
+import Login from './pages/LoginPage.jsx';
+import LogUp from './pages/LogUpPage.jsx';
 
 import Setting from './components/Setting.jsx';
 
@@ -26,6 +28,9 @@ function App() {
           <Route index element={<List />} />
           <Route path="common" element={<Common />} />
           <Route path="my" element={<MyPage />} />
+
+          <Route path="login" element={<Login />} />
+          <Route path="logUp" element={<LogUp />} />
 
           {/* 설정 페이지 */}
           <Route path="settings" element={<Setting />} />
