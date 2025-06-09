@@ -59,6 +59,10 @@ function MonthlyChartIdol({ idols }) {
 
     handleResize();
     window.addEventListener('resize', handleResize); // 창 크기 변화 감지
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
   }, []);
 
   const handleLoadMore = () => {
