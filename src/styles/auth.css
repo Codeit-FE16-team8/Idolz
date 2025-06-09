@@ -1,0 +1,86 @@
+.auth__layout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+  margin-top: 80px;
+  margin-bottom: 100px;
+}
+
+.auth__logo {
+  margin-bottom: 25px;
+}
+
+.auth__logo img {
+  width: 200px;
+}
+
+.auth__content {
+  width: 100%;
+  max-width: 630px;
+  padding: 10px 25px;
+}
+
+.auth__input--group {
+  position: relative;
+  display: flex;
+  flex-direction: column;  
+  gap: 10px;
+  margin-bottom: 25px;
+  font-size: var(--font-size-md);
+}
+
+.auth__input {
+  padding: var(--input-padding);
+  color: white;
+  background-color: #272f3d;
+  border: solid 1px white;
+  border-radius: var(--border-radius-sm);
+}
+
+.password__toggle--btn {
+  position: absolute;
+  bottom: 9px;
+  right: 13px;
+}
+
+/* 비밀번호 보이기 토글 이미지 */
+.auth__input--group .password__toggle--btn {
+  width: 24px;
+  height: 24px;
+  background-repeat: no-repeat;
+}
+
+.auth__input--group .password__toggle--hidden {
+  background-image: url(/src/assets/images/btn_visibility_off_24px.png);
+}
+
+.auth__input--group .password__toggle--show {
+  background-image: url(/src/assets/images/btn_visibility_on_24px.png);
+}
+
+.auth__social--btns {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin: 25px 0;
+  padding: 20px 30px;
+  background: var(--color-black-181D26);
+  border-radius: var(--border-radius-sm);
+}
+
+.auth__social--btns p {
+  margin-right: auto;
+}
+
+.auth__link {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  font-size: var(--font-size-base);
+}
+
+.auth__link--action {
+  color: var(--color-orange-F96D69);
+  text-decoration: underline;
+}

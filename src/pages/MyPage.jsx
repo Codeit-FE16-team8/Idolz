@@ -59,7 +59,7 @@ function MyPage() {
     <div>
       <h2
         style={{
-          fontSize: '1.5rem',
+          fontSize: '2rem',
           fontWeight: 'bold',
           marginBottom: '12px',
           minHeight: 'auto',
@@ -112,15 +112,7 @@ function MyPage() {
         />
 
         {/* 아이돌 프로필 카드들 */}
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(8, 1fr)',
-            gap: '10px',
-            minHeight: '240px',
-            justifyContent: 'center',
-          }}
-        >
+        <div className="myPage__idolList">
           {currentItems.map((idol) => (
             <IdolProfile
               key={idol.id}
