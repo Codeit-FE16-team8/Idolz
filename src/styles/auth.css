@@ -30,8 +30,6 @@
   font-size: var(--font-size-md);
 }
 
-.auth__label {}
-
 .auth__input {
   padding: var(--input-padding);
   color: white;
