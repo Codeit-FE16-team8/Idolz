@@ -16,7 +16,7 @@
 .footer__2,
 .footer__3 {
   flex: 1;
-  padding: 20px 25px;
+  padding: 20px 10px;
   min-width: 220px;
 }
 
@@ -76,6 +76,7 @@
 
 .footer__2 {
   display: grid;
+  align-items: center;
   grid-template-columns: repeat(2, 1fr);
   gap: 8px 16px;
   font-size: 13px;
@@ -98,8 +99,8 @@
 .footer__3 {
   display: flex;
   flex-direction: column;
-  justify-content: center; /* 수직 가운데 정렬 */
-  height: 100%; /* 부모만큼 높이 확장 */
+  justify-content: center;
+  height: 100%;
 }
 
 .footer__company {
@@ -131,11 +132,11 @@
   .footer__2 {
     border-top: none;
     border-bottom: none;
+    grid-template-columns: repeat(1, 1fr);
     border-left: 1px solid #444;
     border-right: 1px solid #444;
-    padding-left: 70px;
-    padding-right: 70px;
-    align-items: center;
+    padding-left: 50px;
+    padding-right: 50px;
   }
 
   .footer__3 {
@@ -143,5 +144,11 @@
   }
   .footer__company {
     gap: 15px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .footer__2 {
+    grid-template-columns: repeat(2, 1fr);
   }
 }

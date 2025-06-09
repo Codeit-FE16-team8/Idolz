@@ -122,14 +122,22 @@
   }
 
   .setting__profile {
-    margin-top: 50px;
+    margin-top: 40px;
   }
 
   .setting__user {
-    margin-bottom: 100px;
+    margin-bottom: 50px;
   }
 
   .setting__menu {
-    margin-bottom: 100px;
+    margin-bottom: 70px;
+  }
+  .setting__menu li {
+    font-size: 16px;
+  }
+  .setting__menu li::after {
+    content: '›';
+    font-size: 20px;
+    color: #bbb;
   }
 }
