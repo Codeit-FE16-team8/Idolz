@@ -310,30 +310,28 @@ function ListPage() {
         <div className="modalOverlay">
           <div className="modalContent voting">
             <h2>{selectGender === 'female' ? '이달의 여자아이돌 투표' : '이달의 남자아이돌 투표'}</h2>
-
-            <div className='' style={{ maxHeight: '60vh', overflowY: 'auto' }}>
+            <div className="voting_scroll">
               {idolList
                 .filter((idol) => idol.gender === selectGender)
                 .map((idol, index) => (
-                  <>
-                    <div className="radioIdol__inner" key={idol.id} onClick={() => setSelectVoteIdol(idol.id)}>
-                      <RadioIdol
-                        id={`radio${idol.id}`}
-                        groupName="radioGroup1"
-                        profileImg={idol.profilePicture}
-                        alt={idol.name}
-                        idx={index + 1}
-                        name={`${idol.group} ${idol.name} `}
-                        vote={idol.totalVotes}
-                      />
-                      {/* <IdolChart item={idol} rank={index + 1} /> */}
-                    </div>
-                  </>
+                  <div className="radioIdol__inner" key={idol.id} onClick={() => setSelectVoteIdol(idol.id)}>
+                    <RadioIdol
+                      id={`radio${idol.id}`}
+                      groupName="radioGroup1"
+                      profileImg={idol.profilePicture}
+                      alt={idol.name}
+                      idx={index + 1}
+                      name={`${idol.group} ${idol.name} `}
+                      vote={idol.totalVotes}
+                    />
+                    {/* <IdolChart item={idol} rank={index + 1} /> */}
+                  </div>
                 ))}
             </div>
 
-            <button
-              className="btn"
+            <Button
+              height="large"
+              ariaLabel="투표하기"
               onClick={async () => {
                 if (!selectVoteIdol) {
                   alert('아이돌을 선택해주세요.');
@@ -353,11 +351,11 @@ function ListPage() {
               }}
             >
               투표하기
-            </button>
-
-            <button className="btn" onClick={() => setShowVoteModal(false)}>
-              닫기
-            </button>
+            </Button>
+            <p>
+              투표하는 데 <span>1000 크레딧</span>이 소모됩니다.
+            </p>
+            <button className="btn--modalClose" onClick={() => setShowVoteModal(false)}></button>
           </div>
         </div>
       )}

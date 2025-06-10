@@ -18,7 +18,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 10px; /* 요소 간 간격 */
+  gap: 13px; /* 요소 간 간격 */
   width: 300px;
   height: 150px;
   background-color: var(--color-black-181D26);
@@ -27,30 +27,94 @@
 
 /* 이달의 투표 */
 .voting {
-  height: auto;
-  width: 500px;
-  max-height: 90vh;
-}
-.radioIdol__inner {
-  
+  position: relative;
+  justify-content: space-between;
+  height: 100%;
+  width: 100%;
 }
 
-.scrollbar { 
-  width: 250px;
-  height: 250px;
-  overflow-y: scroll; /*  */
+.voting h2 {
+  margin-top: 20px;
+  text-align: center;
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-500);
 }
 
-/* 스크롤바의 폭 너비 */
-.scrollbar::-webkit-scrollbar {
-    width: 10px;  
+.voting .btn--modalClose {
+  position: absolute;
+  top: 40px;
+  left: 35px;
+  background-image: url(../assets/images/icj_arrow_left.svg);
+  width: 24px;
+  height: 24px;  
+  cursor: pointer;
 }
 
-.scrollbar::-webkit-scrollbar-thumb {
-    background: rgba(220, 20, 60); /* 스크롤바 색상 */
-    border-radius: 10px; /* 스크롤바 둥근 테두리 */
+.voting .btn {
+  margin-top: auto;
 }
 
-.scrollbar::-webkit-scrollbar-track {
-    background: rgba(220, 20, 60, .1);  /*스크롤바 뒷 배경 색상*/
+.voting .btn {
+  font-size: var(--font-size-base);
 }
+
+.voting p {
+  text-align: center;
+  font-size: var(--font-size-xxs);
+}
+
+.voting p span {
+  color: var(--color-pink-FE5493);
+}
+
+/* 투표 스크롤바 */
+.voting_scroll {
+  max-height: 100%;
+  overflow: auto;
+  margin: 25px 0;
+  padding: 0 10px;
+}
+
+.voting_scroll::-webkit-scrollbar {
+    width: 3px;  
+}
+
+.voting_scroll::-webkit-scrollbar-thumb {
+    background: rgb(255, 255, 255, 0.2);
+    border-radius: 10px;
+}
+
+.voting_scroll::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/*** 반응형 ***/
+/* 타블렛 (768px~) */
+@media (min-width: 768px) {
+  .voting {
+    height: 700px;
+    width: 520px;
+    /* max-height: 75vh; */
+  } 
+
+  .voting h2 {
+    margin-top: auto;
+    text-align: left;
+    font-size: var(--font-size-lg);
+  }
+
+  .voting .btn--modalClose {
+    top: 26px;
+    left: auto;
+    right: 20px;
+    background-image: url(../assets/images/btn_delete_24px.png);
+  }
+
+  .voting_scroll {
+    max-height: 60vh;
+    margin: 19px 0;
+  }
+}
+
+/* 테스크탑 (1200px~) */
+@media (min-width: 1200px) {}
