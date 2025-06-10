@@ -38,7 +38,6 @@ function List() {
         <MyCredit />
         <WaitingDonation idols={idols} />
         <MonthlyChart idols={idols} />
-        <ChangeCursor />
       </Container>
     </div>
   );

@@ -22,6 +22,7 @@ import PrivacyPolicy from './policies/PrivacyPolicy.jsx';
 import ServicePolicy from './policies/ServicePolicy.jsx';
 import YouthProtectionPolicy from './policies/YouthProtectionPolicy.jsx';
 import CookiePolicy from './policies/CookiePolicy.jsx';
+import ChangeCursor from './components/ChangeCursor.jsx';
 
 function App() {
   return (
@@ -42,7 +43,7 @@ function App() {
           <Route path="account" element={<Account />} />
           <Route path="notifications" element={<Notifications />} />
           <Route path="theme" element={<Theme />} />
-          <Route path="cursor" element={<Cursor />} />
+          <Route path="cursor" element={<ChangeCursor />} />
 
           {/* footer 연결 페이지 */}
           <Route path="customer_center" element={<CustomerCenter />} />

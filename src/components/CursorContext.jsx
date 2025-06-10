@@ -16,6 +16,7 @@ export function CursorProvider({ children }) {
   return <CursorContext.Provider value={{ cursor, setCursor }}>{children}</CursorContext.Provider>;
 }
 
+//커스텀훅 호출시 내부적으로 CursorContext에 저장된 값을 반환
 export function useCursor() {
   return useContext(CursorContext);
 }

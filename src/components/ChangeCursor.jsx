@@ -1,6 +1,8 @@
 import bong1 from '../assets/cursors/응원봉1.png';
 import bong2 from '../assets/cursors/응원봉2.png';
-import bong3 from '../assets/cursors/응원봉4.png';
+import bong3 from '../assets/cursors/응원봉3.png';
+import bong4 from '../assets/cursors/응원봉4.png';
+import bong5 from '../assets/cursors/응원봉5.png';
 import { useCursor } from './CursorContext';
 
 export default function ChangeCursor() {
@@ -8,19 +10,12 @@ export default function ChangeCursor() {
     { name: '응원봉1', url: bong1 },
     { name: '응원봉2', url: bong2 },
     { name: '응원봉3', url: bong3 },
+    { name: '응원봉4', url: bong4 },
+    { name: '응원봉4', url: bong5 },
   ];
 
   // 선택된 커서 상태
   const { cursor, setCursor } = useCursor();
-
-  // // 커서 변경 처리
-  // useEffect(() => {
-  //   if (selectedCursor) {
-  //     document.body.style.cursor = `url(${selectedCursor.url}), auto`;
-  //   } else {
-  //     document.body.style.cursor = 'auto';
-  //   }
-  // }, [selectedCursor]);
 
   return (
     <div style={{ padding: '20px' }}>
@@ -29,7 +24,7 @@ export default function ChangeCursor() {
         <div
           onClick={() => setCursor(null)}
           style={{
-            border: cursor === null ? '2px solid blue' : '2px solid transparent',
+            border: cursor === null ? '2px solid var(--color-orange-F96D69)' : '2px solid transparent',
             padding: '10px',
             cursor: 'pointer',
             textAlign: 'center',
@@ -43,7 +38,7 @@ export default function ChangeCursor() {
             key={index}
             onClick={() => setCursor(option)}
             style={{
-              border: option.url === cursor?.url ? '2px solid blue' : '2px solid transparent',
+              border: option.url === cursor?.url ? '2px solid var(--color-orange-F96D69)' : '2px solid transparent',
               padding: '10px',
               cursor: 'pointer',
               textAlign: 'center',
