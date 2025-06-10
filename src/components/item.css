@@ -59,30 +59,3 @@
   grid-template-columns: repeat(2, 1fr);
   gap: 20px;
 }
-
-/*모달창 테스트 css*/
-.modalOverlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: 999; /* 적절히 높여야 보일 수 있음! */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.modalContent {
-  width: 300px;
-  height: 150px;
-  background-color: var(--color-orange-F96D69);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 10px; /* 요소 간 간격 */
-}
-
-.voting {
-  height: 800px;
-}
