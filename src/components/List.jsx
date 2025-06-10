@@ -1,7 +1,6 @@
 import WaitingDonation from './WaitingDonation';
 import MonthlyChart from './MonthlyChart';
 import MyCredit from './MyCredit';
-import ChangeCursor from '../settings/ChangeCursor';
 import { getAllIdols } from '../api/idol';
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
