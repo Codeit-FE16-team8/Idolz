@@ -1,6 +1,6 @@
 // 마이 페이지 컴포넌트
 import React, { useEffect, useState } from 'react';
-import { getAllIdols } from '../api/api';
+import { getAllIdols } from '../api/idol';
 import BtnPagination from '../components/Btn_Pagination';
 import IdolProfile from '../components/IdolProfile';
 import '../styles/common.css';

@@ -15,7 +15,7 @@ function LandingPage() {
   const navigate = useNavigate();
 
   const handleLogoClick = () => {
-    navigate('/');
+    navigate('/list');
   };
 
   const handleStartClick = () => {

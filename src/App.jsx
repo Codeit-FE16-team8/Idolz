@@ -2,7 +2,6 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import List from './components/List';
 import Header from './components/Header.jsx';
 import Footer from './components/Footer.jsx';
-import Common from './Common.jsx';
 import LandingPage from './pages/LandingPage.jsx';
 import MyPage from './pages/MyPage.jsx';
 
@@ -13,7 +12,7 @@ import Setting from './settings/Setting.jsx';
 import Account from './settings/Account.jsx';
 import Notifications from './settings/Notifications.jsx';
 import Theme from './settings/Theme.jsx';
-import Cursor from './settings/Cursor.jsx';
+import ChangeCursor from './settings/ChangeCursor.jsx';
 
 import CustomerCenter from './policies/CustomerCenter.jsx';
 import UsePolicy from './policies/UsePolicy.jsx';
@@ -22,18 +21,22 @@ import PrivacyPolicy from './policies/PrivacyPolicy.jsx';
 import ServicePolicy from './policies/ServicePolicy.jsx';
 import YouthProtectionPolicy from './policies/YouthProtectionPolicy.jsx';
 import CookiePolicy from './policies/CookiePolicy.jsx';
-import ChangeCursor from './components/ChangeCursor.jsx';
+import { useLocation } from 'react-router-dom';
 
-function App() {
+function AppLayout() {
+  const location = useLocation();
+
+  // LandingPage에서는 Header/Footer 안 보이게
+  const isLanding = location.pathname === '/';
+
   return (
-    <BrowserRouter>
-      <Header />
+    <>
+      {!isLanding && <Header />}
       <div className="container">
         <Routes>
-          <Route path="landing" element={<LandingPage />} />
-          <Route index element={<List />} />
-          <Route path="common" element={<Common />} />
-          <Route path="my" element={<MyPage />} />
+          <Route index element={<LandingPage />} />
+          <Route path="list" element={<List />} />
+          <Route path="mypage" element={<MyPage />} />
 
           <Route path="login" element={<Login />} />
           <Route path="logUp" element={<LogUp />} />
@@ -55,7 +58,15 @@ function App() {
           <Route path="cookie" element={<CookiePolicy />} />
         </Routes>
       </div>
-      <Footer />
+      {!isLanding && <Footer />}
+    </>
+  );
+}
+
+function App() {
+  return (
+    <BrowserRouter>
+      <AppLayout />
     </BrowserRouter>
   );
 }

@@ -3,7 +3,7 @@ import bong2 from '../assets/cursors/응원봉2.png';
 import bong3 from '../assets/cursors/응원봉3.png';
 import bong4 from '../assets/cursors/응원봉4.png';
 import bong5 from '../assets/cursors/응원봉5.png';
-import { useCursor } from './CursorContext';
+import { useCursor } from '../components/CursorContext';
 
 export default function ChangeCursor() {
   const cursorOptions = [
