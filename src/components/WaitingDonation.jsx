@@ -38,8 +38,7 @@ function WaitingDonation({ idols }) {
   const idolList = idols;
 
   const scrollRef = useRef(null);
-  const boxWidth = 298; //현재 박스가 150 마진 10
-
+  const boxWidth = 298;
   const [scrollStart, setScrollStart] = useState(true);
   const [scrollEnd, setScrollEnd] = useState(false);
 
