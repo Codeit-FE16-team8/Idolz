@@ -1,8 +1,7 @@
-import { useEffect, useState } from 'react';
-
 import bong1 from '../assets/cursors/응원봉1.png';
 import bong2 from '../assets/cursors/응원봉2.png';
 import bong3 from '../assets/cursors/응원봉4.png';
+import { useCursor } from './CursorContext';
 
 export default function ChangeCursor() {
   const cursorOptions = [
@@ -12,25 +11,25 @@ export default function ChangeCursor() {
   ];
 
   // 선택된 커서 상태
-  const [selectedCursor, setSelectedCursor] = useState(null);
+  const { cursor, setCursor } = useCursor();
 
-  // 커서 변경 처리
-  useEffect(() => {
-    if (selectedCursor) {
-      document.body.style.cursor = `url(${selectedCursor.url}), auto`;
-    } else {
-      document.body.style.cursor = 'auto';
-    }
-  }, [selectedCursor]);
+  // // 커서 변경 처리
+  // useEffect(() => {
+  //   if (selectedCursor) {
+  //     document.body.style.cursor = `url(${selectedCursor.url}), auto`;
+  //   } else {
+  //     document.body.style.cursor = 'auto';
+  //   }
+  // }, [selectedCursor]);
 
   return (
     <div style={{ padding: '20px' }}>
       <h2>마우스 포인터 선택</h2>
       <div style={{ display: 'flex', gap: '30px', marginTop: '10px' }}>
         <div
-          onClick={() => setSelectedCursor(null)}
+          onClick={() => setCursor(null)}
           style={{
-            border: selectedCursor === null ? '2px solid blue' : '2px solid transparent',
+            border: cursor === null ? '2px solid blue' : '2px solid transparent',
             padding: '10px',
             cursor: 'pointer',
             textAlign: 'center',
@@ -39,19 +38,19 @@ export default function ChangeCursor() {
           <div style={{ width: 48, height: 64, lineHeight: '64px' }}>기본</div>
           <div style={{ marginTop: '5px', fontSize: '14px' }}>기본 커서</div>
         </div>
-        {cursorOptions.map((cursor, index) => (
+        {cursorOptions.map((option, index) => (
           <div
             key={index}
-            onClick={() => setSelectedCursor(cursor)}
+            onClick={() => setCursor(option)}
             style={{
-              border: cursor.url === selectedCursor?.url ? '2px solid blue' : '2px solid transparent',
+              border: option.url === cursor?.url ? '2px solid blue' : '2px solid transparent',
               padding: '10px',
               cursor: 'pointer',
               textAlign: 'center',
             }}
           >
-            <img src={cursor.url} alt={cursor.name} width={48} height={64} />
-            <div style={{ marginTop: '5px', fontSize: '14px' }}>{cursor.name}</div>
+            <img src={option.url} alt={option.name} width={48} height={64} />
+            <div style={{ marginTop: '5px', fontSize: '14px' }}>{option.name}</div>
           </div>
         ))}
       </div>
