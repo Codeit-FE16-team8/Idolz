@@ -21,6 +21,7 @@ function LandingPage() {
   const handleStartClick = () => {
     // 필요 시 localStorage 초기화
     localStorage.removeItem('interestedIdols');
+    localStorage.removeItem('myCredit');
     navigate('/list');
   };
 
