@@ -75,6 +75,14 @@ function MyPage() {
     loadIdols();
   }, []);
 
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768); //모바일 여부 상태 판별별: 모바일 스크롤용
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   return (
     <div>
       <h2
@@ -132,8 +140,9 @@ function MyPage() {
         />
 
         {/* 아이돌 프로필 카드들 */}
+
         <div className="myPage__idolList">
-          {currentItems.map((idol) => (
+          {(isMobile ? idols : currentItems).map((idol) => (
             <IdolProfile
               key={idol.id}
               profileImg={idol.profilePicture}

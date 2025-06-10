@@ -67,3 +67,9 @@
     grid-template-columns: repeat(8, 1fr); /* 데스크탑 */
   }
 }
+
+@media (max-width: 767px) {
+  .btn-pagination {
+    display: none; /* 모바일에서는 페이지네이션 버튼 숨김 */
+  }
+}
