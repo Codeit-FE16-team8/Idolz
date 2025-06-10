@@ -10,7 +10,7 @@ function MyCreditCharge({ onCharge }) {
 
   const handleCharge = () => {
     const amount = parseInt(selected, 10);
-    onCharge(amount); // 상위 컴포넌트에 충전 금액 전달
+    onCharge(amount);
     alert(`${amount.toLocaleString()} 크레딧을 충전했습니다.`);
     handleClose();
   };
@@ -22,12 +22,12 @@ function MyCreditCharge({ onCharge }) {
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
-        border: selected === value ? '1px solid #f96d69' : '1px solid white',
+        border: selected === value ? '1px solid #f96d69' : '1px solid #444',
         borderRadius: '8px',
         padding: '16px 20px',
         cursor: 'pointer',
         width: '295px',
-        backgroundColor: 'white',
+        backgroundColor: selected === value ? '#000000' : '#222222',
       }}
     >
       <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
@@ -36,7 +36,7 @@ function MyCreditCharge({ onCharge }) {
           style={{
             fontSize: '20px',
             fontWeight: '700',
-            color: selected === value ? 'black' : '#888',
+            color: '#ffffff',
             margin: 0,
           }}
         >
@@ -79,7 +79,7 @@ function MyCreditCharge({ onCharge }) {
             left: 0,
             right: 0,
             bottom: 0,
-            backgroundColor: 'rgba(0,0,0,0.5)',
+            backgroundColor: 'rgba(0,0,0,0.85)',
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
@@ -89,15 +89,23 @@ function MyCreditCharge({ onCharge }) {
           <div
             onClick={(e) => e.stopPropagation()}
             style={{
-              backgroundColor: 'white',
+              backgroundColor: '#1a1a1a',
               padding: '24px',
               borderRadius: '8px',
               minWidth: '320px',
+              color: 'white',
             }}
           >
-            <h2 style={{ marginTop: 0 }}>크레딧 충전</h2>
+            <h2 style={{ marginTop: 0, color: 'white' }}>크레딧 충전</h2>
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginBottom: '20px' }}>
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '10px',
+                marginBottom: '20px',
+              }}
+            >
               <CreditOption value="100" />
               <CreditOption value="500" />
               <CreditOption value="1000" />
