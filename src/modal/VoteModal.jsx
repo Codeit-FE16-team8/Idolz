@@ -38,7 +38,7 @@ function VoteModal({ isOpen, onClose, idolList, selectGender, creditAmount, onVo
         alert('크레딧 처리 중 오류가 발생했습니다.');
       }
     } else {
-      alert('투표 실패 - 크레딧은 차감되지 않았습니다.');
+      alert('투표 실패 - 다시 시도해주세요');
     }
   };
 

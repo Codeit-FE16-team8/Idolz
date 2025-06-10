@@ -16,12 +16,12 @@ function Setting() {
 
   const handleLogout = () => {
     alert('로그아웃 되었습니다.');
-    navigate('/login');
+    navigate('/list');
   };
 
   const handleDeleteAccount = () => {
     alert('계정이 삭제되었습니다.');
-    navigate('/logup');
+    navigate('/');
   };
 
   return (
