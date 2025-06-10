@@ -49,7 +49,7 @@ function MyCredit() {
         <MyCreditTitle>내 크레딧</MyCreditTitle>
         <CreditMoney>
           <img src={credit} alt="크래딧 아이콘" />
-          360000
+          300000
         </CreditMoney>
       </LeftSide>
       <RightSide>
