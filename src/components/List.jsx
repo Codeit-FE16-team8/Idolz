@@ -1,8 +1,7 @@
 import WaitingDonation from './WaitingDonation';
 import MonthlyChart from './MonthlyChart';
 import MyCredit from './MyCredit';
-import ChangeCursor from './ChangeCursor';
-import { getAllIdols } from '../api/api';
+import { getAllIdols } from '../api/idol';
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
@@ -30,7 +29,7 @@ function List() {
     IdolsData();
   }, []);
 
-  if (loading) return <p>로딩딩중</p>;
+  if (loading) return <p>로딩 중</p>;
 
   return (
     <div>
@@ -38,7 +37,6 @@ function List() {
         <MyCredit />
         <WaitingDonation idols={idols} />
         <MonthlyChart idols={idols} />
-        <ChangeCursor />
       </Container>
     </div>
   );

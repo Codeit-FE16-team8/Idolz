@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import logoImg from '../assets/images/logo.png';
 import ProfileImageUploader from './ProfileImageUploader';
 import '../styles/header.css';
+import { Link } from 'react-router-dom';
 
 function Header() {
   //프로필 메뉴의 열림 상태 저장
@@ -30,10 +31,12 @@ function Header() {
   return (
     <header className="header">
       <h1 className="logo">
-        <img src={logoImg} alt="" />
+        <Link to="/list">
+          <img src={logoImg} alt="" />
+        </Link>
       </h1>
       <ProfileImageUploader>
-        {({ profileImg, onClickFileInput }) => (
+        {({ profileImg }) => (
           <div
             className="profile"
             ref={profileRef}
@@ -44,9 +47,12 @@ function Header() {
             <img className="profile__img" src={profileImg} alt="프로필" />
             {isOpen && (
               <ul className="profile__nav">
-                <li>마이페이지</li>
-                <li onClick={onClickFileInput}>프로필 이미지 변경</li>
-                <li>로그아웃</li>
+                <li>
+                  <Link to="/mypage">마이페이지</Link>
+                </li>
+                <li>
+                  <Link to="/settings">설정페이지</Link>
+                </li>
               </ul>
             )}
           </div>

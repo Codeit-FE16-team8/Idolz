@@ -3,7 +3,7 @@ import BoxBox from './BoxBox';
 import leftImg from '../assets/images/btn_pagination_arrow_left.svg';
 import rightImg from '../assets/images/btn_pagination_arrow_right.svg';
 import Item from './Item';
-import { contributeDonation, getAllDonations, createDonation } from '../api/api';
+import { contributeDonation, getAllDonations, createDonation } from '../api/donation';
 import './item.css';
 
 import styled from 'styled-components';
