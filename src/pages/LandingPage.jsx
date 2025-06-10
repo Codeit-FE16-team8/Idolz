@@ -10,6 +10,7 @@ import bgImage01 from '../assets/images/landing_bg01.png';
 import bgImage02 from '../assets/images/landing_bg02.png';
 import bgImage03 from '../assets/images/landing_bg03.png';
 import bgImage04 from '../assets/images/landing_bg04.png';
+<<<<<<< HEAD
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { useEffect } from 'react';
@@ -30,9 +31,13 @@ function AnimatedSection({ children }) {
     </motion.div>
   );
 }
+=======
+import { useCursor } from '../components/CursorContext';
+>>>>>>> main
 
 function LandingPage() {
   const navigate = useNavigate();
+  const { setCursor } = useCursor();
 
   const handleLogoClick = () => {
     navigate('/list');
@@ -41,6 +46,11 @@ function LandingPage() {
   const handleStartClick = () => {
     // 필요 시 localStorage 초기화
     localStorage.removeItem('interestedIdols');
+    localStorage.removeItem('myCredit');
+    localStorage.removeItem('cursor');
+
+    setCursor(null);
+
     navigate('/list');
   };
 
