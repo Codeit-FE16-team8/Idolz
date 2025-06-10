@@ -18,10 +18,30 @@ function MyPage() {
 
   // 페이지네이션 상태 관리
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 16;
+  const [itemsPerPage, setItemsPerPage] = useState(16);
+
+  useEffect(() => {
+    const updateItemsPerPage = () => {
+      const width = window.innerWidth;
+
+      if (width < 768) {
+        setItemsPerPage(6); // 모바일: 3개 x 2줄
+      } else if (width < 1200) {
+        setItemsPerPage(8); // 태블릿: 4개 x 2줄
+      } else {
+        setItemsPerPage(16); // 데스크탑: 8개 x 2줄
+      }
+    };
+
+    updateItemsPerPage(); // 초기 실행
+    window.addEventListener('resize', updateItemsPerPage);
+    return () => window.removeEventListener('resize', updateItemsPerPage);
+  }, []);
+
   const totalPages = Math.ceil(idols.length / itemsPerPage);
   const startIdx = (currentPage - 1) * itemsPerPage;
   const currentItems = idols.slice(startIdx, startIdx + itemsPerPage);
+
   // 관심 아이돌 체크 관리
   const toggleSelectIdol = (id) => {
     setSelectedIds((prev) => (prev.includes(id) ? prev.filter((v) => v !== id) : [...prev, id]));

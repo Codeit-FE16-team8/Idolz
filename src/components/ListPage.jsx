@@ -1,4 +1,6 @@
-import { getAllIdols, getAllDonations, contributeDonation, createDonation, createVote } from '../api/api';
+import { createVote } from '../api/vote';
+import { getAllIdols } from '../api/idol';
+import { getAllDonations, contributeDonation, createDonation } from '../api/donation';
 import Item from './Item';
 import { useEffect, useState } from 'react';
 import './item.css';

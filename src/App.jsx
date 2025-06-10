@@ -8,6 +8,8 @@ import MyPage from './pages/MyPage.jsx';
 import Login from './pages/LoginPage.jsx';
 import LogUp from './pages/LogUpPage.jsx';
 
+import ListPage from './components/ListPage.jsx';
+
 import Setting from './settings/Setting.jsx';
 import Account from './settings/Account.jsx';
 import Notifications from './settings/Notifications.jsx';
@@ -36,6 +38,7 @@ function AppLayout() {
         <Routes>
           <Route index element={<LandingPage />} />
           <Route path="list" element={<List />} />
+          <Route path="listTest" element={<ListPage />} />
           <Route path="mypage" element={<MyPage />} />
 
           <Route path="login" element={<Login />} />
