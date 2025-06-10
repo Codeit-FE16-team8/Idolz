@@ -30,7 +30,7 @@ function List() {
     IdolsData();
   }, []);
 
-  if (loading) return <p>로딩중</p>;
+  if (loading) return <p>로딩 중</p>;
 
   return (
     <div>
