@@ -25,6 +25,7 @@ import YouthProtectionPolicy from './policies/YouthProtectionPolicy.jsx';
 import CookiePolicy from './policies/CookiePolicy.jsx';
 import { useLocation } from 'react-router-dom';
 
+import Common from './Common.jsx';
 function AppLayout() {
   const location = useLocation();
 
@@ -36,6 +37,7 @@ function AppLayout() {
       {!isLanding && <Header />}
       <div className="container">
         <Routes>
+          <Route path="common" element={<Common />} />
           <Route index element={<LandingPage />} />
           <Route path="list" element={<List />} />
           <Route path="listTest" element={<ListPage />} />

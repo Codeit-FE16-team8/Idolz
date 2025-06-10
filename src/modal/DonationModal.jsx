@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { contributeDonation, getAllDonations } from '../api/donation';
 import Modal from './Modal';
+import './testmodal.css';
 
 function DonationModal({ isOpen, onClose, selectedDonation, onDonationSuccess }) {
   const [donationAmount, setDonationAmount] = useState('');
@@ -32,19 +33,41 @@ function DonationModal({ isOpen, onClose, selectedDonation, onDonationSuccess })
   };
 
   return (
-    <Modal isOpen={isOpen} onClose={handleClose}>
-      <h2>{selectedDonation?.title} 후원하기</h2>
-      <input
-        type="number"
-        value={donationAmount}
-        onChange={(e) => setDonationAmount(e.target.value)}
-        placeholder="후원 금액 입력"
-      />
-      <button className="btn" onClick={handleDonate}>
-        기여하기
-      </button>
-      <button className="btn" onClick={handleClose}>
-        취소
+    <Modal isOpen={isOpen} onClose={handleClose} className="donation">
+      <div className="modal__donation-header">
+        <h3>후원하기</h3>
+        <button className="btn--donationModalClose" onClick={handleClose}></button>
+      </div>
+
+      <div className="donation_item">
+        {/* 프로필 이미지 */}
+        <div className="donation__profile">
+          <img
+            src={selectedDonation?.idol?.profilePicture}
+            alt={selectedDonation?.idol?.name}
+            className="donation__profile-img"
+          />
+        </div>
+        {/* 후원 설명 */}
+        <div className="donation__description">
+          <p className="donation__subtitle">{selectedDonation?.subtitle}</p>
+          <p className="donation__title">{selectedDonation?.title}</p>
+        </div>
+      </div>
+
+      {/* 입력 필드 */}
+      <div className="donation__input-group">
+        <input
+          type="number"
+          value={donationAmount}
+          onChange={(e) => setDonationAmount(e.target.value)}
+          placeholder="크레딧 입력"
+          className="input__credit"
+        />
+      </div>
+      {/* 버튼 */}
+      <button className="btn btn--color btn--medium" onClick={handleDonate}>
+        후원하기
       </button>
     </Modal>
   );

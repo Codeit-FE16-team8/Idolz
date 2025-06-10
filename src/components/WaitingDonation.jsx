@@ -139,12 +139,7 @@ function WaitingDonation({ idols }) {
               }}
             >
               {sortedDonations.map((item) => (
-                <Item
-                  item={item}
-                  key={item.id}
-                  // 후원하기 모달창 임시 구현
-                  onDonateClick={() => handleDonateClick(item)}
-                />
+                <Item item={item} key={item.id} onDonateClick={() => handleDonateClick(item)} />
               ))}
             </div>
           </div>
@@ -156,14 +151,14 @@ function WaitingDonation({ idols }) {
         </div>
       </div>
 
-      {/* 후원 모달창 임시 구현*/}
+      {/* 후원 모달창 */}
       <DonationModal
         isOpen={showModal}
         onClose={() => setShowModal(false)}
         selectedDonation={selectedDonation}
         onDonationSuccess={handleDonationSuccess}
       />
-      {/* 새로운 조공 만들기 모달 */}
+      {/* 새로운 조공 만들기 모달창 */}
       <NewDonationModal
         isOpen={showCreateModal}
         onClose={() => setShowCreateModal(false)}

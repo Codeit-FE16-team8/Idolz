@@ -59,42 +59,50 @@ function NewDonationModal({ isOpen, onClose, idolList, onDonationCreated }) {
   };
 
   return (
-    <Modal isOpen={isOpen} onClose={handleClose}>
-      <h2>새로운 조공 만들기</h2>
+    <Modal isOpen={isOpen} onClose={handleClose} className="new-donation">
+      <div className="modal__donation-header">
+        <h3>새로운 조공 만들기</h3>
+        <button className="btn--donationModalClose" onClick={handleClose}></button>
+      </div>
       <input
         type="text"
         placeholder="제목"
         value={newDonation.title}
         onChange={(e) => handleInputChange('title', e.target.value)}
+        className="input__donation"
       />
       <input
         type="text"
         placeholder="부제"
         value={newDonation.subtitle}
         onChange={(e) => handleInputChange('subtitle', e.target.value)}
+        className="input__donation"
       />
       <input
         type="datetime-local"
         placeholder="마감일"
         value={newDonation.deadline}
         onChange={(e) => handleInputChange('deadline', e.target.value)}
+        className="input__donation"
       />
       <input
         type="number"
         placeholder="목표 금액"
         value={newDonation.targetDonation}
         onChange={(e) => handleInputChange('targetDonation', e.target.value)}
+        className="input__donation"
       />
       <input
         type="text"
         placeholder="아이돌 이름"
         value={newDonation.idolName}
         onChange={(e) => handleInputChange('idolName', e.target.value)}
+        className="input__donation"
       />
-      <button className="btn" onClick={handleCreateDonation}>
+      <button className="btn btn--color btn--medium" onClick={handleCreateDonation}>
         등록
       </button>
-      <button className="btn" onClick={handleClose}>
+      <button className="btn btn--color btn--medium" onClick={handleClose}>
         취소
       </button>
     </Modal>
