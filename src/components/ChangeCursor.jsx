@@ -12,23 +12,39 @@ export default function ChangeCursor() {
   ];
 
   // 선택된 커서 상태
-  const [selectedCursor, setSelectedCursor] = useState(cursorOptions[0]);
+  const [selectedCursor, setSelectedCursor] = useState(null);
 
   // 커서 변경 처리
   useEffect(() => {
-    document.body.style.cursor = `url(${selectedCursor.url}), auto`;
+    if (selectedCursor) {
+      document.body.style.cursor = `url(${selectedCursor.url}), auto`;
+    } else {
+      document.body.style.cursor = 'auto';
+    }
   }, [selectedCursor]);
 
   return (
     <div style={{ padding: '20px' }}>
       <h2>마우스 포인터 선택</h2>
       <div style={{ display: 'flex', gap: '30px', marginTop: '10px' }}>
+        <div
+          onClick={() => setSelectedCursor(null)}
+          style={{
+            border: selectedCursor === null ? '2px solid blue' : '2px solid transparent',
+            padding: '10px',
+            cursor: 'pointer',
+            textAlign: 'center',
+          }}
+        >
+          <div style={{ width: 48, height: 64, lineHeight: '64px' }}>기본</div>
+          <div style={{ marginTop: '5px', fontSize: '14px' }}>기본 커서</div>
+        </div>
         {cursorOptions.map((cursor, index) => (
           <div
             key={index}
             onClick={() => setSelectedCursor(cursor)}
             style={{
-              border: cursor.url === selectedCursor.url ? '2px solid blue' : '2px solid transparent',
+              border: cursor.url === selectedCursor?.url ? '2px solid blue' : '2px solid transparent',
               padding: '10px',
               cursor: 'pointer',
               textAlign: 'center',
