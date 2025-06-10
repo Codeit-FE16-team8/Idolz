@@ -2,7 +2,6 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import List from './components/List';
 import Header from './components/Header.jsx';
 import Footer from './components/Footer.jsx';
-import Common from './Common.jsx';
 import LandingPage from './pages/LandingPage.jsx';
 import MyPage from './pages/MyPage.jsx';
 
@@ -13,7 +12,7 @@ import Setting from './settings/Setting.jsx';
 import Account from './settings/Account.jsx';
 import Notifications from './settings/Notifications.jsx';
 import Theme from './settings/Theme.jsx';
-import Cursor from './settings/Cursor.jsx';
+import ChangeCursor from './settings/ChangeCursor.jsx';
 
 import CustomerCenter from './policies/CustomerCenter.jsx';
 import UsePolicy from './policies/UsePolicy.jsx';
@@ -47,7 +46,7 @@ function AppLayout() {
           <Route path="account" element={<Account />} />
           <Route path="notifications" element={<Notifications />} />
           <Route path="theme" element={<Theme />} />
-          <Route path="cursor" element={<Cursor />} />
+          <Route path="cursor" element={<ChangeCursor />} />
 
           {/* footer 연결 페이지 */}
           <Route path="customer_center" element={<CustomerCenter />} />

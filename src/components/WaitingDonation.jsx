@@ -16,8 +16,11 @@ const WaitingDonationTitle = styled.h1`
 `;
 
 const ScrollButton = styled.button`
-  width: 100px;
-  height: 70px;
+  width: 40px;
+  height: 50px;
+  position: absolute;
+
+  ${(props) => (props.left ? 'left:-75px;' : 'right:-75px;')}
 
   gap: 24px;
 
@@ -150,9 +153,9 @@ function WaitingDonation({ idols }) {
             새로운 조공 만들기
           </button>
         </div>
-        <div style={{ display: 'flex', alignItems: 'center' }}>
+        <div style={{ display: 'flex', alignItems: 'center', position: 'relative' }}>
           {!scrollStart && (
-            <ScrollButton onClick={() => scroll('left')}>
+            <ScrollButton left onClick={() => scroll('left')}>
               <img src={leftImg} alt="leftImg" />
             </ScrollButton>
           )}
