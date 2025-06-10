@@ -22,17 +22,22 @@ import PrivacyPolicy from './policies/PrivacyPolicy.jsx';
 import ServicePolicy from './policies/ServicePolicy.jsx';
 import YouthProtectionPolicy from './policies/YouthProtectionPolicy.jsx';
 import CookiePolicy from './policies/CookiePolicy.jsx';
+import { useLocation } from 'react-router-dom';
 
-function App() {
+function AppLayout() {
+  const location = useLocation();
+
+  // LandingPage에서는 Header/Footer 안 보이게
+  const isLanding = location.pathname === '/';
+
   return (
-    <BrowserRouter>
-      <Header />
+    <>
+      {!isLanding && <Header />}
       <div className="container">
         <Routes>
-          <Route path="landing" element={<LandingPage />} />
-          <Route index element={<List />} />
-          <Route path="common" element={<Common />} />
-          <Route path="my" element={<MyPage />} />
+          <Route index element={<LandingPage />} />
+          <Route path="list" element={<List />} />
+          <Route path="mypage" element={<MyPage />} />
 
           <Route path="login" element={<Login />} />
           <Route path="logUp" element={<LogUp />} />
@@ -54,7 +59,15 @@ function App() {
           <Route path="cookie" element={<CookiePolicy />} />
         </Routes>
       </div>
-      <Footer />
+      {!isLanding && <Footer />}
+    </>
+  );
+}
+
+function App() {
+  return (
+    <BrowserRouter>
+      <AppLayout />
     </BrowserRouter>
   );
 }
