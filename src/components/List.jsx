@@ -60,6 +60,23 @@ function List() {
     return false; // 크레딧 부족
   };
 
+  // 투표 함수 (1000 크레딧 차감)
+  const handleVote = () => {
+    const voteAmount = 1000;
+    if (creditAmount >= voteAmount) {
+      const newAmount = creditAmount - voteAmount;
+      setCreditAmount(newAmount);
+      localStorage.setItem('myCredit', newAmount.toString());
+      return true; // 투표 성공
+    }
+    return false; // 크레딧 부족
+  };
+
+  // 아이돌 데이터 업데이트 함수
+  const handleIdolsUpdate = (updatedIdols) => {
+    setIdols(updatedIdols);
+  };
+
   if (loading) return <p>로딩 중</p>;
 
   return (
@@ -67,7 +84,7 @@ function List() {
       <Container>
         <MyCredit creditAmount={creditAmount} onCharge={handleChargeCredit} />
         <WaitingDonation idols={idols} creditAmount={creditAmount} onDonation={handleDonation} />
-        <MonthlyChart idols={idols} />
+        <MonthlyChart idols={idols} creditAmount={creditAmount} onVote={handleVote} onIdolsUpdate={handleIdolsUpdate} />
       </Container>
     </div>
   );

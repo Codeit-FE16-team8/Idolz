@@ -3,7 +3,7 @@ import Button from './Button';
 import icon from '../assets/images/Chart.png';
 import VoteModal from '../modal/VoteModal';
 
-function MonthlyChartVote({ idolList, selectGender, onVoteSuccess }) {
+function MonthlyChartVote({ idolList, selectGender, creditAmount, onVote, onVoteSuccess }) {
   // 투표 모달 상태
   const [showVoteModal, setShowVoteModal] = useState(false);
 
@@ -34,6 +34,8 @@ function MonthlyChartVote({ idolList, selectGender, onVoteSuccess }) {
         onClose={() => setShowVoteModal(false)}
         idolList={idolList}
         selectGender={selectGender}
+        creditAmount={creditAmount}
+        onVote={onVote}
         onVoteSuccess={handleVoteSuccess}
       />
     </>
