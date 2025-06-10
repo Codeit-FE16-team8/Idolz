@@ -36,7 +36,7 @@ const ScrollButton = styled.button`
   }
 `;
 
-function WaitingDonation({ idols }) {
+function WaitingDonation({ idols, creditAmount, onDonation }) {
   const idolList = idols;
 
   const scrollRef = useRef(null);
@@ -157,6 +157,8 @@ function WaitingDonation({ idols }) {
         onClose={() => setShowModal(false)}
         selectedDonation={selectedDonation}
         onDonationSuccess={handleDonationSuccess}
+        creditAmount={creditAmount}
+        onDonation={onDonation}
       />
       {/* 새로운 조공 만들기 모달창 */}
       <NewDonationModal

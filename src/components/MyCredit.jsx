@@ -1,4 +1,3 @@
-import React, { useState, useEffect } from 'react';
 import MyCreditCharge from './MyCreditCharge';
 import styled from 'styled-components';
 import credit from '../assets/images/credit.png';
@@ -44,27 +43,7 @@ const MyCreditTitle = styled.div`
   margin-bottom: 8px;
 `;
 
-function MyCredit() {
-  const [creditAmount, setCreditAmount] = useState(0);
-
-  useEffect(() => {
-    // 로컬스토리지에서 크레딧 읽어오기, 없으면 0으로 초기화
-    const savedCredit = localStorage.getItem('myCredit');
-    if (savedCredit) {
-      setCreditAmount(parseInt(savedCredit, 10));
-    } else {
-      localStorage.setItem('myCredit', '0');
-      setCreditAmount(0);
-    }
-  }, []);
-
-  // 충전 함수 (CreditChargeModal에서 호출할 예정)
-  const handleCharge = (chargeAmount) => {
-    const newAmount = creditAmount + chargeAmount;
-    setCreditAmount(newAmount);
-    localStorage.setItem('myCredit', newAmount.toString());
-  };
-
+function MyCredit({ creditAmount, onCharge }) {
   return (
     <Container>
       <LeftSide>
@@ -75,7 +54,7 @@ function MyCredit() {
         </CreditMoney>
       </LeftSide>
       <RightSide>
-        <MyCreditCharge onCharge={handleCharge} />
+        <MyCreditCharge onCharge={onCharge} />
       </RightSide>
     </Container>
   );

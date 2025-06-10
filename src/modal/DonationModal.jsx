@@ -3,7 +3,7 @@ import { contributeDonation, getAllDonations } from '../api/donation';
 import Modal from './Modal';
 import './testmodal.css';
 
-function DonationModal({ isOpen, onClose, selectedDonation, onDonationSuccess }) {
+function DonationModal({ isOpen, onClose, selectedDonation, onDonationSuccess, creditAmount, onDonation }) {
   const [donationAmount, setDonationAmount] = useState('');
 
   const handleDonate = async () => {
@@ -12,16 +12,30 @@ function DonationModal({ isOpen, onClose, selectedDonation, onDonationSuccess })
       return;
     }
 
+    const amount = parseInt(donationAmount, 10);
+
+    // 크레딧 부족 체크
+    if (amount > creditAmount) {
+      alert(`크레딧이 부족합니다. 현재 크레딧: ${creditAmount.toLocaleString()}`);
+      return;
+    }
+
     const result = await contributeDonation(selectedDonation.id, parseInt(donationAmount, 10));
 
     if (result) {
-      alert('후원 완료');
-      setDonationAmount('');
-      onClose();
+      const success = onDonation(amount);
 
-      // 후원 데이터 새로고침
-      const updatedDonations = await getAllDonations();
-      onDonationSuccess(updatedDonations);
+      if (success) {
+        alert(`${amount.toLocaleString()} 크레딧으로 후원 완료!`);
+        setDonationAmount('');
+        onClose();
+
+        // 후원 데이터 새로고침
+        const updatedDonations = await getAllDonations();
+        onDonationSuccess(updatedDonations);
+      } else {
+        alert('크레딧 차감 실패');
+      }
     } else {
       alert('후원 실패');
     }
