@@ -5,21 +5,21 @@ import ProfileImageUploader from '../components/ProfileImageUploader';
 import gear from '../assets/images/gear.png';
 
 function Setting() {
-  const [nickname, setNickname] = useState('홍길동');
-  const [statusMessage, setStatusMessage] = useState('상태 메세지를 입력하세요');
+  const [nickname, setNickname] = useState(() => {
+    return localStorage.getItem('nickname') || '홍길동';
+  });
+  const [statusMessage, setStatusMessage] = useState(() => {
+    return localStorage.getItem('statusMessage') || '상태 메세지를 입력하세요';
+  });
 
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    // 로그아웃 처리 로직 (예: 토큰 제거 등)
-    // localStorage.removeItem('token'); 또는 setUser(null) 같은 처리 가능
-
-    alert('로그아웃 되었습니다.'); // 🔸 팝업 표시
-    navigate('/login'); // 🔸 회원가입 페이지로 이동
+    alert('로그아웃 되었습니다.');
+    navigate('/login');
   };
 
   const handleDeleteAccount = () => {
-    // 계정 삭제 관련 처리
     alert('계정이 삭제되었습니다.');
     navigate('/logup');
   };
@@ -46,14 +46,22 @@ function Setting() {
           className="setting__name"
           type="text"
           value={nickname}
-          onChange={(e) => setNickname(e.target.value)}
+          onChange={(e) => {
+            const value = e.target.value;
+            setNickname(value);
+            localStorage.setItem('nickname', value);
+          }}
           placeholder="닉네임"
         />
         <input
           className="setting__message"
           type="text"
           value={statusMessage}
-          onChange={(e) => setStatusMessage(e.target.value)}
+          onChange={(e) => {
+            const value = e.target.value;
+            setStatusMessage(value);
+            localStorage.setItem('statusMessage', value);
+          }}
           placeholder="상태 메세지"
         />
       </div>
