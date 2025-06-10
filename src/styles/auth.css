@@ -40,7 +40,7 @@
 
 .password__toggle--btn {
   position: absolute;
-  bottom: 9px;
+  top: 41px;
   right: 13px;
 }
 
@@ -83,4 +83,9 @@
 .auth__link--action {
   color: var(--color-orange-F96D69);
   text-decoration: underline;
+}
+
+.invalid {
+  font-size: var(--font-size-base);
+  color: var(--color-pink-FE5493	);
 }

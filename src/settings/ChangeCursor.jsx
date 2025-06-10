@@ -1,41 +1,51 @@
-import { useEffect, useState } from 'react';
-
 import bong1 from '../assets/cursors/응원봉1.png';
 import bong2 from '../assets/cursors/응원봉2.png';
-import bong3 from '../assets/cursors/응원봉4.png';
+import bong3 from '../assets/cursors/응원봉3.png';
+import bong4 from '../assets/cursors/응원봉4.png';
+import bong5 from '../assets/cursors/응원봉5.png';
+import { useCursor } from '../components/CursorContext';
 
 export default function ChangeCursor() {
   const cursorOptions = [
     { name: '응원봉1', url: bong1 },
     { name: '응원봉2', url: bong2 },
     { name: '응원봉3', url: bong3 },
+    { name: '응원봉4', url: bong4 },
+    { name: '응원봉5', url: bong5 },
   ];
 
   // 선택된 커서 상태
-  const [selectedCursor, setSelectedCursor] = useState(cursorOptions[0]);
-
-  // 커서 변경 처리
-  useEffect(() => {
-    document.body.style.cursor = `url(${selectedCursor.url}), auto`;
-  }, [selectedCursor]);
+  const { cursor, setCursor } = useCursor();
 
   return (
     <div style={{ padding: '20px' }}>
       <h2>마우스 포인터 선택</h2>
       <div style={{ display: 'flex', gap: '30px', marginTop: '10px' }}>
-        {cursorOptions.map((cursor, index) => (
+        <div
+          onClick={() => setCursor(null)}
+          style={{
+            border: cursor === null ? '2px solid var(--color-orange-F96D69)' : '2px solid transparent',
+            padding: '10px',
+            cursor: 'pointer',
+            textAlign: 'center',
+          }}
+        >
+          <div style={{ width: 48, height: 64, lineHeight: '64px' }}>기본</div>
+          <div style={{ marginTop: '5px', fontSize: '14px' }}>기본 커서</div>
+        </div>
+        {cursorOptions.map((option, index) => (
           <div
             key={index}
-            onClick={() => setSelectedCursor(cursor)}
+            onClick={() => setCursor(option)}
             style={{
-              border: cursor.url === selectedCursor.url ? '2px solid blue' : '2px solid transparent',
+              border: option.url === cursor?.url ? '2px solid var(--color-orange-F96D69)' : '2px solid transparent',
               padding: '10px',
               cursor: 'pointer',
               textAlign: 'center',
             }}
           >
-            <img src={cursor.url} alt={cursor.name} width={48} height={64} />
-            <div style={{ marginTop: '5px', fontSize: '14px' }}>{cursor.name}</div>
+            <img src={option.url} alt={option.name} width={48} height={64} />
+            <div style={{ marginTop: '5px', fontSize: '14px' }}>{option.name}</div>
           </div>
         ))}
       </div>
