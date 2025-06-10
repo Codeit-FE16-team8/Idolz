@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { forwardRef, useState } from 'react';
 
-function AuthInput({ type, groupName, inputName, placeholder, ref, children }) {
+const AuthInput = forwardRef(function AuthInput(props, ref) {
+  const { type, groupName, inputName, placeholder, errors, validate, children } = props;
   const [isVisible, setIsVisible] = useState(false);
   const isPassword = type === 'password';
 
@@ -19,8 +20,9 @@ function AuthInput({ type, groupName, inputName, placeholder, ref, children }) {
         name={inputName}
         id={groupName}
         placeholder={placeholder}
-        style={{ '--input-padding': inputPadding }}
+        style={{ ['--input-padding']: inputPadding }}
         ref={ref}
+        onBlur={(e) => validate?.(inputName, e.target.value)}
       />
       {isPassword && (
         <button
@@ -29,8 +31,9 @@ function AuthInput({ type, groupName, inputName, placeholder, ref, children }) {
           onClick={() => setIsVisible(!isVisible)}
         ></button>
       )}
+      {errors && <span className="invalid">{errors}</span>}
     </div>
   );
-}
+});
 
 export default AuthInput;
