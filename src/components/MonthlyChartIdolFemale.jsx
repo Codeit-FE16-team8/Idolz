@@ -22,7 +22,7 @@ function MonthlyChartIdolFemale({ femaleIdols }) {
       {femaleIdols.map((idol, index) => (
         <IdolItem key={idol.id}>
           <IdolVoteChart
-            profileImg={idol.profilePicture}
+            profileImg={'idol.profilePicture'}
             alt={idol.name}
             idx={index + 1}
             name={idol.name}
