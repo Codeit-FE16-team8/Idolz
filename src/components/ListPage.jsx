@@ -1,6 +1,5 @@
-import { createVote } from '../api/vote';
 import { getAllIdols } from '../api/idol';
-import { getAllDonations, contributeDonation, createDonation } from '../api/donation';
+import { getAllDonations } from '../api/donation';
 import Item from './Item';
 import { useEffect, useState } from 'react';
 import './item.css';
@@ -8,7 +7,10 @@ import IdolChart from './IdolChart';
 import icon from '../assets/images/Chart.png';
 import Button from './Button';
 import '../styles/modal.css';
-import RadioIdol from './RadioIdol';
+
+import DonationModal from '../modal/DonationModal';
+import NewDonationModal from '../modal/NewDonationModal';
+import VoteModal from '../modal/VoteModal';
 
 function ListPage() {
   // ==================================
@@ -31,21 +33,12 @@ function ListPage() {
   //후원하기 모달 상태
   const [selectedDonation, setSelectedDonation] = useState(null); // 선택된 후원 항목
   const [showModal, setShowModal] = useState(false); // 모달 표시 여부
-  const [donationAmount, setDonationAmount] = useState(''); //입력한 후원 금액
 
   // 새로운 조공 등록 모달 상태
   const [showCreateModal, setShowCreateModal] = useState(false);
-  const [newDonation, setNewDonation] = useState({
-    title: '',
-    subtitle: '',
-    deadline: '',
-    targetDonation: '',
-    idolName: '',
-  });
 
   //투표 모달 상태
   const [showVoteModal, setShowVoteModal] = useState(false);
-  const [selectVoteIdol, setSelectVoteIdol] = useState(null);
 
   // ==================================
   // 데이터 불러오기 (후원 + 아이돌)
@@ -86,45 +79,25 @@ function ListPage() {
     .slice() // 원본 배열 보호
     .sort((a, b) => new Date(a.deadline) - new Date(b.deadline));
 
-  // ==================================
-  // 새로운 조공 입력 값 핸들링 함수
-  // ==================================
-  const handleNewDonationChange = (field, value) => {
-    setNewDonation((prev) => ({ ...prev, [field]: value }));
+  // 후원 모달 열기
+  const handleDonateClick = (donation) => {
+    setSelectedDonation(donation);
+    setShowModal(true);
   };
 
-  // 새로운 조공 등록 함수
-  const handleCreateDonation = async () => {
-    // 입력한 아이돌 이름과 일치하는 아이돌을 데이터에서 찾아 id 확인하는 용도
-    const matchedIdol = idolList.find((idol) => idol.name === newDonation.idolName);
+  // 후원 성공 후 데이터 업데이트
+  const handleDonationSuccess = (updatedDonations) => {
+    setDonationList(updatedDonations);
+  };
 
-    if (!matchedIdol) {
-      alert('해당 이름의 아이돌을 찾을 수 없습니다.');
-      return;
-    }
+  // 새로운 조공 생성 성공 후 데이터 업데이트
+  const handleDonationCreated = (updatedDonations) => {
+    setDonationList(updatedDonations);
+  };
 
-    // API에 POST할 데이터 구성
-    const donationData = {
-      title: newDonation.title,
-      subtitle: newDonation.subtitle,
-      deadline: newDonation.deadline,
-      targetDonation: parseInt(newDonation.targetDonation, 10),
-      idolId: matchedIdol.id,
-    };
-
-    const result = await createDonation(donationData);
-
-    if (result) {
-      alert('조공이 등록되었습니다!');
-      setShowCreateModal(false); //모달 닫기
-      setNewDonation({ title: '', subtitle: '', deadline: '', targetDonation: '', idolName: '' });
-
-      // 조공 리스트 새로고침(등록한 조공 반영)
-      const updatedDonations = await getAllDonations();
-      setDonationList(updatedDonations);
-    } else {
-      alert('등록 실패');
-    }
+  // 투표 성공 후 데이터 업데이트
+  const handleVoteSuccess = (updatedIdols) => {
+    setIdolList(updatedIdols);
   };
 
   // ==================================
@@ -149,15 +122,7 @@ function ListPage() {
         <div className="sliderWrapper">
           <div className="donationContainer">
             {sortedDonations.map((item) => (
-              <Item
-                item={item}
-                key={item.id}
-                // 후원하기 모달창 임시 구현
-                onDonateClick={() => {
-                  setSelectedDonation(item);
-                  setShowModal(true);
-                }}
-              />
+              <Item item={item} key={item.id} onDonateClick={() => handleDonateClick(item)} />
             ))}
           </div>
         </div>
@@ -219,146 +184,27 @@ function ListPage() {
       </div>
 
       {/* 후원 모달창 임시 구현*/}
-      {showModal && (
-        <div className="modalOverlay">
-          <div className="modalContent">
-            <h2>{selectedDonation?.title} 후원하기</h2>
-            <input
-              type="number"
-              value={donationAmount}
-              onChange={(e) => setDonationAmount(e.target.value)}
-              placeholder="후원 금액 입력"
-            />
-            <button
-              className="btn"
-              onClick={async () => {
-                if (!donationAmount) {
-                  alert('금액을 입력하세요!');
-                  return;
-                }
-
-                const result = await contributeDonation(selectedDonation.id, parseInt(donationAmount, 10));
-
-                if (result) {
-                  alert('후원 완료');
-                  setShowModal(false);
-                  setDonationAmount('');
-                  // 후원 데이터 새로고침
-                  const updatedDonations = await getAllDonations();
-                  setDonationList(updatedDonations);
-                } else {
-                  alert('후원 실패');
-                }
-              }}
-            >
-              기여하기
-            </button>
-            <button className="btn" onClick={() => setShowModal(false)}>
-              취소
-            </button>
-          </div>
-        </div>
-      )}
-
+      <DonationModal
+        isOpen={showModal}
+        onClose={() => setShowModal(false)}
+        selectedDonation={selectedDonation}
+        onDonationSuccess={handleDonationSuccess}
+      />
       {/* 새로운 조공 만들기 모달 */}
-      {showCreateModal && (
-        <div className="modalOverlay">
-          <div className="modalContent">
-            <h2>새로운 조공 만들기</h2>
-            <input
-              type="text"
-              placeholder="제목"
-              value={newDonation.title}
-              onChange={(e) => handleNewDonationChange('title', e.target.value)}
-            />
-            <input
-              type="text"
-              placeholder="부제"
-              value={newDonation.subtitle}
-              onChange={(e) => handleNewDonationChange('subtitle', e.target.value)}
-            />
-            <input
-              type="datetime-local"
-              placeholder="마감일"
-              value={newDonation.deadline}
-              onChange={(e) => handleNewDonationChange('deadline', e.target.value)}
-            />
-            <input
-              type="number"
-              placeholder="목표 금액"
-              value={newDonation.targetDonation}
-              onChange={(e) => handleNewDonationChange('targetDonation', e.target.value)}
-            />
-            <input
-              type="text"
-              placeholder="아이돌 이름"
-              value={newDonation.idolName}
-              onChange={(e) => handleNewDonationChange('idolName', e.target.value)}
-            />
-            <button className="btn" onClick={handleCreateDonation}>
-              등록
-            </button>
-            <button className="btn" onClick={() => setShowCreateModal(false)}>
-              취소
-            </button>
-          </div>
-        </div>
-      )}
-
+      <NewDonationModal
+        isOpen={showCreateModal}
+        onClose={() => setShowCreateModal(false)}
+        idolList={idolList}
+        onDonationCreated={handleDonationCreated}
+      />
       {/* 투표하기 모달 */}
-      {showVoteModal && (
-        <div className="modalOverlay">
-          <div className="modalContent voting">
-            <h2>{selectGender === 'female' ? '이달의 여자아이돌 투표' : '이달의 남자아이돌 투표'}</h2>
-            <div className="voting_scroll">
-              {idolList
-                .filter((idol) => idol.gender === selectGender)
-                .map((idol, index) => (
-                  <div className="radioIdol__inner" key={idol.id} onClick={() => setSelectVoteIdol(idol.id)}>
-                    <RadioIdol
-                      id={`radio${idol.id}`}
-                      groupName="radioGroup1"
-                      profileImg={idol.profilePicture}
-                      alt={idol.name}
-                      idx={index + 1}
-                      name={`${idol.group} ${idol.name} `}
-                      vote={idol.totalVotes}
-                    />
-                    {/* <IdolChart item={idol} rank={index + 1} /> */}
-                  </div>
-                ))}
-            </div>
-
-            <Button
-              height="large"
-              ariaLabel="투표하기"
-              onClick={async () => {
-                if (!selectVoteIdol) {
-                  alert('아이돌을 선택해주세요.');
-                  return;
-                }
-
-                const result = await createVote(selectVoteIdol);
-                if (result) {
-                  alert('투표 성공!');
-                  setShowVoteModal(false);
-                  setSelectVoteIdol(null);
-                  const updatedIdols = await getAllIdols();
-                  setIdolList(updatedIdols);
-                } else {
-                  alert('투표 실패');
-                }
-              }}
-            >
-              투표하기
-            </Button>
-            <p>
-              투표하는 데 <span>1000 크레딧</span>이 소모됩니다.
-            </p>
-            <button className="btn--modalClose" onClick={() => setShowVoteModal(false)}></button>
-          </div>
-        </div>
-      )}
+      <VoteModal
+        isOpen={showVoteModal}
+        onClose={() => setShowVoteModal(false)}
+        idolList={idolList}
+        selectGender={selectGender}
+        onVoteSuccess={handleVoteSuccess}
+      />
     </>
   );
 }

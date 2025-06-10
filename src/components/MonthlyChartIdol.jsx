@@ -40,8 +40,7 @@ const MoreIdolsButton = styled.div`
   }
 `;
 
-function MonthlyChartIdol({ idols }) {
-  const [ClickIdolGender, setClickIdolGender] = useState('female');
+function MonthlyChartIdol({ idols, selectedGender, onGenderChange }) {
   const [moreIdols, setMoreIdols] = useState(10);
   const [stepSize, setStepSize] = useState(10); // 더보기 시 늘어나는 수
 
@@ -65,8 +64,17 @@ function MonthlyChartIdol({ idols }) {
     };
   }, []);
 
+  // 성별 변경 시 더보기 상태 초기화
+  useEffect(() => {
+    setMoreIdols(window.innerWidth <= 768 ? 5 : 10);
+  }, [selectedGender]);
+
   const handleLoadMore = () => {
     setMoreIdols((prev) => prev + stepSize);
+  };
+
+  const handleGenderClick = (gender) => {
+    onGenderChange(gender);
   };
 
   const maleIdols = idols.filter((idol) => idol.gender === 'male');
@@ -75,23 +83,23 @@ function MonthlyChartIdol({ idols }) {
   const visibleFemaleIdols = femaleIdols.slice(0, moreIdols);
   const visibleMaleIdols = maleIdols.slice(0, moreIdols);
 
-  // 성별별전체 아이돌 수 가져오기
-  const totalCurrentGenderIdols = ClickIdolGender === 'female' ? femaleIdols.length : maleIdols.length;
+  // 성별별 전체 아이돌 수 가져오기
+  const totalCurrentGenderIdols = selectedGender === 'female' ? femaleIdols.length : maleIdols.length;
 
   return (
     <div>
       <SelectGenderButtonWrapper>
-        <GenderButton active={ClickIdolGender === 'female'} onClick={() => setClickIdolGender('female')}>
+        <GenderButton active={selectedGender === 'female'} onClick={() => handleGenderClick('female')}>
           이달의 여자 아이돌
         </GenderButton>
-        <GenderButton active={ClickIdolGender === 'male'} onClick={() => setClickIdolGender('male')}>
+        <GenderButton active={selectedGender === 'male'} onClick={() => handleGenderClick('male')}>
           이달의 남자 아이돌
         </GenderButton>
       </SelectGenderButtonWrapper>
 
       <div>
-        {ClickIdolGender === 'female' && <MonthlyChartIdolFemale femaleIdols={visibleFemaleIdols} />}
-        {ClickIdolGender === 'male' && <MonthlyChartIdolMale maleIdols={visibleMaleIdols} />}
+        {selectedGender === 'female' && <MonthlyChartIdolFemale femaleIdols={visibleFemaleIdols} />}
+        {selectedGender === 'male' && <MonthlyChartIdolMale maleIdols={visibleMaleIdols} />}
       </div>
 
       {moreIdols < totalCurrentGenderIdols && (
