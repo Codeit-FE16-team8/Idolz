@@ -1,5 +1,6 @@
 import './item.css';
 import IdolProfileImage from './IdolProfileImage';
+import RadioIdol from './RadioIdol';
 
 /**
  * 투표 랭킹에 표시될 개별 아이돌 정보 렌더링하는 컴포넌트

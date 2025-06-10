@@ -7,6 +7,8 @@ import './item.css';
 import IdolChart from './IdolChart';
 import icon from '../assets/images/Chart.png';
 import Button from './Button';
+import '../styles/modal.css';
+import RadioIdol from './RadioIdol';
 
 function ListPage() {
   // ==================================
@@ -306,28 +308,27 @@ function ListPage() {
       {/* 투표하기 모달 */}
       {showVoteModal && (
         <div className="modalOverlay">
-          <div className="modalContent voting" style={{ width: '500px', maxHeight: '90vh', overflowY: 'auto' }}>
+          <div className="modalContent voting">
             <h2>{selectGender === 'female' ? '이달의 여자아이돌 투표' : '이달의 남자아이돌 투표'}</h2>
 
-            <div style={{ maxHeight: '60vh', overflowY: 'auto' }}>
+            <div className='' style={{ maxHeight: '60vh', overflowY: 'auto' }}>
               {idolList
                 .filter((idol) => idol.gender === selectGender)
                 .map((idol, index) => (
-                  <div
-                    key={idol.id}
-                    onClick={() => setSelectVoteIdol(idol.id)}
-                    style={{
-                      display: 'flex',
-                      justifyContent: 'space-between',
-                      alignItems: 'center',
-                      border: selectVoteIdol === idol.id ? '5px solid #8C92AB' : '1px solid #ccc',
-                      borderRadius: '8px',
-                      margin: '8px 0',
-                      cursor: 'pointer',
-                    }}
-                  >
-                    <IdolChart item={idol} rank={index + 1} />
-                  </div>
+                  <>
+                    <div className="radioIdol__inner" key={idol.id} onClick={() => setSelectVoteIdol(idol.id)}>
+                      <RadioIdol
+                        id={`radio${idol.id}`}
+                        groupName="radioGroup1"
+                        profileImg={idol.profilePicture}
+                        alt={idol.name}
+                        idx={index + 1}
+                        name={`${idol.group} ${idol.name} `}
+                        vote={idol.totalVotes}
+                      />
+                      {/* <IdolChart item={idol} rank={index + 1} /> */}
+                    </div>
+                  </>
                 ))}
             </div>
 
