@@ -1,8 +1,7 @@
 import WaitingDonation from './WaitingDonation';
 import MonthlyChart from './MonthlyChart';
 import MyCredit from './MyCredit';
-import ChangeCursor from './ChangeCursor';
-import { getAllIdols } from '../api/api';
+import { getAllIdols } from '../api/idol';
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
@@ -38,7 +37,6 @@ function List() {
         <MyCredit />
         <WaitingDonation idols={idols} />
         <MonthlyChart idols={idols} />
-        <ChangeCursor />
       </Container>
     </div>
   );
