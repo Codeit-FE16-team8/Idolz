@@ -72,7 +72,9 @@
 }
 
 .yellow-highlight {
+  display: inline-block;
   color: #f0c040;
+  margin-top: 40px;
 }
 
 /* 로고 스타일 */
@@ -83,7 +85,7 @@
 
 .PhonePage {
   width: 80%;
-  max-width: 240px;
+  max-width: 180px;
   margin-top: 24px;
 }
 
@@ -139,7 +141,8 @@
   }
 
   .PhonePage {
-    width: 280px;
-    max-width: none;
+    max-width: 240px;
+    width: 100%;
+    margin-top: 32px;
   }
 }

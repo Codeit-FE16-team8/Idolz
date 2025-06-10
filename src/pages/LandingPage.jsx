@@ -10,6 +10,26 @@ import bgImage01 from '../assets/images/landing_bg01.png';
 import bgImage02 from '../assets/images/landing_bg02.png';
 import bgImage03 from '../assets/images/landing_bg03.png';
 import bgImage04 from '../assets/images/landing_bg04.png';
+import { motion, useAnimation } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
+import { useEffect } from 'react';
+
+function AnimatedSection({ children }) {
+  const controls = useAnimation();
+  const [ref, inView] = useInView({ threshold: 0.2 }); // 20% 보이면 시작
+
+  useEffect(() => {
+    if (inView) {
+      controls.start({ opacity: 1, y: 0 });
+    }
+  }, [inView, controls]);
+
+  return (
+    <motion.div ref={ref} initial={{ opacity: 0, y: 50 }} animate={controls} transition={{ duration: 0.8 }}>
+      {children}
+    </motion.div>
+  );
+}
 
 function LandingPage() {
   const navigate = useNavigate();
@@ -53,49 +73,55 @@ function LandingPage() {
         <div className="vertical-gradient-bar" />
 
         {/* Section 2 */}
-        <section className="landing-section" style={{ backgroundImage: `url(${bgImage02})` }}>
-          <div className="landing-content-wrapper">
-            <h3>
-              <span className="yellow-highlight">후원하기</span>
-            </h3>
-            <h2>
-              좋아하는 아이돌에게
-              <br />
-              쉽게 조공해보세요
-            </h2>
-            <img src={PhonePage01} alt="PhonePage01" className="PhonePage" />
-          </div>
-        </section>
+        <AnimatedSection>
+          <section className="landing-section" style={{ backgroundImage: `url(${bgImage02})` }}>
+            <div className="landing-content-wrapper">
+              <h3>
+                <span className="yellow-highlight">후원하기</span>
+              </h3>
+              <h2>
+                좋아하는 아이돌에게
+                <br />
+                쉽게 조공해보세요
+              </h2>
+              <img src={PhonePage01} alt="PhonePage01" className="PhonePage" />
+            </div>
+          </section>
+        </AnimatedSection>
 
         {/* Section 3 */}
-        <section className="landing-section" style={{ backgroundImage: `url(${bgImage03})` }}>
-          <div className="landing-content-wrapper">
-            <h3>
-              <span className="yellow-highlight">이달의 아티스트</span>
-            </h3>
-            <h2>
-              내 아티스트에게 1등의의
-              <br />
-              영예를 선물하세요
-            </h2>
-            <img src={PhonePage02} alt="PhonePage02" className="PhonePage" />
-          </div>
-        </section>
+        <AnimatedSection>
+          <section className="landing-section" style={{ backgroundImage: `url(${bgImage03})` }}>
+            <div className="landing-content-wrapper">
+              <h3>
+                <span className="yellow-highlight">이달의 아티스트</span>
+              </h3>
+              <h2>
+                내 아티스트에게 1등의의
+                <br />
+                영예를 선물하세요
+              </h2>
+              <img src={PhonePage02} alt="PhonePage02" className="PhonePage" />
+            </div>
+          </section>
+        </AnimatedSection>
 
         {/* Section 4 */}
-        <section className="landing-section" style={{ backgroundImage: `url(${bgImage04})` }}>
-          <div className="landing-content-wrapper">
-            <h3>
-              <span className="yellow-highlight">나만의 아티스트</span>
-            </h3>
-            <h2>
-              좋아하는 아티스트들의
-              <br />
-              소식을 모아보세요
-            </h2>
-            <img src={PhonePage03} alt="PhonePage03" className="PhonePage" />
-          </div>
-        </section>
+        <AnimatedSection>
+          <section className="landing-section" style={{ backgroundImage: `url(${bgImage04})` }}>
+            <div className="landing-content-wrapper">
+              <h3>
+                <span className="yellow-highlight">나만의 아티스트</span>
+              </h3>
+              <h2>
+                좋아하는 아티스트들의
+                <br />
+                소식을 모아보세요
+              </h2>
+              <img src={PhonePage03} alt="PhonePage03" className="PhonePage" />
+            </div>
+          </section>
+        </AnimatedSection>
       </div>
     </div>
   );
