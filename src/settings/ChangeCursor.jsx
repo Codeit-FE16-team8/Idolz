@@ -11,7 +11,7 @@ export default function ChangeCursor() {
     { name: '응원봉2', url: bong2 },
     { name: '응원봉3', url: bong3 },
     { name: '응원봉4', url: bong4 },
-    { name: '응원봉4', url: bong5 },
+    { name: '응원봉5', url: bong5 },
   ];
 
   // 선택된 커서 상태

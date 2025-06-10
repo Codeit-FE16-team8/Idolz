@@ -6,10 +6,23 @@ export function CursorProvider({ children }) {
   const [cursor, setCursor] = useState(null);
 
   useEffect(() => {
+    const saveCursor = localStorage.getItem('cursor');
+    if (saveCursor) {
+      try {
+        setCursor(JSON.parse(saveCursor));
+      } catch (e) {
+        console.log('커서로드오류', e);
+      }
+    }
+  }, []);
+
+  useEffect(() => {
     if (cursor) {
       document.body.style.cursor = `url(${cursor.url}),auto`;
+      localStorage.setItem('cursor', JSON.stringify(cursor));
     } else {
       document.body.style.cursor = 'auto';
+      localStorage.removeItem('cursor');
     }
   }, [cursor]);
 
