@@ -1,8 +1,20 @@
-import bong1 from '../assets/cursors/응원봉1.png';
-import bong2 from '../assets/cursors/응원봉2.png';
-import bong3 from '../assets/cursors/응원봉3.png';
-import bong4 from '../assets/cursors/응원봉4.png';
-import bong5 from '../assets/cursors/응원봉5.png';
+import bong1 from '../assets/cursors/aespa.png';
+import bong2 from '../assets/cursors/andteam.png';
+import bong3 from '../assets/cursors/blackpink.png';
+import bong4 from '../assets/cursors/boynextdoor.png';
+import bong5 from '../assets/cursors/daysix.png';
+import bong6 from '../assets/cursors/enhypen.png';
+import bong7 from '../assets/cursors/i-dle.png';
+import bong8 from '../assets/cursors/illit.png';
+import bong9 from '../assets/cursors/ive.png';
+import bong10 from '../assets/cursors/kiki.png';
+import bong11 from '../assets/cursors/kissoflife.png';
+import bong12 from '../assets/cursors/lesserafim.png';
+import bong13 from '../assets/cursors/nctwish.png';
+import bong14 from '../assets/cursors/newjeans.png';
+import bong15 from '../assets/cursors/riize.png';
+import bong16 from '../assets/cursors/seventeen.png';
+
 import { useCursor } from '../components/CursorContext';
 import styled from 'styled-components';
 
@@ -51,11 +63,22 @@ const OptionName = styled.div`
 
 export default function ChangeCursor() {
   const cursorOptions = [
-    { name: '응원봉1', url: bong1 },
-    { name: '응원봉2', url: bong2 },
-    { name: '응원봉3', url: bong3 },
-    { name: '응원봉4', url: bong4 },
-    { name: '응원봉5', url: bong5 },
+    { name: '에스파', url: bong1 },
+    { name: '앤팀', url: bong2 },
+    { name: '블랙핑크', url: bong3 },
+    { name: '보이넥스트도어', url: bong4 },
+    { name: '데이식스', url: bong5 },
+    { name: '엔하이픈', url: bong6 },
+    { name: '아이들', url: bong7 },
+    { name: '아일릿', url: bong8 },
+    { name: '아이브', url: bong9 },
+    { name: '키키', url: bong10 },
+    { name: '키스오브라이프', url: bong11 },
+    { name: '르세라핌', url: bong12 },
+    { name: '엔시티위시', url: bong13 },
+    { name: '뉴진스', url: bong14 },
+    { name: '라이즈', url: bong15 },
+    { name: '세븐틴', url: bong16 },
   ];
 
   // 선택된 커서 상태
