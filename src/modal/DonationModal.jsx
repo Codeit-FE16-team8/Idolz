@@ -81,7 +81,9 @@ function DonationModal({ isOpen, onClose, selectedDonation, onDonationSuccess, c
           onChange={(e) => setDonationAmount(e.target.value)}
           placeholder="크레딧 입력"
           className="input__credit"
+          style={{ border: donationAmount > creditAmount ? 'solid 1px #FF2626' : '' }}
         />
+        {donationAmount > creditAmount && <p>갖고 있는 크레딧보다 더 많이 후원할 수 없어요</p>}
       </div>
       {/* 버튼 */}
       <Button
