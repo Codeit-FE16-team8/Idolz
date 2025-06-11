@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { getAllIdols } from '../api/idol';
 import BtnPagination from '../components/Btn_Pagination';
 import IdolProfile from '../components/IdolProfile';
-import '../styles/MyPage.css';
+import '../styles/mypage.css';
 import Button from '../components/Button';
 
 function MyPage() {
@@ -85,7 +85,7 @@ function MyPage() {
 
   return (
     <div className="myPage-container">
-      <h2 style={{ textAlign: 'left', width: '100%', paddingLeft: '16px' }}>내가 관심있는 아이돌</h2>
+      <h2 className="section-title">내가 관심있는 아이돌</h2>
 
       <div className="interested-scroll-wrapper">
         {interestedIdols.map((idol) => (
@@ -102,7 +102,7 @@ function MyPage() {
       </div>
       <div className="interested-divider" />
       {/* 추가할 아이돌 목록 */}
-      <h2 style={{ textAlign: 'left', width: '100%', paddingLeft: '16px' }}>관심있는 아이돌을 추가해보세요.</h2>
+      <h2 className="section-title">관심있는 아이돌을 추가해보세요.</h2>
       <div
         style={{
           display: 'flex',
