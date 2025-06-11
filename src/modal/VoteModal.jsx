@@ -36,12 +36,7 @@ function VoteModal({ isOpen, onClose, idolList, selectGender, creditAmount, onVo
         // 아이돌 데이터 새로고침
         const updatedIdols = await getAllIdols();
         onVoteSuccess(updatedIdols);
-      } else {
-        // 이론적으로는 발생하지 않을 상황 (이미 크레딧 확인했으므로)
-        // alert('크레딧 처리 중 오류가 발생했습니다.');
       }
-    } else {
-      // alert('투표 실패 - 다시 시도해주세요');
     }
   };
 

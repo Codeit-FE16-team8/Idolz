@@ -35,13 +35,7 @@ function DonationModal({ isOpen, onClose, selectedDonation, onDonationSuccess, c
         // 후원 데이터 새로고침
         const updatedDonations = await getAllDonations();
         onDonationSuccess(updatedDonations);
-      } else {
-        // 크레딧 차감 실패 알람 해제
-        // alert('크레딧 차감 실패');
       }
-    } else {
-      // 후원 실패 알람 해제
-      // alert('후원 실패');
     }
   };
 

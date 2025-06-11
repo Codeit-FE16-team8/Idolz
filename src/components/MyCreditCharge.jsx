@@ -13,7 +13,6 @@ function MyCreditCharge({ onCharge }) {
   const handleCharge = () => {
     const amount = parseInt(selected, 10);
     onCharge(amount);
-    alert(`${amount.toLocaleString()} 크레딧을 충전했습니다.`);
     handleClose();
   };
 
