@@ -1,6 +1,6 @@
 // 랜딩 페이지 섹션 1 컴포넌트
 import { motion } from 'framer-motion';
-import logo from '../../assets/images/logo.png';
+import Landinglogo from '../../assets/images/Landinglogo.svg';
 import bgImage01 from '../../assets/images/landing_bg01.png';
 import { useNavigate } from 'react-router-dom';
 import { useCursor } from '../CursorContext';
@@ -39,7 +39,7 @@ function Section1() {
           </motion.h2>
 
           <motion.img
-            src={logo}
+            src={Landinglogo}
             alt="팬덤k_logo"
             className="landing-logo"
             style={{ cursor: 'pointer' }}
