@@ -122,7 +122,6 @@ function MyPage() {
         />
 
         {/* 아이돌 프로필 카드들 */}
-
         <div className="myPage__idolList">
           {(isMobile ? idols : currentItems).map((idol) => (
             <IdolProfile
