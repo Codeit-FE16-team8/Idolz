@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { createDonation, getAllDonations } from '../api/donation';
 import Modal from './Modal';
+import '../styles/modal.css';
 
 function NewDonationModal({ isOpen, onClose, idolList, onDonationCreated }) {
   const [newDonation, setNewDonation] = useState({
@@ -99,10 +100,10 @@ function NewDonationModal({ isOpen, onClose, idolList, onDonationCreated }) {
         onChange={(e) => handleInputChange('idolName', e.target.value)}
         className="input__donation"
       />
-      <button className="btn btn--color btn--medium" onClick={handleCreateDonation}>
+      <button className="btn btn--large" onClick={handleCreateDonation}>
         등록
       </button>
-      <button className="btn btn--color btn--medium" onClick={handleClose}>
+      <button className="btn btn--large" onClick={handleClose}>
         취소
       </button>
     </Modal>

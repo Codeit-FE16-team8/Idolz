@@ -4,6 +4,7 @@ import { getAllIdols } from '../api/idol';
 import Modal from './Modal';
 import Button from '../components/Button';
 import RadioIdol from '../components/RadioIdol';
+import '../styles/modal.css';
 
 function VoteModal({ isOpen, onClose, idolList, selectGender, creditAmount, onVote, onVoteSuccess }) {
   const [selectVoteIdol, setSelectVoteIdol] = useState(null);

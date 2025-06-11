@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { contributeDonation, getAllDonations } from '../api/donation';
 import Modal from './Modal';
-import './testmodal.css';
+import '../styles/modal.css';
 
 function DonationModal({ isOpen, onClose, selectedDonation, onDonationSuccess, creditAmount, onDonation }) {
   const [donationAmount, setDonationAmount] = useState('');
@@ -80,7 +80,7 @@ function DonationModal({ isOpen, onClose, selectedDonation, onDonationSuccess, c
         />
       </div>
       {/* 버튼 */}
-      <button className="btn btn--color btn--medium" onClick={handleDonate}>
+      <button className="btn btn--large" onClick={handleDonate}>
         후원하기
       </button>
     </Modal>
