@@ -18,47 +18,73 @@ import bong16 from '../assets/cursors/seventeen.png';
 import { useCursor } from '../components/CursorContext';
 import styled from 'styled-components';
 
+const Container = styled.div`
+  max-width: 1200px;
+  width: 100%;
+  margin: 20px auto;
+  padding: 0 10px;
+
+  border: 2px solid white;
+  @media (max-width: 768px) {
+    padding: 0 24px;
+  }
+`;
+
 const CursorItem = styled.div`
+  flex: 0 0 10%; // 기본 PC: 10개
+  max-width: 10%;
+  min-width: 60px;
   border: 2px solid transparent;
   padding: 10px;
   cursor: pointer;
   text-align: center;
-  min-width: 60px;
   position: relative;
 
   &.selected {
     border-color: var(--color-orange-F96D69);
   }
+
+  @media (max-width: 768px) {
+    flex: 0 0 20%; // 태블릿: 5개
+    max-width: 20%;
+  }
+
+  @media (max-width: 480px) {
+    flex: 0 0 33.33%; // 모바일: 3개
+    max-width: 33.33%;
+  }
 `;
 
 const CursorContainer = styled.div`
+  max-width: 1100px;
   display: flex;
-  flex-wrap: wrap;
-  gap: 30px;
-  margin-top: 10px;
+  gap: 20px;
+  overflow-x: auto;
+  padding-bottom: 10px;
+
+  &::-webkit-scrollbar {
+    height: 8px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--color-orange-F96D69);
+    border-radius: 4px;
+  }
 `;
 
 const ResponsiveImg = styled.img`
   width: 100%;
-  // width: 48px;
-  // height: 64px;
-
-  // @media (max-width: 768px) {
-  //   width: 32px;
-  //   height: 42px;
-  // }
-
-  // @media ((max-width: 480px)) {
-  //   width: 16px;
-  //   height: 32px;
-  // }
+  height: auto;
+  max-height: 64px;
 `;
 
 const OptionName = styled.div`
-  position: absolute;
   bottom: 5px;
-  // left: 50%;
-  font-size: 14px;
+  font-size: 12px;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: center;
 `;
 
 export default function ChangeCursor() {
@@ -85,24 +111,26 @@ export default function ChangeCursor() {
   const { cursor, setCursor } = useCursor();
 
   return (
-    <div style={{ padding: '20px' }}>
-      <h2>마우스 포인터 선택</h2>
-      <CursorContainer>
-        <CursorItem onClick={() => setCursor(null)} className={cursor === null ? 'selected' : ''}>
-          <div style={{ width: 48, height: 64, lineHeight: '64px' }}>기본</div>
-          <OptionName>기본 커서</OptionName>
-        </CursorItem>
-        {cursorOptions.map((option, index) => (
-          <CursorItem
-            key={index}
-            onClick={() => setCursor(option)}
-            className={option.url === cursor?.url ? 'selected' : ''}
-          >
-            <ResponsiveImg src={option.url} alt={option.name} />
-            <OptionName>{option.name}</OptionName>
+    <Container>
+      <div style={{ padding: '20px' }}>
+        <h2>마우스 포인터 선택</h2>
+        <CursorContainer>
+          <CursorItem onClick={() => setCursor(null)} className={cursor === null ? 'selected' : ''}>
+            <div style={{ width: 48, height: 64, lineHeight: '64px' }}>기본</div>
+            <OptionName>기본 커서</OptionName>
           </CursorItem>
-        ))}
-      </CursorContainer>
-    </div>
+          {cursorOptions.map((option, index) => (
+            <CursorItem
+              key={index}
+              onClick={() => setCursor(option)}
+              className={option.url === cursor?.url ? 'selected' : ''}
+            >
+              <ResponsiveImg src={option.url} alt={option.name} />
+              <OptionName>{option.name}</OptionName>
+            </CursorItem>
+          ))}
+        </CursorContainer>
+      </div>
+    </Container>
   );
 }
