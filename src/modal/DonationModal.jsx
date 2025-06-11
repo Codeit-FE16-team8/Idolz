@@ -27,18 +27,15 @@ function DonationModal({ isOpen, onClose, selectedDonation, onDonationSuccess, c
       const success = onDonation(amount);
 
       if (success) {
-        alert(`${amount.toLocaleString()} 크레딧으로 후원 완료!`);
+        // 후원하기 성공시 알람창 해제
+        // alert(`${amount.toLocaleString()} 크레딧으로 후원 완료!`);
         setDonationAmount('');
         onClose();
 
         // 후원 데이터 새로고침
         const updatedDonations = await getAllDonations();
         onDonationSuccess(updatedDonations);
-      } else {
-        alert('크레딧 차감 실패');
       }
-    } else {
-      alert('후원 실패');
     }
   };
 

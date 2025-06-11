@@ -38,14 +38,16 @@ function NewDonationModal({ isOpen, onClose, idolList, onDonationCreated }) {
     const result = await createDonation(donationData);
 
     if (result) {
-      alert('조공이 등록되었습니다!');
+      // 등록 성공 알람창 해제
+      // alert('조공이 등록되었습니다!');
       handleClose();
 
       // 조공 리스트 새로고침
       const updatedDonations = await getAllDonations();
       onDonationCreated(updatedDonations);
     } else {
-      alert('등록 실패');
+      // 등록 실패 알림창 해제
+      // alert('등록 실패');
     }
   };
 
