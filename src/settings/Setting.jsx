@@ -76,9 +76,6 @@ function Setting() {
             <Link to="/notifications">알림 설정</Link>
           </li>
           <li>
-            <Link to="/theme">테마 설정</Link>
-          </li>
-          <li>
             <Link to="/cursor">커서 변경</Link>
           </li>
           <li>

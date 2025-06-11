@@ -17,7 +17,7 @@ function DonationModal({ isOpen, onClose, selectedDonation, onDonationSuccess, c
 
     // 크레딧 부족 체크
     if (amount > creditAmount) {
-      alert(`크레딧이 부족합니다. 현재 크레딧: ${creditAmount.toLocaleString()}`);
+      setDonationAmount('');
       return;
     }
 
@@ -27,18 +27,15 @@ function DonationModal({ isOpen, onClose, selectedDonation, onDonationSuccess, c
       const success = onDonation(amount);
 
       if (success) {
-        alert(`${amount.toLocaleString()} 크레딧으로 후원 완료!`);
+        // 후원하기 성공시 알람창 해제
+        // alert(`${amount.toLocaleString()} 크레딧으로 후원 완료!`);
         setDonationAmount('');
         onClose();
 
         // 후원 데이터 새로고침
         const updatedDonations = await getAllDonations();
         onDonationSuccess(updatedDonations);
-      } else {
-        alert('크레딧 차감 실패');
       }
-    } else {
-      alert('후원 실패');
     }
   };
 
@@ -78,10 +75,21 @@ function DonationModal({ isOpen, onClose, selectedDonation, onDonationSuccess, c
           onChange={(e) => setDonationAmount(e.target.value)}
           placeholder="크레딧 입력"
           className="input__credit"
+          style={{ border: donationAmount > creditAmount ? 'solid 1px #FF2626' : '' }}
         />
+        {donationAmount > creditAmount && <p>갖고 있는 크레딧보다 더 많이 후원할 수 없어요</p>}
       </div>
       {/* 버튼 */}
-      <Button height="large" ariaLabel="후원하기" onClick={handleDonate} isDisabled={donationAmount <= 0}>
+      <Button
+        height="large"
+        ariaLabel="후원하기"
+        onClick={handleDonate}
+        isDisabled={
+          !donationAmount || // 입력값이 없거나
+          donationAmount <= 0 || // 0 이하거나
+          parseInt(donationAmount, 10) > creditAmount
+        }
+      >
         후원하기
       </Button>
     </Modal>

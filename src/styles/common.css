@@ -314,8 +314,8 @@ input[type='radio']:checked + label .radio-icon {
 
 /* 후원 조공 */
 .idol__sponsor {
-  width: 185px;
-  min-width: 185px;
+  width: 150px;
+  min-width: 150px;
   font-size: var(--font-size-base);
 }
 .sponsor__imgBtn {

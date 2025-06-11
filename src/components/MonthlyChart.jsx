@@ -4,7 +4,7 @@ import MonthlyChartVote from './MonthlyChartVote';
 import styled from 'styled-components';
 
 const MonthlyChartContainer = styled.div`
-  padding: 0 30px;
+  // padding: 0 30px;
 
   @media (max-width: 768px) {
     padding: 0px;
