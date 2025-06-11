@@ -46,24 +46,10 @@
 
 /* 추가하기 버튼 */
 .my-add-button-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 32px;
-  padding-bottom: 48px;
+  margin-bottom: 34px;
 }
 .my-add-button-wrapper button {
-  display: flex; /* 중앙 정렬 */
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(to right, #ff5e9c, #ffa35e);
-  color: white;
-  border: none;
-  border-radius: 20px;
-  padding: 12px 24px;
-  font-weight: bold;
-  font-size: 2rem;
-  cursor: pointer;
+  font-size: var(--font-size-md)
 }
 
 /* 마이 페이지 아이돌 프로필 반응형 */
@@ -73,6 +59,7 @@
   gap: 10px;
   min-height: 240px;
   justify-items: center;
+  margin-bottom: 20px;
 }
 
 @media (min-width: 768px) {
@@ -89,26 +76,12 @@
 
 @media (max-width: 767px) {
   .myPage__idolList {
-    max-height: 520px; /* 한 줄당 약 260px 기준으로 2줄 (아이돌 6개) */
+    max-height: 250px; /* 한 줄당 약 260px 기준으로 2줄 (아이돌 6개) */
     overflow-y: auto;
     padding-right: 4px; /* 스크롤바 여백 */
   }
 
   .btn-pagination {
     display: none; /* 모바일에서는 페이지네이션 버튼 숨김 */
-  }
-
-  .my-add-button-wrapper {
-    position: fixed;
-    bottom: 16px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 999;
-    padding-bottom: 0;
-    min-height: 140px;
-  }
-
-  .myPage-container {
-    padding-bottom: 100px; /* 버튼 고정을 위한 여백 확보 */
   }
 }
