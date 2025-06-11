@@ -1,4 +1,10 @@
 /* 마이페이지 추가용 css */
+.myPage-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
 .interested-scroll-wrapper {
   display: flex;
   gap: 12px;
@@ -8,6 +14,7 @@
   padding: 12px 0;
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE & Edge */
+  min-height: 150px;
 }
 
 .interested-scroll-wrapper::-webkit-scrollbar {
@@ -17,6 +24,15 @@
 .interested-scroll-wrapper::-webkit-scrollbar-thumb {
   background-color: #888;
   border-radius: 4px;
+}
+
+.interested-divider {
+  width: 90%;
+  height: 2px;
+  background-color: #ffffff;
+  opacity: 0.1;
+  margin: 20px auto;
+  border-radius: 1px;
 }
 
 .pagination-wrapper {
@@ -37,6 +53,9 @@
   padding-bottom: 48px;
 }
 .my-add-button-wrapper button {
+  display: flex; /* 중앙 정렬 */
+  align-items: center;
+  justify-content: center;
   background: linear-gradient(to right, #ff5e9c, #ffa35e);
   color: white;
   border: none;
@@ -69,7 +88,27 @@
 }
 
 @media (max-width: 767px) {
+  .myPage__idolList {
+    max-height: 520px; /* 한 줄당 약 260px 기준으로 2줄 (아이돌 6개) */
+    overflow-y: auto;
+    padding-right: 4px; /* 스크롤바 여백 */
+  }
+
   .btn-pagination {
     display: none; /* 모바일에서는 페이지네이션 버튼 숨김 */
+  }
+
+  .my-add-button-wrapper {
+    position: fixed;
+    bottom: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 999;
+    padding-bottom: 0;
+    min-height: 140px;
+  }
+
+  .myPage-container {
+    padding-bottom: 100px; /* 버튼 고정을 위한 여백 확보 */
   }
 }
