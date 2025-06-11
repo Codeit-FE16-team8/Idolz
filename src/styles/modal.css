@@ -36,6 +36,7 @@
   height: 24px;
   background-image: url(../assets/images/btn_delete_24px.png);
   cursor: pointer;
+  font-size: var(--font-size-base);
 }
 
 /* 내 크레딧 충전 */
@@ -64,10 +65,24 @@
 
 /* 크레딧 부족 모달 */
 .credit-lack {
+  position: relative;
+  width: 343px;
+  height: auto;
+}
+
+.credit-lack__container {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   align-items: center;
+}
+
+.credit-lack__container img {
+  width: 200px;
+}
+
+.credit-lack__container p {
+  margin-bottom: 31px;
+  font-size: var(--font-size-md);
 }
 
 /* 후원하기 모달 */
@@ -146,6 +161,18 @@ input.input__donation {
 input.input__donation::placeholder {
   padding: 0 5px;
   color: var(--color-gray-67666E);
+}
+
+.donation__input-group p {
+  font-size: var(--font-size-xxs);
+  color: #FF2626;
+  padding-top: 6px;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 /* 이달의 투표 */
@@ -244,5 +271,5 @@ input.input__donation::placeholder {
 }
 
 /* 테스크탑 (1200px~) */
-@media (min-width: 1200px) {
-}
+/* @media (min-width: 1200px) {
+} */

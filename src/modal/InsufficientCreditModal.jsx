@@ -6,9 +6,7 @@ import '../styles/modal.css';
 function InsufficientCreditModal({ isOpen, onClose }) {
   return (
     <Modal isOpen={isOpen} onClose={onClose} className="credit-lack">
-      <div className="modal__credit-container">
-        <button className="btn--donationModalClose" onClick={onClose}></button>
-      </div>
+      <button className="btn--modalClose" onClick={onClose}></button>
       <div className="credit-lack__container">
         <img src={credit} alt="크레딧 부족" />
         <p>
