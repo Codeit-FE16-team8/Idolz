@@ -1,137 +1,20 @@
-// 렌딩페이지
-import { useNavigate } from 'react-router-dom';
+// 랜딩 페이지
 import '../styles/landing.css';
 import '../styles/common.css';
-import logo from '../assets/images/logo.png';
-import PhonePage01 from '../assets/images/PhonePage01.png';
-import PhonePage02 from '../assets/images/PhonePage02.png';
-import PhonePage03 from '../assets/images/PhonePage03.png';
-import bgImage01 from '../assets/images/landing_bg01.png';
-import bgImage02 from '../assets/images/landing_bg02.png';
-import bgImage03 from '../assets/images/landing_bg03.png';
-import bgImage04 from '../assets/images/landing_bg04.png';
-<<<<<<< HEAD
-import { motion, useAnimation } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
-import { useEffect } from 'react';
+import Section1 from '../components/Landing/Section01';
+import Section2 from '../components/Landing/Section02';
+import Section3 from '../components/Landing/Section03';
+import Section4 from '../components/Landing/Section04';
 
-function AnimatedSection({ children }) {
-  const controls = useAnimation();
-  const [ref, inView] = useInView({ threshold: 0.2 }); // 20% 보이면 시작
-
-  useEffect(() => {
-    if (inView) {
-      controls.start({ opacity: 1, y: 0 });
-    }
-  }, [inView, controls]);
-
-  return (
-    <motion.div ref={ref} initial={{ opacity: 0, y: 50 }} animate={controls} transition={{ duration: 0.8 }}>
-      {children}
-    </motion.div>
-  );
-}
-=======
-import { useCursor } from '../components/CursorContext';
->>>>>>> main
-
+// 랜딩 페이지 구성
 function LandingPage() {
-  const navigate = useNavigate();
-  const { setCursor } = useCursor();
-
-  const handleLogoClick = () => {
-    navigate('/list');
-  };
-
-  const handleStartClick = () => {
-    // 필요 시 localStorage 초기화
-    localStorage.removeItem('interestedIdols');
-    localStorage.removeItem('myCredit');
-    localStorage.removeItem('cursor');
-
-    setCursor(null);
-
-    navigate('/list');
-  };
-
   return (
     <div className="landing-container">
-      {/* Section 1 */}
-      <section className="landing-section" style={{ backgroundImage: `url(${bgImage01})` }}>
-        <div className="landing-overlay">
-          <div className="landing-top">
-            <h2 className="landing-heading">
-              내가 좋아하는 아이돌을
-              <br />
-              가장 <span className="highlight">쉽게 덕질</span>하는 방법
-            </h2>
-            <img
-              src={logo}
-              alt="logo"
-              className="landing-logo"
-              onClick={handleLogoClick}
-              style={{ cursor: 'pointer' }}
-            />
-          </div>
-          <button className="btn btn--large btn--color" onClick={handleStartClick}>
-            지금 시작하기
-          </button>
-        </div>
-      </section>
-
       <div className="landing-multi-section">
-        <div className="vertical-gradient-bar" />
-
-        {/* Section 2 */}
-        <AnimatedSection>
-          <section className="landing-section" style={{ backgroundImage: `url(${bgImage02})` }}>
-            <div className="landing-content-wrapper">
-              <h3>
-                <span className="yellow-highlight">후원하기</span>
-              </h3>
-              <h2>
-                좋아하는 아이돌에게
-                <br />
-                쉽게 조공해보세요
-              </h2>
-              <img src={PhonePage01} alt="PhonePage01" className="PhonePage" />
-            </div>
-          </section>
-        </AnimatedSection>
-
-        {/* Section 3 */}
-        <AnimatedSection>
-          <section className="landing-section" style={{ backgroundImage: `url(${bgImage03})` }}>
-            <div className="landing-content-wrapper">
-              <h3>
-                <span className="yellow-highlight">이달의 아티스트</span>
-              </h3>
-              <h2>
-                내 아티스트에게 1등의의
-                <br />
-                영예를 선물하세요
-              </h2>
-              <img src={PhonePage02} alt="PhonePage02" className="PhonePage" />
-            </div>
-          </section>
-        </AnimatedSection>
-
-        {/* Section 4 */}
-        <AnimatedSection>
-          <section className="landing-section" style={{ backgroundImage: `url(${bgImage04})` }}>
-            <div className="landing-content-wrapper">
-              <h3>
-                <span className="yellow-highlight">나만의 아티스트</span>
-              </h3>
-              <h2>
-                좋아하는 아티스트들의
-                <br />
-                소식을 모아보세요
-              </h2>
-              <img src={PhonePage03} alt="PhonePage03" className="PhonePage" />
-            </div>
-          </section>
-        </AnimatedSection>
+        <Section1 />
+        <Section2 />
+        <Section3 />
+        <Section4 />
       </div>
     </div>
   );
