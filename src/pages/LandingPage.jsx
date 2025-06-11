@@ -1,10 +1,10 @@
 // 랜딩 페이지
 import '../styles/landing.css';
 import '../styles/common.css';
-import Section1 from '../components/Landing/Section01';
-import Section2 from '../components/Landing/Section02';
-import Section3 from '../components/Landing/Section03';
-import Section4 from '../components/Landing/Section04';
+import Section1 from '../Landing/Section01';
+import Section2 from '../Landing/Section02';
+import Section3 from '../Landing/Section03';
+import Section4 from '../Landing/Section04';
 
 // 랜딩 페이지 구성
 function LandingPage() {

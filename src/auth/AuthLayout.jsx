@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import Button from './Button';
+import Button from '../components/Button';
 import logoImg from '../assets/images/logo.png';
 import googleIcon from '../assets/images/ic_google.png';
 import kakaoIcon from '../assets/images/ic_kakao.png';

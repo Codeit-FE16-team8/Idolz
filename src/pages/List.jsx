@@ -1,6 +1,6 @@
-import WaitingDonation from './WaitingDonation';
-import MonthlyChart from './MonthlyChart';
-import MyCredit from './MyCredit';
+import WaitingDonation from '../components/WaitingDonation';
+import MonthlyChart from '../monthly/MonthlyChart';
+import MyCredit from '../components/MyCredit';
 import { getAllIdols } from '../api/idol';
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';

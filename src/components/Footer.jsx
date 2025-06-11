@@ -59,7 +59,7 @@ function Footer() {
           >
             <img className="social__icon" src={twitter} alt="twitter" />
           </a>
-          <a href="https://instagram.com/Idolz" target="_blank">
+          <a href="https://instagram.com/Idolz_team8_official" target="_blank">
             <img className="social__icon" src={instagram} alt="instagram" />
           </a>
         </div>
