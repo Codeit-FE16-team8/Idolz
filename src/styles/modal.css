@@ -1,5 +1,4 @@
 /* 모달 css */
-
 .modalOverlay {
   position: fixed;
   top: 0;
@@ -25,10 +24,50 @@
   border-radius: var(--border-radius-md);
 }
 
+.modalContent h2 {
+  font-size: var(--font-size-lg);
+}
+
+.btn--modalClose {
+  position: absolute;
+  top: 26px;
+  right: 20px;
+  width: 24px;
+  height: 24px;
+  background-image: url(../assets/images/btn_delete_24px.png);
+  cursor: pointer;
+}
+
+/* 내 크레딧 충전 */
+.creditCharge {
+  position: relative;
+  justify-content: flex-start;
+  width: 327px;
+  height: auto;
+  gap: 0px;
+}
+
+.creditCharge h2 {
+  margin-bottom: 24px;
+}
+
+.creditCharge .btn {
+  margin-top: 16px;
+  font-size: var(--font-size-base);
+}
+
+.btn-creditcharge {
+  padding: 10px 20px;
+  color: var(--color-orange-F96D69);
+  font-size: var(--font-size-xs);
+}
+
+
 /* 후원하기 모달 */
 .modalContent .btn--large {
-  background: var(--color-gray-828282);
+  /* background: var(--color-gray-828282); */
 }
+
 .donation {
   width: 327px;
   height: 500px;
@@ -113,7 +152,7 @@ input.input__donation::placeholder {
   font-weight: var(--font-weight-500);
 }
 
-.btn--modalClose {
+.voting .btn--modalClose {
   position: absolute;
   top: 40px;
   left: 35px;
@@ -186,6 +225,10 @@ input.input__donation::placeholder {
   .voting_scroll {
     max-height: 60vh;
     margin: 19px 0;
+  }
+
+  .btn-creditcharge {
+    font-size: var(--font-size-md);
   }
 }
 
