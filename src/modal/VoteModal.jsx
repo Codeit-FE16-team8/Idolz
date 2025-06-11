@@ -30,17 +30,18 @@ function VoteModal({ isOpen, onClose, idolList, selectGender, creditAmount, onVo
       const creditDeductionSuccess = onVote();
 
       if (creditDeductionSuccess) {
-        alert('투표 성공! 1000 크레딧이 차감되었습니다.');
+        // 투표 성공 알람 해제
+        // alert('투표 성공! 1000 크레딧이 차감되었습니다.');
         handleClose();
         // 아이돌 데이터 새로고침
         const updatedIdols = await getAllIdols();
         onVoteSuccess(updatedIdols);
       } else {
         // 이론적으로는 발생하지 않을 상황 (이미 크레딧 확인했으므로)
-        alert('크레딧 처리 중 오류가 발생했습니다.');
+        // alert('크레딧 처리 중 오류가 발생했습니다.');
       }
     } else {
-      alert('투표 실패 - 다시 시도해주세요');
+      // alert('투표 실패 - 다시 시도해주세요');
     }
   };
 
