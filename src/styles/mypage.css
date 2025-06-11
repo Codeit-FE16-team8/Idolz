@@ -4,6 +4,11 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 16px;
+  margin: 0 auto;
 }
 .interested-scroll-wrapper {
   display: flex;
