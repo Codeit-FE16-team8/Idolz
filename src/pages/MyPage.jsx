@@ -4,7 +4,7 @@ import { getAllIdols } from '../api/idol';
 import BtnPagination from '../components/Btn_Pagination';
 import IdolProfile from '../components/IdolProfile';
 import '../styles/common.css';
-import '../styles/myPage.css';
+import '../styles/MyPage.css';
 
 function MyPage() {
   const [idols, setIdols] = useState([]); //전체 아이돌
@@ -18,10 +18,30 @@ function MyPage() {
 
   // 페이지네이션 상태 관리
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 16;
+  const [itemsPerPage, setItemsPerPage] = useState(16);
+
+  useEffect(() => {
+    const updateItemsPerPage = () => {
+      const width = window.innerWidth;
+
+      if (width < 768) {
+        setItemsPerPage(6); // 모바일: 3개 x 2줄
+      } else if (width < 1200) {
+        setItemsPerPage(8); // 태블릿: 4개 x 2줄
+      } else {
+        setItemsPerPage(16); // 데스크탑: 8개 x 2줄
+      }
+    };
+
+    updateItemsPerPage(); // 초기 실행
+    window.addEventListener('resize', updateItemsPerPage);
+    return () => window.removeEventListener('resize', updateItemsPerPage);
+  }, []);
+
   const totalPages = Math.ceil(idols.length / itemsPerPage);
   const startIdx = (currentPage - 1) * itemsPerPage;
   const currentItems = idols.slice(startIdx, startIdx + itemsPerPage);
+
   // 관심 아이돌 체크 관리
   const toggleSelectIdol = (id) => {
     setSelectedIds((prev) => (prev.includes(id) ? prev.filter((v) => v !== id) : [...prev, id]));
@@ -55,11 +75,19 @@ function MyPage() {
     loadIdols();
   }, []);
 
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768); //모바일 여부 상태 판별별: 모바일 스크롤용
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   return (
     <div>
       <h2
         style={{
-          fontSize: '1.5rem',
+          fontSize: '2rem',
           fontWeight: 'bold',
           marginBottom: '12px',
           minHeight: 'auto',
@@ -112,16 +140,9 @@ function MyPage() {
         />
 
         {/* 아이돌 프로필 카드들 */}
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(8, 1fr)',
-            gap: '10px',
-            minHeight: '240px',
-            justifyContent: 'center',
-          }}
-        >
-          {currentItems.map((idol) => (
+
+        <div className="myPage__idolList">
+          {(isMobile ? idols : currentItems).map((idol) => (
             <IdolProfile
               key={idol.id}
               profileImg={idol.profilePicture}
