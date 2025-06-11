@@ -3,8 +3,10 @@ import BoxBox from './BoxBox';
 import leftImg from '../assets/images/btn_pagination_arrow_left.svg';
 import rightImg from '../assets/images/btn_pagination_arrow_right.svg';
 import Item from './Item';
-import { contributeDonation, getAllDonations, createDonation } from '../api/donation';
+import { getAllDonations } from '../api/donation';
 import './item.css';
+import DonationModal from '../modal/DonationModal';
+import NewDonationModal from '../modal/NewDonationModal';
 
 import styled from 'styled-components';
 
@@ -34,7 +36,7 @@ const ScrollButton = styled.button`
   }
 `;
 
-function WaitingDonation({ idols }) {
+function WaitingDonation({ idols, creditAmount, onDonation }) {
   const idolList = idols;
 
   const scrollRef = useRef(null);
@@ -44,20 +46,13 @@ function WaitingDonation({ idols }) {
 
   // 후원 리스트 및 아이돌 리스트 상태
   const [donationList, setDonationList] = useState([]);
+
   //후원하기 모달 상태
   const [selectedDonation, setSelectedDonation] = useState(null); // 선택된 후원 항목
   const [showModal, setShowModal] = useState(false); // 모달 표시 여부
-  const [donationAmount, setDonationAmount] = useState(''); //입력한 후원 금액
 
   // 새로운 조공 등록 모달 상태
   const [showCreateModal, setShowCreateModal] = useState(false);
-  const [newDonation, setNewDonation] = useState({
-    title: '',
-    subtitle: '',
-    deadline: '',
-    targetDonation: '',
-    idolName: '',
-  });
 
   //스크롤바
   const ScrollPosition = () => {
@@ -102,45 +97,20 @@ function WaitingDonation({ idols }) {
     ScrollPosition();
   }, [donationList]);
 
-  // ==================================
-  // 새로운 조공 입력 값 핸들링 함수
-  // ==================================
-  const handleNewDonationChange = (field, value) => {
-    setNewDonation((prev) => ({ ...prev, [field]: value }));
+  // 후원 모달 열기
+  const handleDonateClick = (donation) => {
+    setSelectedDonation(donation);
+    setShowModal(true);
   };
 
-  // 새로운 조공 등록 함수
-  const handleCreateDonation = async () => {
-    // 입력한 아이돌 이름과 일치하는 아이돌을 데이터에서 찾아 id 확인하는 용도
-    const matchedIdol = idolList.find((idol) => idol.name === newDonation.idolName);
+  // 후원 성공 후 데이터 업데이트
+  const handleDonationSuccess = (updatedDonations) => {
+    setDonationList(updatedDonations);
+  };
 
-    if (!matchedIdol) {
-      alert('해당 이름의 아이돌을 찾을 수 없습니다.');
-      return;
-    }
-
-    // API에 POST할 데이터 구성
-    const donationData = {
-      title: newDonation.title,
-      subtitle: newDonation.subtitle,
-      deadline: newDonation.deadline,
-      targetDonation: parseInt(newDonation.targetDonation, 10),
-      idolId: matchedIdol.id,
-    };
-
-    const result = await createDonation(donationData);
-
-    if (result) {
-      alert('조공이 등록되었습니다!');
-      setShowCreateModal(false); //모달 닫기
-      setNewDonation({ title: '', subtitle: '', deadline: '', targetDonation: '', idolName: '' });
-
-      // 조공 리스트 새로고침(등록한 조공 반영)
-      const updatedDonations = await getAllDonations();
-      setDonationList(updatedDonations);
-    } else {
-      alert('등록 실패');
-    }
+  // 새로운 조공 생성 성공 후 데이터 업데이트
+  const handleDonationCreated = (updatedDonations) => {
+    setDonationList(updatedDonations);
   };
 
   return (
@@ -169,15 +139,7 @@ function WaitingDonation({ idols }) {
               }}
             >
               {sortedDonations.map((item) => (
-                <Item
-                  item={item}
-                  key={item.id}
-                  // 후원하기 모달창 임시 구현
-                  onDonateClick={() => {
-                    setSelectedDonation(item);
-                    setShowModal(true);
-                  }}
-                />
+                <Item item={item} key={item.id} onDonateClick={() => handleDonateClick(item)} />
               ))}
             </div>
           </div>
@@ -188,91 +150,23 @@ function WaitingDonation({ idols }) {
           )}
         </div>
       </div>
-      {showModal && (
-        <div className="modalOverlay">
-          <div className="modalContent">
-            <h2>{selectedDonation?.title} 후원하기</h2>
-            <input
-              type="number"
-              value={donationAmount}
-              onChange={(e) => setDonationAmount(e.target.value)}
-              placeholder="후원 금액 입력"
-            />
-            <button
-              className="btn"
-              onClick={async () => {
-                if (!donationAmount) {
-                  alert('금액을 입력하세요!');
-                  return;
-                }
 
-                const result = await contributeDonation(selectedDonation.id, parseInt(donationAmount, 10));
-
-                if (result) {
-                  alert('후원 완료');
-                  setShowModal(false);
-                  setDonationAmount('');
-                  // 후원 데이터 새로고침
-                  const updatedDonations = await getAllDonations();
-                  setDonationList(updatedDonations);
-                } else {
-                  alert('후원 실패');
-                }
-              }}
-            >
-              기여하기
-            </button>
-            <button className="btn" onClick={() => setShowModal(false)}>
-              취소
-            </button>
-          </div>
-        </div>
-      )}
-
-      {/* 새로운 조공 만들기 모달 */}
-      {showCreateModal && (
-        <div className="modalOverlay">
-          <div className="modalContent">
-            <h2>새로운 조공 만들기</h2>
-            <input
-              type="text"
-              placeholder="제목"
-              value={newDonation.title}
-              onChange={(e) => handleNewDonationChange('title', e.target.value)}
-            />
-            <input
-              type="text"
-              placeholder="부제"
-              value={newDonation.subtitle}
-              onChange={(e) => handleNewDonationChange('subtitle', e.target.value)}
-            />
-            <input
-              type="datetime-local"
-              placeholder="마감일"
-              value={newDonation.deadline}
-              onChange={(e) => handleNewDonationChange('deadline', e.target.value)}
-            />
-            <input
-              type="number"
-              placeholder="목표 금액"
-              value={newDonation.targetDonation}
-              onChange={(e) => handleNewDonationChange('targetDonation', e.target.value)}
-            />
-            <input
-              type="text"
-              placeholder="아이돌 이름"
-              value={newDonation.idolName}
-              onChange={(e) => handleNewDonationChange('idolName', e.target.value)}
-            />
-            <button className="btn" onClick={handleCreateDonation}>
-              등록
-            </button>
-            <button className="btn" onClick={() => setShowCreateModal(false)}>
-              취소
-            </button>
-          </div>
-        </div>
-      )}
+      {/* 후원 모달창 */}
+      <DonationModal
+        isOpen={showModal}
+        onClose={() => setShowModal(false)}
+        selectedDonation={selectedDonation}
+        onDonationSuccess={handleDonationSuccess}
+        creditAmount={creditAmount}
+        onDonation={onDonation}
+      />
+      {/* 새로운 조공 만들기 모달창 */}
+      <NewDonationModal
+        isOpen={showCreateModal}
+        onClose={() => setShowCreateModal(false)}
+        idolList={idolList}
+        onDonationCreated={handleDonationCreated}
+      />
     </>
   );
 }

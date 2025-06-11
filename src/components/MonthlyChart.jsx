@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import MonthlyChartIdol from './MonthlyChartIdol';
 import MonthlyChartVote from './MonthlyChartVote';
 import styled from 'styled-components';
@@ -29,14 +30,31 @@ const MonthlyChartHeader = styled.div`
   }
 `;
 
-function MonthlyChart({ idols }) {
+function MonthlyChart({ idols, creditAmount, onVote, onIdolsUpdate }) {
+  // 선택된 성별 상태를 상위 컴포넌트에서 관리
+  const [selectedGender, setSelectedGender] = useState('female');
+
+  // 투표 성공 후 아이돌 데이터 업데이트 처리
+  const handleVoteSuccess = (updatedIdols) => {
+    // 여기서 상위 컴포넌트로 업데이트된 데이터를 전달하거나
+    // 필요한 후속 처리를 수행할 수 있습니다
+    onIdolsUpdate(updatedIdols);
+    console.log('투표 성공, 데이터 업데이트:', updatedIdols);
+  };
+
   return (
     <MonthlyChartContainer>
       <MonthlyChartHeader>
         <h1>이달의 차트</h1>
-        <MonthlyChartVote />
+        <MonthlyChartVote
+          idolList={idols}
+          selectGender={selectedGender}
+          creditAmount={creditAmount}
+          onVote={onVote}
+          onVoteSuccess={handleVoteSuccess}
+        />
       </MonthlyChartHeader>
-      <MonthlyChartIdol idols={idols} />
+      <MonthlyChartIdol idols={idols} selectedGender={selectedGender} onGenderChange={setSelectedGender} />
     </MonthlyChartContainer>
   );
 }
