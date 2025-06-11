@@ -13,7 +13,6 @@ import ListPage from './components/ListPage.jsx';
 import Setting from './settings/Setting.jsx';
 import Account from './settings/Account.jsx';
 import Notifications from './settings/Notifications.jsx';
-import Theme from './settings/Theme.jsx';
 import ChangeCursor from './settings/ChangeCursor.jsx';
 
 import CustomerCenter from './policies/CustomerCenter.jsx';
@@ -50,7 +49,6 @@ function AppLayout() {
           <Route path="settings" element={<Setting />} />
           <Route path="account" element={<Account />} />
           <Route path="notifications" element={<Notifications />} />
-          <Route path="theme" element={<Theme />} />
           <Route path="cursor" element={<ChangeCursor />} />
 
           {/* footer 연결 페이지 */}
