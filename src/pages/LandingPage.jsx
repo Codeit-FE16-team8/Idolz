@@ -1,6 +1,5 @@
 // 랜딩 페이지
 import '../styles/landing.css';
-import '../styles/common.css';
 import Section1 from '../Landing/Section01';
 import Section2 from '../Landing/Section02';
 import Section3 from '../Landing/Section03';
