@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { getAllIdols } from '../api/idol';
 import BtnPagination from '../components/Btn_Pagination';
 import IdolProfile from '../components/IdolProfile';
-import '../styles/MyPage.css';
+import '../styles/mypage.css';
 import Button from '../components/Button';
 
 function MyPage() {
