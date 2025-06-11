@@ -19,6 +19,16 @@
   border-radius: 4px;
 }
 
+.pagination-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: nowrap;
+  margin-top: 24px;
+}
+
+/* 추가하기 버튼 */
 .my-add-button-wrapper {
   display: flex;
   justify-content: center;
@@ -33,6 +43,33 @@
   border-radius: 20px;
   padding: 12px 24px;
   font-weight: bold;
-  font-size: 1rem;
+  font-size: 2rem;
   cursor: pointer;
+}
+
+/* 마이 페이지 아이돌 프로필 반응형 */
+.myPage__idolList {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 모바일 기본 */
+  gap: 10px;
+  min-height: 240px;
+  justify-items: center;
+}
+
+@media (min-width: 768px) {
+  .myPage__idolList {
+    grid-template-columns: repeat(4, 1fr); /* 태블릿 */
+  }
+}
+
+@media (min-width: 1200px) {
+  .myPage__idolList {
+    grid-template-columns: repeat(8, 1fr); /* 데스크탑 */
+  }
+}
+
+@media (max-width: 767px) {
+  .btn-pagination {
+    display: none; /* 모바일에서는 페이지네이션 버튼 숨김 */
+  }
 }
