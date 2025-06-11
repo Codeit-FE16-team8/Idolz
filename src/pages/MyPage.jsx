@@ -3,8 +3,8 @@ import React, { useEffect, useState } from 'react';
 import { getAllIdols } from '../api/idol';
 import BtnPagination from '../components/Btn_Pagination';
 import IdolProfile from '../components/IdolProfile';
-import '../styles/common.css';
 import '../styles/MyPage.css';
+import Button from '../components/Button';
 
 function MyPage() {
   const [idols, setIdols] = useState([]); //전체 아이돌
@@ -84,19 +84,8 @@ function MyPage() {
   }, []);
 
   return (
-    <div>
-      <h2
-        style={{
-          fontSize: '2rem',
-          fontWeight: 'bold',
-          marginBottom: '12px',
-          minHeight: 'auto',
-          paddingTop: '12px',
-          textAlign: 'left',
-        }}
-      >
-        내가 관심있는 아이돌
-      </h2>
+    <div className="myPage-container">
+      <h2 style={{ textAlign: 'left', width: '100%', paddingLeft: '16px' }}>내가 관심있는 아이돌</h2>
 
       <div className="interested-scroll-wrapper">
         {interestedIdols.map((idol) => (
@@ -111,16 +100,9 @@ function MyPage() {
           />
         ))}
       </div>
+      <div className="interested-divider" />
       {/* 추가할 아이돌 목록 */}
-      <h2
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-          gap: '12px',
-        }}
-      >
-        관심있는 아이돌을 추가해보세요.
-      </h2>
+      <h2 style={{ textAlign: 'left', width: '100%', paddingLeft: '16px' }}>관심있는 아이돌을 추가해보세요.</h2>
       <div
         style={{
           display: 'flex',
@@ -165,7 +147,9 @@ function MyPage() {
 
       {/* 추가하기 버튼 */}
       <div className="my-add-button-wrapper">
-        <button onClick={handleAddInterested}> + 추가하기</button>
+        <Button height="large" width="255px" radius="round" ariaLabel="추가하기" onClick={handleAddInterested}>
+          + 추가하기
+        </Button>
       </div>
     </div>
   );
