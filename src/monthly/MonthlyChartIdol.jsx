@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import MonthlyChartIdolFemale from './MonthlyChartIdolFemale';
-import MonthlyChartIdolMale from './MonthlyChartIdolMale';
+import MonthlyChartIdolFemale from '../monthly/MonthlyChartIdolFemale';
+import MonthlyChartIdolMale from '../monthly/MonthlyChartIdolMale';
 
 import styled from 'styled-components';
 

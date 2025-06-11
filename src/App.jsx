@@ -1,14 +1,9 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import List from './components/List';
+import List from './pages/List.jsx';
 import Header from './components/Header.jsx';
 import Footer from './components/Footer.jsx';
 import LandingPage from './pages/LandingPage.jsx';
 import MyPage from './pages/MyPage.jsx';
-
-import Login from './pages/LoginPage.jsx';
-import LogUp from './pages/LogUpPage.jsx';
-
-import ListPage from './components/ListPage.jsx';
 
 import Setting from './settings/Setting.jsx';
 import Account from './settings/Account.jsx';
@@ -39,11 +34,7 @@ function AppLayout() {
           <Route path="common" element={<Common />} />
           <Route index element={<LandingPage />} />
           <Route path="list" element={<List />} />
-          <Route path="listTest" element={<ListPage />} />
           <Route path="mypage" element={<MyPage />} />
-
-          <Route path="login" element={<Login />} />
-          <Route path="logUp" element={<LogUp />} />
 
           {/* 설정 페이지 */}
           <Route path="settings" element={<Setting />} />

@@ -1,9 +1,9 @@
 // 랜딩 페이지 섹션 1 컴포넌트
 import { motion } from 'framer-motion';
-import Landinglogo from '../../assets/images/Landinglogo.svg';
-import bgImage01 from '../../assets/images/landing_bg01.png';
+import Landinglogo from '../assets/images/Landinglogo.svg';
+import bgImage01 from '../assets/images/landing_bg01.png';
 import { useNavigate } from 'react-router-dom';
-import { useCursor } from '../CursorContext';
+import { useCursor } from '../components/CursorContext';
 
 function Section1() {
   const navigate = useNavigate();

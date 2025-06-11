@@ -1,4 +1,4 @@
-import MyCreditCharge from './MyCreditCharge';
+import MyCreditCharge from '../modal/MyCreditCharge';
 import styled from 'styled-components';
 import credit from '../assets/images/credit.png';
 

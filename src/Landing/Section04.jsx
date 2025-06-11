@@ -1,8 +1,8 @@
 // 랜딩 페이지 섹션 4 컴포넌트
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import bgImage04 from '../../assets/images/landing_bg04.png';
-import PhonePage03 from '../../assets/images/PhonePage03.png';
+import bgImage04 from '../assets/images/landing_bg04.png';
+import PhonePage03 from '../assets/images/PhonePage03.png';
 
 function Section4() {
   const { ref, inView } = useInView({ threshold: 0.2, triggerOnce: false });

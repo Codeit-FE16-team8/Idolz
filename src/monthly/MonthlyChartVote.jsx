@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Button from './Button';
+import Button from '../components/Button';
 import icon from '../assets/images/Chart.png';
 import VoteModal from '../modal/VoteModal';
 

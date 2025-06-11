@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import CREDIT_IMG from '../assets/images/credit_white.png';
-import Button from './Button';
-import RadioCredit from './RadioCredit';
+import Button from '../components/Button';
+import RadioCredit from '../components/RadioCredit';
 
 function MyCreditCharge({ onCharge }) {
   const [showModal, setShowModal] = useState(false);
