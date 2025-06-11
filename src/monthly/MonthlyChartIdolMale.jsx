@@ -1,4 +1,4 @@
-import IdolVoteChart from './IdolVoteChart';
+import IdolVoteChart from '../components/IdolVoteChart';
 import styled from 'styled-components';
 
 const IdolContainer = styled.div`

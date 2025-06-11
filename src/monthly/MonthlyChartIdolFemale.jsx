@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import IdolVoteChart from './IdolVoteChart';
+import IdolVoteChart from '../components/IdolVoteChart';
 
 const IdolContainer = styled.div`
   display: flex;

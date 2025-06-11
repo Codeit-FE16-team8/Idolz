@@ -1,10 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
-import BoxBox from './BoxBox';
 import leftImg from '../assets/images/btn_pagination_arrow_left.svg';
 import rightImg from '../assets/images/btn_pagination_arrow_right.svg';
 import Item from './Item';
 import { getAllDonations } from '../api/donation';
-import './item.css';
+import '../styles/item.css';
 import DonationModal from '../modal/DonationModal';
 import NewDonationModal from '../modal/NewDonationModal';
 
