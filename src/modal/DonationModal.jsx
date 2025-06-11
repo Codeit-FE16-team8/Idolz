@@ -74,14 +74,22 @@ function DonationModal({ isOpen, onClose, selectedDonation, onDonationSuccess, c
       <div className="donation__input-group">
         <input
           type="number"
+          min="0"
           value={donationAmount}
           onChange={(e) => setDonationAmount(e.target.value)}
           placeholder="크레딧 입력"
           className="input__credit"
+          style={{ border: donationAmount > creditAmount ? 'solid 1px #FF2626' : '' }}
         />
+        {donationAmount > creditAmount && <p>갖고 있는 크레딧보다 더 많이 후원할 수 없어요</p>}
       </div>
       {/* 버튼 */}
-      <Button height="large" ariaLabel="후원하기" onClick={handleDonate} isDisabled={donationAmount <= 0}>
+      <Button
+        height="large"
+        ariaLabel="후원하기"
+        onClick={handleDonate}
+        isDisabled={donationAmount <= 0 || donationAmount > creditAmount}
+      >
         후원하기
       </Button>
     </Modal>

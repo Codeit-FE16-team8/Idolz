@@ -163,6 +163,18 @@ input.input__donation::placeholder {
   color: var(--color-gray-67666E);
 }
 
+.donation__input-group p {
+  font-size: var(--font-size-xxs);
+  color: #FF2626;
+  padding-top: 6px;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 /* 이달의 투표 */
 .voting {
   position: relative;
