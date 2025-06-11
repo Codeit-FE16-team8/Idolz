@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { contributeDonation, getAllDonations } from '../api/donation';
 import Modal from './Modal';
 import '../styles/modal.css';
+import Button from '../components/Button';
 import InsufficientCreditModal from './InsufficientCreditModal';
 
 function DonationModal({ isOpen, onClose, selectedDonation, onDonationSuccess, creditAmount, onDonation }) {
@@ -83,9 +84,9 @@ function DonationModal({ isOpen, onClose, selectedDonation, onDonationSuccess, c
           />
         </div>
         {/* 버튼 */}
-        <button className="btn btn--large" onClick={handleDonate}>
+        <Button height="large" ariaLabel="후원하기" onClick={handleDonate} isDisabled={donationAmount <= 0}>
           후원하기
-        </button>
+        </Button>
       </Modal>
       <InsufficientCreditModal
         isOpen={isCreditModalOpen}

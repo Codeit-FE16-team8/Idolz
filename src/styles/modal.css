@@ -1,5 +1,4 @@
 /* 모달 css */
-
 .modalOverlay {
   position: fixed;
   top: 0;
@@ -25,10 +24,46 @@
   border-radius: var(--border-radius-md);
 }
 
-/* 후원하기 모달 */
-.modalContent .btn--large {
-  background: var(--color-gray-828282);
+.modalContent h2 {
+  font-size: var(--font-size-lg);
 }
+
+.btn--modalClose {
+  position: absolute;
+  top: 26px;
+  right: 20px;
+  width: 24px;
+  height: 24px;
+  background-image: url(../assets/images/btn_delete_24px.png);
+  cursor: pointer;
+}
+
+/* 내 크레딧 충전 */
+.creditCharge {
+  position: relative;
+  justify-content: flex-start;
+  width: 327px;
+  height: auto;
+  gap: 0px;
+}
+
+.creditCharge h2 {
+  margin-bottom: 24px;
+}
+
+.creditCharge .btn {
+  margin-top: 16px;
+  font-size: var(--font-size-base);
+}
+
+.btn-creditcharge {
+  padding: 10px 20px;
+  color: var(--color-orange-F96D69);
+  font-size: var(--font-size-xs);
+}
+
+
+/* 후원하기 모달 */
 .donation {
   width: 327px;
   height: 500px;
@@ -52,10 +87,17 @@
   cursor: pointer;
 }
 
-.donation__profile-img {
+.donation__profile {
   width: 158px;
   height: 206px;
   border-radius: 8px;
+  overflow: hidden;
+}
+
+.donation__profile-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .donation__description {
@@ -79,23 +121,24 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  height: auto;
 }
 
 input.input__donation {
   width: 100%;
-  padding: 5px;
+  padding: 10px;
   background-color: #272f3d;
   background-repeat: no-repeat;
   background-position: 95% center;
   color: white;
   border: solid 1px white;
   border-radius: 8px;
+  font-size: var(--font-size-md);
 }
 
 input.input__donation::placeholder {
   padding: 0 5px;
   color: var(--color-gray-67666E);
-  font-size: 14px;
 }
 
 /* 이달의 투표 */
@@ -113,7 +156,7 @@ input.input__donation::placeholder {
   font-weight: var(--font-weight-500);
 }
 
-.btn--modalClose {
+.voting .btn--modalClose {
   position: absolute;
   top: 40px;
   left: 35px;
@@ -186,6 +229,10 @@ input.input__donation::placeholder {
   .voting_scroll {
     max-height: 60vh;
     margin: 19px 0;
+  }
+
+  .btn-creditcharge {
+    font-size: var(--font-size-md);
   }
 }
 
