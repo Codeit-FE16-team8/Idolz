@@ -1,18 +1,22 @@
 import Modal from './Modal';
+import Button from '../components/Button';
+import credit from '../assets/images/credit_113px.png';
 import '../styles/modal.css';
 
 function InsufficientCreditModal({ isOpen, onClose, message }) {
   return (
     <Modal isOpen={isOpen} onClose={onClose} className="credit-lack">
-      <button className="btn--donationModalClose" onClick={onClose}></button>
+      <div className="modal__credit-container">
+        <button className="btn--donationModalClose" onClick={onClose}></button>
+      </div>
       <div className="credit-lack__container">
-        <img src="" alt="크레딧 부족" />
+        <img src={credit} alt="크레딧 부족" />
         <p>
           앗! {message} 위한 <span className="highlight">크레딧</span>이 부족해요
         </p>
-        <button className="btn btn--large" onClick={onClose}>
+        <Button height="large" ariaLabel="확인" onClick={onClose}>
           확인
-        </button>
+        </Button>
       </div>
     </Modal>
   );

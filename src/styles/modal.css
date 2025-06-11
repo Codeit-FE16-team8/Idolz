@@ -62,6 +62,13 @@
   font-size: var(--font-size-xs);
 }
 
+/* 크레딧 부족 모달 */
+.credit-lack {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
 
 /* 후원하기 모달 */
 .donation {
