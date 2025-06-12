@@ -1,7 +1,6 @@
 // 랜딩 페이지 섹션 3 컴포넌트
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import bgImage03 from '../assets/images/landing_bg03.png';
 import PhonePage02 from '../assets/images/PhonePage02.png';
 
 function Section3() {
@@ -11,23 +10,18 @@ function Section3() {
     <motion.section
       ref={ref}
       className="landing-section section3"
-      style={{
-        backgroundImage: `url(${bgImage03})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-      }}
       initial={{ opacity: 0, y: 30 }}
       animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
       transition={{ duration: 0.5 }}
     >
       <div className="landing-content-wrapper">
-        <motion.h3
+        <motion.h2
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.5, delay: 0.1 }}
         >
           <span className="yellow-highlight">이달의 아티스트</span>
-        </motion.h3>
+        </motion.h2>
 
         <motion.h2
           initial={{ opacity: 0, y: 30 }}

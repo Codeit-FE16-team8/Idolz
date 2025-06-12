@@ -8,76 +8,84 @@
 .landing-section {
   position: relative;
   width: 100%;
-  min-height: 100vh; /* 기본 높이지만 내용이 더 많으면 확장 가능 */
+  /* min-height: 100vh; */
   height: auto;
-  background-position: center;
-  background-size: cover;
+  background-position: center top;
   background-repeat: no-repeat;
-  background-position: center;
+  background-size: contain;
   background-attachment: scroll;
   display: block;
 }
 
-/* 오버레이 안 요소들 (텍스트, 로고, 버튼) */
+/* 각 섹션별 배경 이미지 (모바일용) */
+.landing-section.section1 {
+  background-image: url('/landing_bg01.png');
+}
+.landing-section.section2 {
+  background-image: url('/landing_bg02.png');
+}
+.landing-section.section3 {
+  background-image: url('/landing_bg03.png');
+}
+.landing-section.section4 {
+  background-image: url('/landing_bg04.png');
+}
+
+/* 오버레이 안 요소 */
 .landing-overlay {
   z-index: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: auto;
-  margin-bottom: 60px;
-  gap: 48px;
+  justify-content: space-between;
   height: 100vh;
   padding: 100px 16px 60px;
-  justify-content: space-between;
+  gap: 48px;
 }
 
 .landing-overlay .btn--large {
   margin-bottom: 20px;
-  position: relative;
   z-index: 2;
+  font-size: 14px;
+  padding: 0 32px;
+  height: 40px;
+  line-height: 40px;
+  border-radius: 6px;
 }
 
-.landing-top {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 32px;
-}
-
+/* 텍스트 스타일 */
 .landing-content-wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-  gap: 24px; /* 섹션마다 적절히 조절 */
+  gap: 24px;
   height: 100%;
-  z-index: 2;
+  padding: 0 16px;
   position: relative;
+  z-index: 2;
+}
+
+.landing-heading {
+  font-size: 16px;
+  line-height: 1.4;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 20px;
   padding: 0 16px;
 }
 
-/* 텍스트 스타일 */
-.landing-heading {
-  font-size: 20px;
-  line-height: 1.4;
-  font-weight: 700;
-  margin-bottom: 20px;
-}
-
-/* 강조 텍스트 */
 .highlight {
   color: #ff5c8a;
 }
 
 .yellow-highlight {
-  display: inline-block;
   color: #f0c040;
-  margin-top: 40px;
+  margin-top: 24px;
+  display: inline-block;
 }
 
-/* 로고 스타일 */
 .landing-logo {
   width: 200px;
   margin-bottom: 28px;
@@ -89,51 +97,75 @@
   margin-top: 24px;
 }
 
-/* 버튼 기본 설정은 common.css의 .btn 사용 */
-
 .landing-button {
   margin-top: 24px;
 }
 
-/* 페이지 2,3,4 가로지르는 바 */
 .vertical-gradient-bar {
   position: absolute;
   top: 0;
   left: 50%;
   transform: translateX(-50%);
-
   width: 60px;
   height: 100%;
-  z-index: 1;
-
   background: linear-gradient(to bottom, #030615, #051d31, #051e32, #051c30, #030b1c);
   opacity: 0.8;
+  z-index: 1;
 }
 
 .landing-multi-section {
   position: relative;
 }
 
-/* 데스크탑 이상에서는 크기 증가 */
+/* ==============================
+   태블릿 이상 (768px~1023px)
+   ============================== */
 @media (min-width: 768px) {
   .landing-heading {
-    font-size: 36px;
+    font-size: 20px;
+    text-align: center;
     line-height: 1.5;
+  }
+
+  .landing-logo {
+    width: 300px;
+  }
+
+  .PhonePage {
+    max-width: 120px;
+    padding: 0 0 20px;
+  }
+
+  .vertical-gradient-bar {
+    width: 80px;
+    opacity: 0.7;
+  }
+
+  .landing-overlay .btn--large {
+    padding: 0 64px;
+    font-size: 15px;
+  }
+
+  .landing-section {
+    /* background-size: cover; */
+  }
+}
+
+/* ==============================
+   데스크탑 이상 (1024px~)
+   ============================== */
+@media (min-width: 1024px) {
+  .landing-heading {
+    font-size: 36px;
   }
 
   .landing-logo {
     width: 420px;
   }
 
-  .landing-overlay .btn--large {
-    width: auto;
-    padding: 0 130px;
-    height: 40px;
-    line-height: 40px;
-    margin-bottom: 30px;
-    font-size: 14px;
-    font-weight: 700;
-    border-radius: 6px;
+  .PhonePage {
+    max-width: 200px;
+    padding: 0 0 20px;
   }
 
   .vertical-gradient-bar {
@@ -141,38 +173,15 @@
     opacity: 0.6;
   }
 
-  .PhonePage {
-    max-width: 240px;
+  .landing-overlay .btn--large {
     width: 100%;
+    max-width: 260px;
+    padding: 0 32px;
+    height: 44px;
+    line-height: 44px;
+    font-size: 14px;
+    font-weight: 700;
+    border-radius: 6px;
     margin-top: 32px;
-  }
-}
-
-@media (min-width: 1024px) {
-  .landing-section.section1 {
-    background-size: cover;
-    background-position: center center;
-    padding: 0;
-    min-height: 160vh;
-  }
-  .landing-section.section2 {
-    background-size: contain;
-    background-position: center top;
-    padding: 100px 0;
-    min-height: 160vh;
-  }
-
-  .landing-section.section3 {
-    background-size: cover;
-    background-position: center;
-    padding: 100px 0;
-    min-height: 160vh;
-  }
-
-  .landing-section.section4 {
-    background-size: cover;
-    background-position: center bottom;
-    padding: 100px 0;
-    min-height: 160vh;
   }
 }
