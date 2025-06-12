@@ -32,6 +32,7 @@
 }
 
 /* 오버레이 안 요소 */
+
 .landing-overlay {
   z-index: 1;
   display: flex;
@@ -39,12 +40,13 @@
   align-items: center;
   justify-content: space-between;
   height: 100vh;
-  padding: 100px 16px 60px;
-  gap: 48px;
+  padding: 20px 16px 200px;
+  gap: 32px;
 }
 
 .landing-overlay .btn--large {
-  margin-bottom: 20px;
+  width: 60%;
+  margin-bottom: 24px;
   z-index: 2;
   font-size: 14px;
   padding: 0 32px;
@@ -65,14 +67,14 @@
   padding: 0 16px;
   position: relative;
   z-index: 2;
+  margin-bottom: 70px;
 }
 
 .landing-heading {
-  font-size: 16px;
+  font-size: 14px;
   line-height: 1.4;
-  font-weight: 600;
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
   padding: 0 16px;
 }
 
@@ -82,7 +84,8 @@
 
 .yellow-highlight {
   color: #f0c040;
-  margin-top: 24px;
+  font-size: 16px;
+  margin-top: 30px;
   display: inline-block;
 }
 
@@ -92,9 +95,10 @@
 }
 
 .PhonePage {
-  width: 80%;
-  max-width: 180px;
-  margin-top: 24px;
+  width: 60%;
+  max-width: 120px;
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
 
 .landing-button {
@@ -136,6 +140,11 @@
     padding: 0 0 20px;
   }
 
+  .landing-overlay {
+    padding: 20px 16px 200px;
+    gap: 32px;
+  }
+
   .vertical-gradient-bar {
     width: 80px;
     opacity: 0.7;
@@ -156,16 +165,25 @@
    ============================== */
 @media (min-width: 1024px) {
   .landing-heading {
-    font-size: 36px;
+    font-size: 24px;
   }
 
   .landing-logo {
     width: 420px;
   }
 
+  .yellow-highlight {
+    color: #f0c040;
+    font-size: 28px;
+    margin-top: 30px;
+    display: inline-block;
+  }
+
   .PhonePage {
-    max-width: 200px;
+    max-width: 180px;
     padding: 0 0 20px;
+    margin-top: 30px;
+    margin-bottom: 30px;
   }
 
   .vertical-gradient-bar {
@@ -183,5 +201,8 @@
     font-weight: 700;
     border-radius: 6px;
     margin-top: 32px;
+  }
+  .landing-content-wrapper {
+    margin-bottom: 80px;
   }
 }
