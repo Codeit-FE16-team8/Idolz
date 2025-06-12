@@ -74,6 +74,7 @@
   font-size: 14px;
   line-height: 1.4;
   text-align: center;
+  margin-top: 10px;
   margin-bottom: 16px;
   padding: 0 16px;
 }
@@ -129,6 +130,7 @@
     font-size: 20px;
     text-align: center;
     line-height: 1.5;
+    margin-top: 10px;
   }
 
   .landing-logo {
@@ -166,6 +168,7 @@
 @media (min-width: 1024px) {
   .landing-heading {
     font-size: 24px;
+    margin-top: 20px;
   }
 
   .landing-logo {
@@ -204,5 +207,9 @@
   }
   .landing-content-wrapper {
     margin-bottom: 80px;
+  }
+
+  .landing-top {
+    margin-top: 30px;
   }
 }
