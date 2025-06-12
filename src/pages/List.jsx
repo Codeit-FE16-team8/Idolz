@@ -6,9 +6,9 @@ import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 const Container = styled.div`
-  max-width: 1200px;
   width: 100%;
   margin: 20px auto;
+  max-width: 1200px;
   padding: 0 10px;
 
   @media (max-width: 768px) {
