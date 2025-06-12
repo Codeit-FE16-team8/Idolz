@@ -1,7 +1,6 @@
 // 랜딩 페이지 섹션 2 컴포넌트
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import bgImage02 from '../assets/images/landing_bg02.png';
 import PhonePage01 from '../assets/images/PhonePage01.png';
 
 function Section2() {
@@ -11,23 +10,18 @@ function Section2() {
     <motion.section
       ref={ref}
       className="landing-section section2"
-      style={{
-        backgroundImage: `url(${bgImage02})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-      }}
       initial={{ opacity: 0, y: 30 }}
       animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
       transition={{ duration: 0.5 }}
     >
       <div className="landing-content-wrapper">
-        <motion.h3
+        <motion.h2
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.5, delay: 0.1 }}
         >
           <span className="yellow-highlight">후원하기</span>
-        </motion.h3>
+        </motion.h2>
 
         <motion.h2
           initial={{ opacity: 0, y: 30 }}
