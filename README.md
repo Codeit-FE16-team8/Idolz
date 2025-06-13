@@ -18,6 +18,12 @@
 - **React**: UI 컴포넌트 기반 프론트엔드 프레임워크
 - **Vite**: 빠른 개발 환경을 위한 빌드 툴
 - **React Router**: 클라이언트 사이드 라우팅 처리
+ 
+## 📷 스크린샷
+<img width="719" alt="list" src="https://github.com/user-attachments/assets/c7d2a51d-97b4-48b2-9615-7fe074129ec7" />
+<img width="719" alt="my" src="https://github.com/user-attachments/assets/0363b5df-0e2e-44ab-8846-91a5dfd8a49b" />
+<img width="719" alt="setting" src="https://github.com/user-attachments/assets/636fb5c1-1118-468a-86d9-55a9f946d14f" />
+
 
 ## 📦 실행 방법
 아래 주소에서 프로젝트를 확인하실 수 있습니다. 
