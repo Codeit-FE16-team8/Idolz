@@ -21,10 +21,9 @@
  
 ## 📷 스크린샷
 ![스크린샷 2025-06-12 192942](https://github.com/user-attachments/assets/0bea8e27-ef52-4bbf-ba51-4830aa9ef0cb)
-
-
-
-
+<img width="719" alt="list" src="https://github.com/user-attachments/assets/81537967-4c4b-4168-9f06-501f7e188236" />
+<img width="719" alt="my" src="https://github.com/user-attachments/assets/c379603a-c0bf-4455-8095-8852803a9116" />
+<img width="719" alt="setting" src="https://github.com/user-attachments/assets/709e6b61-3a4d-4630-8ad4-ef44839a8b9c" />
 
 ## 📦 실행 방법
 아래 주소에서 프로젝트를 확인하실 수 있습니다. 
