@@ -20,7 +20,9 @@
 - **React Router**: 클라이언트 사이드 라우팅 처리
  
 ## 📷 스크린샷
-<img width="719" alt="list" src="https://github.com/user-attachments/assets/c7d2a51d-97b4-48b2-9615-7fe074129ec7" />
+
+<img widt![스크린샷 2025-06-12 192942](https://github.com/user-attachments/assets/e515ae64-0766-4f69-a1da-f766775c26b7)
+h="719" alt="list" src="https://github.com/user-attachments/assets/c7d2a51d-97b4-48b2-9615-7fe074129ec7" />
 <img width="719" alt="my" src="https://github.com/user-attachments/assets/0363b5df-0e2e-44ab-8846-91a5dfd8a49b" />
 <img width="719" alt="setting" src="https://github.com/user-attachments/assets/636fb5c1-1118-468a-86d9-55a9f946d14f" />
 
