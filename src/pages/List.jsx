@@ -4,6 +4,9 @@ import MyCredit from '../components/MyCredit';
 import { getAllIdols } from '../api/idol';
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import MyCreditSkeleton from '../skeleton/MyCreditSkeleton';
+import WaitingDonationSkeleton from '../skeleton/WaitingDonationSkeleton';
+import MonthlyChartSkeleton from '../skeleton/MonthlyChartSkeleton';
 
 const Container = styled.div`
   width: 100%;
@@ -78,7 +81,14 @@ function List() {
     setIdols(updatedIdols);
   };
 
-  if (loading) return <p>로딩 중</p>;
+  if (loading)
+    return (
+      <Container>
+        <MyCreditSkeleton />
+        <WaitingDonationSkeleton />
+        <MonthlyChartSkeleton />
+      </Container>
+    );
 
   return (
     <div>
